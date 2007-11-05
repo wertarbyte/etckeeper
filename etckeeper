@@ -2,9 +2,9 @@
 set -e
 
 if [ "$0" != etckeeper ]; then
-	command="$(basename $0)"
+	command="$(basename $0 | sed -e s/etckeeper-//)"
 else
-	command="etc-$1"
+	command="$1"
 	shift 1
 fi
 

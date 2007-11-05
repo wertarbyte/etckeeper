@@ -6,7 +6,8 @@ it includes applying stored metadata to the checked out files in the
 working directory.
 
 Please be careful to *never* overwrite existing files/directories
-in the working directory. If a file you need to write already exists, check
-if its contents are sane, and if not, emit a warning on stderr.
+in the working directory (or use absolute care when doing so). If a file
+you need to write already exists, check if its contents are sane, and 
+if not, emit a warning on stderr.
 
 If initialisation fails, exit nonzero and no later files will be run.
