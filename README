@@ -74,6 +74,7 @@ the right files, and none of the wrong files. And you can edit the
 .gitignore and so forth. Once you're ready:
 
 	git commit -m "initial checkin"
+	git gc # pack git repo to save a lot of space
 
 After this first checkin, you can use regular git commands to check in
 further changes:

@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-empty=$(find -type f -empty | grep -v /.git/) || true
+empty=$(find -type d -empty | grep -v /.git/) || true
 if [ -n "$empty" ]; then
 	echo "etckeeper warning: empty directories, not tracked by git:" >&2
 	echo "$empty" >&2

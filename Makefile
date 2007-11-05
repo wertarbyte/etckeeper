@@ -14,3 +14,5 @@ install:
 			ln -sf /usr/lib/etckeeper/$$file $(PREFIX)/etc/etckeeper/$$file; \
 		done; \
 	done
+
+	install -m 0644 -D apt.conf $(PREFIX)/etc/apt/apt.conf.d/05etckeeper
