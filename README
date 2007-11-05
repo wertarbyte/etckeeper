@@ -28,10 +28,9 @@ repository.
 
 etckeeper has special support to handle changes to /etc caused by
 installing and upgrading packages. Before apt installs packages,
-`etckeeper-pre-apt` will check that /etc is clean, and if it's not, prompt
-you about whether or not to continue. (This check can be disabled.) After
-apt installs packages, `etckeeper-post-apt` will add any new interesting
-files to the repository, and commit the changes.
+`etckeeper-pre-apt` will check that /etc contains no uncommitted changes.
+After apt installs packages, `etckeeper-post-apt` will add any new
+interesting files to the repository, and commit the changes.
 
 git is designed as a way to manage source code, not as a way to manage
 arbitrary directories like /etc. This means it has a few limitations that
@@ -54,7 +53,7 @@ empty directory, if it's not significant, or put a file (such as
 
 git doesn't support several special files that you _probably_ won't have in
 /etc, such as unix sockets, named pipes, hardlinked files (but softlinks
-are fine), and device files. Again a git hooks are used to warn if your /etc
+are fine), and device files. Again git hooks are used to warn if your /etc
 contains such untrackable special files.
 
 

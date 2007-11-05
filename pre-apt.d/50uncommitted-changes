@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+cd /etc
+while git-status || ! LANG=C git-status 2>&1 | grep -q "working directory clean"
+do
+	echo "etckeeper warning: /etc has uncommitted changes" >&2
+	printf "Press Enter to commit these changes and continue. "
+	read line
+	git add .
+	if ! git commit -m "saving uncommitted changes in /etc prior to apt run"; then
+		echo "etckeeper warning: git commit failed" >&2
+		echo "Please resolve the uncommitted changes by hand."
+		printf "Press Enter when ready to continue. "
+		read line
+	fi
+done

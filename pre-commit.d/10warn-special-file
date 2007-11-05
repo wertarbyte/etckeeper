@@ -2,6 +2,6 @@
 set -e
 special=$(find -not -type d -not -type f -not -type l | grep -v /.git/)
 if [ -n "$special" ]; then
-	echo "warning: special files could cause problems with git:" >&2
+	echo "etckeeper warning: special files could cause problems with git:" >&2
 	echo "$special" >&2
 fi

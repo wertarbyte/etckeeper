@@ -2,6 +2,6 @@
 set -e
 hardlinks=$(find -type f -not -links 1 | grep -v /.git/)
 if [ -n "$hardlinks" ]; then
-	echo "warning: hardlinked files could cause problems with git:" >&2
+	echo "etckeeper warning: hardlinked files could cause problems with git:" >&2
 	echo "$hardlinks" >&2
 fi
