@@ -1,0 +1,146 @@
+etckeeper is a collection of tools to let /etc be stored in a git
+repository. It's probably generic enough in its approach that support
+for other revision control systems than git could be added to it.
+
+
+## security warning
+
+First, a big warning: By checking /etc into revision control, you are
+creating a copy of files like /etc/shadow that must remain secret. Anytime
+you have a copy of a secret file, it becomes more likely that the file
+contents won't remain secret. etckeeper is careful about file permissions,
+and will make sure that repositories it sets up don't allow anyone but root
+to read their contents. However, you *also* must take care when cloning
+or copying these repositories, not to allow anyone else to see the data.
+
+Since git mushes all the files into packs under the .git directory, the
+whole .git directory needs to be kept secret. Also, since git doesn't keep
+track of the mode of files like the shadow file, it will check it out world
+readable, before etckeeper fixes the permissions. The tutorial has some
+examples of safe ways to avoid these problems when cloning an /etc
+repository.
+
+
+## what etckeeper does
+
+etckeeper has special support to handle changes to /etc caused by
+installing and upgrading packages. Before apt installs packages,
+`etc-pre-apt` will check that /etc is clean, and if it's not, prompt you
+about whether or not to continue. (This check can be disabled.) After apt
+installs packages, `etc-post-apt` will add any new interesting files to the
+repository, and commit the changes.
+
+git is designed as a way to manage source code, not as a way to manage
+arbitrary directories like /etc. This means it has a few limitations that
+etckeeper has to work around. These include file metadata storage,
+empty directories, and special files.
+
+git has only limited tracking of file metadata, being able to track the
+executable bit, but not other permissions or owner info. So file metadata
+storage is handled by `metastore`. Amoung other chores, `etc-init` sets up
+a git hook that use `metastore` to store metadata about file owners,
+permissions, modification times, and even extended attributes. This
+metadata is stored in git along with everything else, and can be applied if
+the repo should need to be checked back out.
+
+git cannot track empty directories. So `etc-init` also sets up a git hook
+to run `etc-pre-commit`, which checks for empty directories before
+committing, and warn about them. You can then either ignore the empty
+directory, if it's not significant, or put a file (such as `.gitignore`) in
+the directory to enable git to track it.
+
+git doesn't support several special files that you _probably_ won't have in
+/etc, such as unix sockets, named pipes, hardlinked files (but softlinks
+are fine), and device files. Again a git hooks are used to warn if your /etc
+contains such untrackable special files.
+
+
+## tutorial
+
+A quick walkthrough of using etckeeper.
+
+	cd /etc
+	etc-init
+
+This `etc-init` command, which is actually run for you when the Debian
+package of etckeeper is installed, initialises an /etc/.git/ repository.
+This command is careful to never overwrite existing file or directories in
+/etc. It will create a `.gitignore` if one doesn't already exist, sets up
+git hooks if they don't already exist, and so on. It does *not* commit any
+files into to git, but does `git-add` all interesting files for an initial
+commit. So you might want to use git status to check that it includes all
+the right files, and none of the wrong files. And you can edit the
+.gitignore and so forth. Once you're ready:
+
+	git commit -m "initial checkin"
+
+After this first checkin, you can use regular git commands to check in
+further changes:
+
+	passwd someuser
+	git status
+	git commit -a -m "changed a password"
+
+Rinse, lather, repeat.
+
+etckeeper hooks into apt so changed or new files caused by installing or
+upgrading packages will automatically be added and committed.
+(`etc-post-apt` uses `git-add .`, so any new files in /etc that arn't
+gitignored will be added.)
+
+If a package *removes* a file from /etc, etckeeper does not automatically
+commit this removal, though it will let you know that the file was removed.
+You can manually remove it with commands like these;
+
+	git rm init.d/somedaemon rc*.d/*somedaemon
+	git commit -a "removed somedaemon"
+
+You can use any git commands you like, but do keep in mind that, if you
+check out a different branch or an old version, git is operating directly
+on your system's /etc. Often it's better to clone /etc to elsewhere and do
+potentially dangerous stuff in a staging directory. You can clone the 
+repository using git-clone, but be careful that the directory it's cloned
+into starts out mode 700, to prevent anyone else from seeing files like
+shadow, before `etc-init` fixes their permissions:
+
+	mkdir /my/clone
+	cd /my/clone
+	chmod 700 .
+	git clone /etc
+	etc-init
+	chmod 755 .
+
+Another common reason to clone the repository is to make a backup to a
+server. When using git-push to create a new remote clone, make sure the new
+remote clone is mode 700! (And, obviously, only push over a secure
+transport like ssh.)
+
+	ssh server 'mkdir /etc-clone; cd /etc-clone; chmod 700 .; git init'
+	git push ssh://server/etc-clone master
+
+Of course, it's also possible to push from a server onto client machines,
+to deploy changes to /etc. You might even set up branches for each machine
+and merge changes between them. Once /etc is under version control, the
+sky's the limit..
+
+
+## configuration
+
+Each etc-foo command uses `run-parts` to run the executable files in
+/etc/etckeeper/foo.d/. By default these directories contain a bunch of
+symlinks to the actual files; you can remove or reorder the symlinks,
+or add your own custom files.
+
+## inspiration
+
+Two blog posts provided inspiration for etckeeper:
+* http://www.jukie.net/~bart/blog/20070312134706
+* http://bryan-murdock.blogspot.com/2007/07/put-etc-under-revision-control-with-git.html
+
+isisetup (http://www.isisetup.ch/) has some of the same aims as etckeeper,
+however, unlike it, etckeeper does not aim to be a git porcelain with its
+own set of commands for manipulating the /etc repository. Instead,
+etckeeper provides a couple of simple tools and hooks for setting up an /etc
+repsository, and then gets out of your way; you manage the repository using
+regular git commands.
+

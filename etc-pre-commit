@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run this before committing changes to a repository. Runs
+# /etc/etckeeper/pre-commit.d/* hooks, which handle storing file
+# permissions and metadata, performing checks, etc.
