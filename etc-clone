@@ -1,0 +1,4 @@
+#!/bin/sh
+# Clone a git repository that holds an /etc. Doesn't check it out to /etc
+# by default though. Calls etc-init to set up hooks, and ensures that files
+# like shadow are never world readable during the cloning process.

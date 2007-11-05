@@ -1,0 +1,3 @@
+#!/bin/sh
+# Initialise /etc as a git repository (if it isn't already), set up hooks, etc.
+# Do not commit anything though.
