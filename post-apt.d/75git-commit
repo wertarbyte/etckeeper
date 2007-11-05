@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+# TODO: figure out what packages were acted on by the apt run, and include
+# that info in the commit message
+message="committing changes after apt run"
+
+if ! git commit -m "$message"; then
+	echo "etckeeper warning: git-commit failed"
+fi

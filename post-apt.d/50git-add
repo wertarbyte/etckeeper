@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+cd /etc
+if ! git-add .; then
+	echo "etckeeper warning: git-add failed" >&2
+fi
