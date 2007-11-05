@@ -1,4 +1,16 @@
 #!/bin/sh
 set -e
-metastore --save --mtime
-git add .metadata
+
+# ensure the file exists so that it will list its own metadata
+if [ ! -e .metadata ]; then
+	metastore --save
+	# the file could leak hidden dir contents..
+	chmod 600 .metadata
+fi
+
+# metastore doesn't produce the same output file for the same metadata
+# everytime, so avoid changing the file if nothing really changed.
+if [ ! -z "$(metastore --compare)" ]; then
+	metastore --save
+	git add .metadata
+fi

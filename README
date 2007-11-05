@@ -41,9 +41,9 @@ git has only limited tracking of file metadata, being able to track the
 executable bit, but not other permissions or owner info. So file metadata
 storage is handled by `metastore`. Amoung other chores, `etckeeper-init`
 sets up a git hook that use `metastore` to store metadata about file
-owners, permissions, modification times, and even extended attributes. This
-metadata is stored in git along with everything else, and can be applied if
-the repo should need to be checked back out.
+owners, permissions, and even extended attributes. This metadata is stored
+in git along with everything else, and can be applied if the repo should
+need to be checked back out.
 
 git cannot track empty directories. So `etckeeper-init` also sets up a git
 hook to run `etckeeper-pre-commit`, which checks for empty directories
