@@ -1,3 +1,4 @@
 #!/bin/sh
 set -e
 metastore --save --mtime
+git add .metadata
