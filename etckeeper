@@ -19,6 +19,8 @@ fi
 
 if [ "$command" = post-apt ] || [ "$command" = pre-apt ]; then
 	cd /etc
+elif [ "$command" = pre-commit ]; then
+	chdir "$1"
 fi
 
 run-parts "/etc/etckeeper/$command.d"

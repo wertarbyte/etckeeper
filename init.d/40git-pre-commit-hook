@@ -10,7 +10,7 @@ else
 # pre-commit hook for etckeeper. Calls etckeeper-pre-commit to store metadata
 # and do sanity checks.
 set -e
-etckeeper-pre-commit
+etckeeper-pre-commit `pwd`
 EOF
 	chmod +x .git/hooks/pre-commit
 fi
