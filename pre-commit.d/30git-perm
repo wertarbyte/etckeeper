@@ -1,0 +1,5 @@
+#!/bin/sh
+# etckeeper-init should have taken care of this, but as a paranoia
+# measure, make sure .git is not world readable
+set -e
+chmod 700 .git
