@@ -5,8 +5,7 @@ if [ ! -e .gitignore ]; then
 *~
 
 # new and old versions of conffiles, stored by dpkg
-*.dpkg-new
-*.dpkg-old
+*.dpkg-*
 
 # mount(8) records system state here, no need to keep these in git
 blkid.tab(|.old)

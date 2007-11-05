@@ -19,7 +19,7 @@ fi
 
 if [ "$command" = post-apt ] || [ "$command" = pre-apt ]; then
 	cd /etc
-elif [ "$command" = pre-commit ]; then
+elif [ "$command" = pre-commit ] && [ -n "$1" ]; then
 	chdir "$1"
 fi
 

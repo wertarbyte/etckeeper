@@ -2,6 +2,5 @@
 set -e
 empty=$(find -type d -empty | grep -v /.git/) || true
 if [ -n "$empty" ]; then
-	echo "etckeeper warning: empty directories, not tracked by git:" >&2
-	echo "$empty" >&2
+	echo "etckeeper warning: there are some empty directories, which git will ignore" >&2
 fi

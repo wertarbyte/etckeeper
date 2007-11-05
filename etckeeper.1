@@ -1,0 +1,31 @@
+.\" -*- nroff -*-
+.TH ETCKEEPER 1 "" "" ""
+.SH NAME
+etckeeper \- keep /etc in git
+.SH SYNOPSIS
+.B etckeeper command [args]
+.SH DESCRIPTION
+etckeeper is a collection of tools to let /etc be stored in a git
+repository. Please see its README for more detailed information.
+.SH COMMANDS
+.TP
+.B init
+This is the only command you typically need to run by hand. It initialises
+a git repository for the current directory. Typically this is run in /etc
+once when starting to use etckeeper on a machine. It can also be used to
+initialise a clone of the /etc repository.
+.TP
+.B pre-commit
+This is called as a git pre-commit hook. It should be passed the name 
+of the toplevel directory of the repository (typically /etc). It stores
+metadata and does sanity checks.
+.TP
+.B pre-apt
+This is called by apt's DPkg::Pre-Install-Pkgs hook. It allows committing
+any uncommitted changes in /etc before the apt run.
+.TP
+.B post-apt
+This is called by apt's DPkg::Post-Invoke hook. It commits changes made by
+packages to the repository.
+.SH AUTHOR 
+Joey Hess, <joey@kitenet.net>.

@@ -1,15 +1,15 @@
 #!/bin/sh
 set -e
-while git-status || ! LANG=C git-status 2>&1 | grep -q "working directory clean"
-do
-	echo "etckeeper warning: /etc has uncommitted changes" >&2
-	printf "Press Enter to commit these changes and continue. "
-	read line
+if ! LANG=C git-status 2>&1 | grep -q "working directory clean"; then
+	git-status || true
+	echo "etckeeper warning: /etc is not clean" >&2
+	printf "Press Enter to commit changes and continue. "
+	read line </dev/tty
 	git add .
 	if ! git commit -m "saving uncommitted changes in /etc prior to apt run"; then
 		echo "etckeeper warning: git commit failed" >&2
 		echo "Please resolve the uncommitted changes by hand."
 		printf "Press Enter when ready to continue. "
-		read line
+		read line </dev/tty
 	fi
-done
+fi

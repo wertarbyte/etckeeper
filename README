@@ -85,17 +85,11 @@ further changes:
 
 Rinse, lather, repeat.
 
-etckeeper hooks into apt so changed or new files caused by installing or
-upgrading packages will automatically be added and committed.
-(`etckeeper-post-apt` uses `git-add .`, so any new files in /etc that arn't
-gitignored will be added.)
-
-If a package *removes* a file from /etc, etckeeper does not automatically
-commit this removal, though it will let you know that the file was removed.
-You can manually remove it with commands like these;
-
-	git rm init.d/somedaemon rc*.d/*somedaemon
-	git commit -a "removed somedaemon"
+etckeeper hooks into apt so changes to files in /etc caused by installing or
+upgrading packages will automatically be committed. (`etckeeper-post-apt`
+uses `git-add .`, so any new files in /etc that arn't gitignored will be
+added. If it auto-adds files you don't want added, put them in
+`.gitignore`.)
 
 You can use any git commands you like, but do keep in mind that, if you
 check out a different branch or an old version, git is operating directly

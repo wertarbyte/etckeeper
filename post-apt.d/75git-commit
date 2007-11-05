@@ -5,6 +5,5 @@ set -e
 # that info in the commit message
 message="committing changes after apt run"
 
-if ! git commit -m "$message"; then
-	echo "etckeeper warning: git-commit failed"
-fi
+# ignore exit code since it exits nonzero if there is nothing to do
+git commit -m "$message" || true
