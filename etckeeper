@@ -17,4 +17,8 @@ if [ ! -d "/etc/etckeeper/$command.d" ]; then
 	exit 1
 fi
 
+if [ "$command" = post-apt ] || [ "$command" = pre-apt ]; then
+	`cd /etc
+fi
+
 run-parts "/etc/etckeeper/$command.d"

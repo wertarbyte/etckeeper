@@ -1,6 +1,5 @@
 #!/bin/sh
 set -e
-cd /etc
 while git-status || ! LANG=C git-status 2>&1 | grep -q "working directory clean"
 do
 	echo "etckeeper warning: /etc has uncommitted changes" >&2
