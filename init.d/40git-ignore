@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 if [ ! -e .gitignore ]; then
-	cat <<EOF >.gitignore
+	cat >.gitignore <<EOF
 *~
 
 # new and old versions of conffiles, stored by dpkg

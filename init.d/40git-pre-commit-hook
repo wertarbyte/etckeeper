@@ -5,7 +5,7 @@ if [ -x .git/hooks/pre-commit ]; then
 		echo "etckeeper warning: .git/hooks/pre-commit needs to be manually modifed to run etckeeper-pre-commit" >&2
 	fi
 else
-	echo <<EOF >>.git/hooks/pre-commit
+	cat >.git/hooks/pre-commit <<EOF
 #!/bin/sh
 # pre-commit hook for etckeeper. Calls etckeeper-pre-commit to store metadata
 # and do sanity checks.
