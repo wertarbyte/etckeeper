@@ -1,0 +1,2 @@
+Files in this directory are run before apt is run. This is mostly used for
+sanity checks, ie, does the working directory have any uncommitted changes?

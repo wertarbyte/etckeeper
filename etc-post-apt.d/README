@@ -1,0 +1,2 @@
+Files in this directory are run after apt has run. They should commit
+changed and new files in the working directory to to repository.

@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+if [ ! -e .gitignore ]; then
+	cat <<EOF >.gitignore
+*~
+
+# new and old versions of conffiles, stored by dpkg
+*.dpkg-new
+*.dpkg-old
+
+# mount(8) records system state here, no need to keep these in git
+blkid.tab(|.old)
+mtab
+EOF
+fi

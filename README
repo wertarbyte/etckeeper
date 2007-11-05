@@ -1,6 +1,9 @@
 etckeeper is a collection of tools to let /etc be stored in a git
-repository. It's probably generic enough in its approach that support
-for other revision control systems than git could be added to it.
+repository. It hooks into apt to automatically commit changes made to /etc
+during package upgrades. It uses `metastore` to track file metadata that
+git does not normally support, but that is important for /etc, such as the
+permissions of `/etc/shadow`. It's quite modular and configurable, while
+also being simple to use if you understand the basics of working with git.
 
 
 ## security warning
@@ -131,9 +134,15 @@ Each etc-foo command uses `run-parts` to run the executable files in
 symlinks to the actual files; you can remove or reorder the symlinks,
 or add your own custom files.
 
+Note that the etc-foo commands are careful to not hardcode anything about
+git. If you want to use some other revision control system, that's
+theoretically possible to accomplish by just changing the files in
+/etc/etckeeper/. If you do this, please let me know.
+
+
 ## inspiration
 
-Two blog posts provided inspiration for etckeeper:
+Two blog posts provided inspiration for techniques used by etckeeper:
 * http://www.jukie.net/~bart/blog/20070312134706
 * http://bryan-murdock.blogspot.com/2007/07/put-etc-under-revision-control-with-git.html
 
@@ -144,3 +153,7 @@ etckeeper provides a couple of simple tools and hooks for setting up an /etc
 repsository, and then gets out of your way; you manage the repository using
 regular git commands.
 
+
+## author
+
+Joey Hess <joey@kitenet.net>

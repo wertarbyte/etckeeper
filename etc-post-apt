@@ -1,4 +1,0 @@
-#!/bin/sh
-# Intended to be an apt DPkg::Post-Invoke hook. Runs
-# /etc/etckeeper/post-apt.d/* hooks, which can be used to
-# add new files, and commit the changes.

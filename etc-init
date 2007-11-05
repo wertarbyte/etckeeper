@@ -1,6 +1,0 @@
-#!/bin/sh
-# Initialise the current directory (typically /etc) for use by etckeeper.
-# Runs /etc/etckeeper/post-apt.d/* hooks, which handle chores like setting
-# up metadata storage hooks, ignores, adding files (but not committing
-# those added files), and ensuring that the revision control directory
-# won't leak data from files like shadow, by making it mode 700.
