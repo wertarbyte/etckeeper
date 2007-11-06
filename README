@@ -17,10 +17,10 @@ to read their contents. However, you *also* must take care when cloning
 or copying these repositories, not to allow anyone else to see the data.
 
 Since git mushes all the files into packs under the .git directory, the
-whole .git directory needs to be kept secret. Also, since git doesn't keep
-track of the mode of files like the shadow file, it will check it out world
-readable, before etckeeper fixes the permissions. The tutorial has some
-examples of safe ways to avoid these problems when cloning an /etc
+whole .git directory content needs to be kept secret. Also, since git
+doesn't keep track of the mode of files like the shadow file, it will check
+it out world readable, before etckeeper fixes the permissions. The tutorial
+has some examples of safe ways to avoid these problems when cloning an /etc
 repository.
 
 
@@ -41,13 +41,13 @@ git has only limited tracking of file metadata, being able to track the
 executable bit, but not other permissions or owner info. So file metadata
 storage is handled by `metastore`. Amoung other chores, `etckeeper init`
 sets up a git hook that use `metastore` to store metadata about file
-owners, permissions, and even extended attributes. This metadata is stored
-in git along with everything else, and can be applied if the repo should
-need to be checked back out.
+owners, permissions, and even extended attributes into a /etc/.metadata
+file. This metadata is stored in git along with everything else, and can be
+applied if the repo should need to be checked back out.
 
 git cannot track empty directories. So `etckeeper init` also sets up a git
 hook to run `etckeeper pre-commit`, which checks for empty directories
-before committing, and warn about them. You can then either ignore the
+before committing, and warns about them. You can then either ignore the
 empty directory, if it's not significant, or put a file (such as
 `.gitignore`) in the directory to enable git to track it.
 
@@ -99,25 +99,26 @@ repository using git-clone, but be careful that the directory it's cloned
 into starts out mode 700, to prevent anyone else from seeing files like
 shadow, before `etckeeper init` fixes their permissions:
 
-	mkdir /my/clone
-	cd /my/clone
+	mkdir /my/workdir
+	cd /my/workdir
 	chmod 700 .
 	git clone /etc
+	cd etc
 	etckeeper init
-	chmod 755 .
+	chmod 755 ..
 
 Another common reason to clone the repository is to make a backup to a
 server. When using git-push to create a new remote clone, make sure the new
 remote clone is mode 700! (And, obviously, only push over a secure
-transport like ssh.)
+transport like ssh, and only to a server you trust.)
 
 	ssh server 'mkdir /etc-clone; cd /etc-clone; chmod 700 .; git init'
 	git push ssh://server/etc-clone master
 
-Of course, it's also possible to push from a server onto client machines,
-to deploy changes to /etc. You might even set up branches for each machine
-and merge changes between them. Once /etc is under version control, the
-sky's the limit..
+Of course, it's also possible to pull changes from a server onto client
+machines, to deploy changes to /etc. You might even set up branches for
+each machine and merge changes between them. Once /etc is under version
+control, the sky's the limit..
 
 
 ## configuration
@@ -125,7 +126,8 @@ sky's the limit..
 Each etckeeper command uses `run-parts` to run the executable files in
 /etc/etckeeper/$command.d/. By default these directories contain a bunch of
 symlinks to the actual files; you can remove or reorder the symlinks,
-or add your own custom files.
+or add your own custom files. Each individual file is short, simple, and
+does only one action.
 
 Note that the etckeeper commands are careful to not hardcode anything about
 git. If you want to use some other revision control system, that's
