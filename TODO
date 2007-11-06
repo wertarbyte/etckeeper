@@ -1,0 +1,2 @@
+* use debconf for the pre-apt prompting, so it will work better when run from
+  frontend like synaptic

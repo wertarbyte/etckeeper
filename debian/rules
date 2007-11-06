@@ -15,7 +15,7 @@ binary-indep: build
 	dh_testroot
 	dh_clean -k
 	$(MAKE) install PREFIX=debian/etckeeper
-	dh_installdocs README
+	dh_installdocs README TODO
 	dh_installexamples
 	dh_installchangelogs
 	dh_compress
