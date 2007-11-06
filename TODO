@@ -7,5 +7,8 @@
   and either merge origin or commit a second time.
   And do this after apt runs only, of course.
 
+  Alternatively, commit in /etc, then clone the repo, switch to origin, and
+  cherry pick the commit into origin?
+
   Of coure, unless etckeeper is installed by debootstrap or thereabouts,
   you won't have a true pristine origin branch.
