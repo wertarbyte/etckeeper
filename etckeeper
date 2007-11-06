@@ -13,10 +13,10 @@ if [ ! -d "/etc/etckeeper/$command.d" ]; then
 	exit 1
 fi
 
-if [ "$command" = post-apt ] || [ "$command" = pre-apt ]; then
-	cd /etc
-elif [ "$command" = pre-commit ] && [ -n "$1" ]; then
+if [ -n "$1" ]; then
 	cd "$1"
+else
+	cd /etc
 fi
 
 run-parts "/etc/etckeeper/$command.d"

@@ -62,7 +62,6 @@ contains such special files.
 
 A quick walkthrough of using etckeeper.
 
-	cd /etc
 	etckeeper init
 
 The `etckeeper init` command initialises an /etc/.git/ repository. This
@@ -74,6 +73,7 @@ commit. So you might want to use git status to check that it includes all
 the right files, and none of the wrong files. And you can edit the
 .gitignore and so forth. Once you're ready:
 
+	cd /etc
 	git commit -m "initial checkin"
 	git gc # pack git repo to save a lot of space
 
@@ -105,7 +105,7 @@ shadow, before `etckeeper init` fixes their permissions:
 	chmod 700 .
 	git clone /etc
 	cd etc
-	etckeeper init
+	etckeeper init .
 	chmod 755 ..
 
 Another common reason to clone the repository is to make a backup to a
