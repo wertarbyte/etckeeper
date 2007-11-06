@@ -125,10 +125,9 @@ control, the sky's the limit..
 ## configuration
 
 etckeeper uses `run-parts` to run the executable files in
-`/etc/etckeeper/$command.d/`. By default these directories contain a bunch
-of symlinks to the actual files; you can remove or reorder the symlinks, or
-add your own custom files. Each individual file is short, simple, and does
-only one action.
+`/etc/etckeeper/$command.d/`. You can modify these files, or add your own
+custom files. Each individual file is short, simple, and does only one
+action.
 
 For example, here's how to configure it to run `git gc` after each apt run,
 which will save a lot of disk space:
@@ -142,7 +141,7 @@ which will save a lot of disk space:
 Here's how to disable the automatic commits after each apt run, while still
 letting it git-add new files and git-rm removed ones:
 
-	rm /etc/etckeeper/post-apt.d/75git-commit
+	chmod -x /etc/etckeeper/post-apt.d/75git-commit
 
 Note that the etckeeper commands are careful to not hardcode anything about
 git. If you want to use some other revision control system, that's
