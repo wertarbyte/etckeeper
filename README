@@ -164,6 +164,11 @@ repsository, and then gets out of your way; you manage the repository using
 regular git commands.
 
 
+## license
+
+etckeeper is licensed under version 2 or greater of the GNU GPL.
+
+
 ## author
 
 Joey Hess <joey@kitenet.net>
