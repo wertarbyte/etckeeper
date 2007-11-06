@@ -1,11 +1,13 @@
 #!/bin/sh
 set -e
 
+# Make sure the file is not readable by others, since it can leak
+# information about contents of non-readable directories in /etc.
+umask 077
+
 # ensure the file exists so that it will list its own metadata
 if [ ! -e .metadata ]; then
 	metastore --save
-	# the file could leak hidden dir contents..
-	chmod 600 .metadata
 fi
 
 # metastore doesn't produce the same output file for the same metadata
