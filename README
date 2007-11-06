@@ -69,7 +69,7 @@ interesting files for an initial commit.
 
 	etckeeper init
 
-Now you might want to use git status to check that it includes all
+Now you might want to run git status to check that it includes all
 the right files, and none of the wrong files. And you can edit the
 .gitignore and so forth. Once you're ready, it's time to commit:
 
