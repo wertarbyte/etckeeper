@@ -86,11 +86,9 @@ further changes:
 
 Rinse, lather, repeat.
 
-etckeeper hooks into apt so changes to files in /etc caused by installing or
-upgrading packages will automatically be committed. (`etckeeper post-apt`
-uses `git-add .`, so any new files in /etc that arn't gitignored will be
-added. If it auto-adds files you don't want added, put them in
-`.gitignore`.)
+etckeeper hooks into apt so changes to interesting files in /etc caused by
+installing or upgrading packages will automatically be committed. Here
+"interesting" means files that are not ignored by `.gitignore`.
 
 You can use any git commands you like, but do keep in mind that, if you
 check out a different branch or an old version, git is operating directly
