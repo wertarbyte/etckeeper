@@ -1,10 +1,12 @@
 etckeeper is a collection of tools to let /etc be stored in a git
 repository. It hooks into apt to automatically commit changes made to /etc
-during package upgrades. It uses `metastore` to track file metadata that
-git does not normally support, but that is important for /etc, such as the
-permissions of `/etc/shadow`. It's quite modular and configurable, while
-also being simple to use if you understand the basics of working with git.
+during package upgrades. It uses [metastore][1] to track file metadata
+that git does not normally support, but that is important for /etc, such as
+the permissions of `/etc/shadow`. It's quite modular and configurable,
+while also being simple to use if you understand the basics of working with
+git.
 
+   [1]: http://david.hardeman.nu/software.php
 
 ## security warnings
 
@@ -159,12 +161,13 @@ Two blog posts provided inspiration for techniques used by etckeeper:
 * http://www.jukie.net/~bart/blog/20070312134706
 * http://bryan-murdock.blogspot.com/2007/07/put-etc-under-revision-control-with-git.html
 
-isisetup (http://www.isisetup.ch/) has some of the same aims as etckeeper,
-however, unlike it, etckeeper does not aim to be a git porcelain with its
-own set of commands for manipulating the /etc repository. Instead,
-etckeeper provides a simple setup procedure and hooks for setting up an /etc
-repsository, and then gets out of your way; you manage the repository using
-regular git commands.
+[isisetup][2] has some of the same aims as etckeeper, however, unlike it,
+etckeeper does not aim to be a git porcelain with its own set of commands
+for manipulating the /etc repository. Instead, etckeeper provides a simple
+setup procedure and hooks for setting up an /etc repsository, and then gets
+out of your way; you manage the repository using regular git commands.
+
+   [2]: http://www.isisetup.ch/
 
 
 ## license
