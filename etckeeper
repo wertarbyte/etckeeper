@@ -1,16 +1,12 @@
 #!/bin/sh
 set -e
 
-if [ "$(basename $0)" != etckeeper ]; then
-	command="$(basename $0 | sed -e s/etckeeper-//)"
-else
-	if [ -z "$1" ]; then
-		echo "usage: etckeeper command" >&2
-		exit 1
-	fi
-	command="$1"
-	shift 1
+if [ -z "$1" ]; then
+	echo "usage: etckeeper command" >&2
+	exit 1
 fi
+command="$1"
+shift 1
 
 if [ ! -d "/etc/etckeeper/$command.d" ]; then
 	echo "etckeeper: /etc/etckeeper/$command.d does not exist" >&2

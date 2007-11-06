@@ -28,8 +28,8 @@ repository.
 
 etckeeper has special support to handle changes to /etc caused by
 installing and upgrading packages. Before apt installs packages,
-`etckeeper-pre-apt` will check that /etc contains no uncommitted changes.
-After apt installs packages, `etckeeper-post-apt` will add any new
+`etckeeper pre-apt` will check that /etc contains no uncommitted changes.
+After apt installs packages, `etckeeper post-apt` will add any new
 interesting files to the repository, and commit the changes.
 
 git is designed as a way to manage source code, not as a way to manage
@@ -39,14 +39,14 @@ empty directories, and special files.
 
 git has only limited tracking of file metadata, being able to track the
 executable bit, but not other permissions or owner info. So file metadata
-storage is handled by `metastore`. Amoung other chores, `etckeeper-init`
+storage is handled by `metastore`. Amoung other chores, `etckeeper init`
 sets up a git hook that use `metastore` to store metadata about file
 owners, permissions, and even extended attributes. This metadata is stored
 in git along with everything else, and can be applied if the repo should
 need to be checked back out.
 
-git cannot track empty directories. So `etckeeper-init` also sets up a git
-hook to run `etckeeper-pre-commit`, which checks for empty directories
+git cannot track empty directories. So `etckeeper init` also sets up a git
+hook to run `etckeeper pre-commit`, which checks for empty directories
 before committing, and warn about them. You can then either ignore the
 empty directory, if it's not significant, or put a file (such as
 `.gitignore`) in the directory to enable git to track it.
@@ -62,9 +62,9 @@ contains such untrackable special files.
 A quick walkthrough of using etckeeper.
 
 	cd /etc
-	etckeeper-init
+	etckeeper init
 
-This `etckeeper-init` command initialises an /etc/.git/ repository. This
+This `etckeeper init` command initialises an /etc/.git/ repository. This
 command is careful to never overwrite existing files or directories in
 /etc. It will create a `.gitignore` if one doesn't already exist, sets up
 git hooks if they don't already exist, and so on. It does *not* commit any
@@ -86,7 +86,7 @@ further changes:
 Rinse, lather, repeat.
 
 etckeeper hooks into apt so changes to files in /etc caused by installing or
-upgrading packages will automatically be committed. (`etckeeper-post-apt`
+upgrading packages will automatically be committed. (`etckeeper post-apt`
 uses `git-add .`, so any new files in /etc that arn't gitignored will be
 added. If it auto-adds files you don't want added, put them in
 `.gitignore`.)
@@ -97,13 +97,13 @@ on your system's /etc. Often it's better to clone /etc to elsewhere and do
 potentially dangerous stuff in a staging directory. You can clone the 
 repository using git-clone, but be careful that the directory it's cloned
 into starts out mode 700, to prevent anyone else from seeing files like
-shadow, before `etckeeper-init` fixes their permissions:
+shadow, before `etckeeper init` fixes their permissions:
 
 	mkdir /my/clone
 	cd /my/clone
 	chmod 700 .
 	git clone /etc
-	etckeeper-init
+	etckeeper init
 	chmod 755 .
 
 Another common reason to clone the repository is to make a backup to a
@@ -122,12 +122,12 @@ sky's the limit..
 
 ## configuration
 
-Each etckeeper-foo command uses `run-parts` to run the executable files in
-/etc/etckeeper/foo.d/. By default these directories contain a bunch of
+Each etckeeper command uses `run-parts` to run the executable files in
+/etc/etckeeper/$command.d/. By default these directories contain a bunch of
 symlinks to the actual files; you can remove or reorder the symlinks,
 or add your own custom files.
 
-Note that the etckeeper-foo commands are careful to not hardcode anything about
+Note that the etckeeper commands are careful to not hardcode anything about
 git. If you want to use some other revision control system, that's
 theoretically possible to accomplish by just changing the files in
 /etc/etckeeper/. If you do this, please let me know.
