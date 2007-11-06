@@ -19,4 +19,4 @@ else
 	cd /etc
 fi
 
-run-parts "/etc/etckeeper/$command.d"
+run-parts --exit-on-error "/etc/etckeeper/$command.d"
