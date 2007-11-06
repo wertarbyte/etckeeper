@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "$1" ]; then
-	echo "usage: etckeeper command" >&2
+	echo "usage: etckeeper command [directory]" >&2
 	exit 1
 fi
 command="$1"
