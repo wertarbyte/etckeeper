@@ -3,7 +3,7 @@ set -e
 
 TAB="	"
 
-for file in $(git status | egrep "^#${TAB}*deleted: *" | sed 's/.*deleted: *//'); do
+for file in $(git ls-files --deleted); do
 	if [ ! -d "$file" ]; then 
 		git rm "$file"
 	fi
