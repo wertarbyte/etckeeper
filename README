@@ -125,9 +125,18 @@ control, the sky's the limit..
 
 Each etckeeper command uses `run-parts` to run the executable files in
 /etc/etckeeper/$command.d/. By default these directories contain a bunch of
-symlinks to the actual files; you can remove or reorder the symlinks,
-or add your own custom files. Each individual file is short, simple, and
-does only one action.
+symlinks to the actual files; you can remove or reorder the symlinks, or
+add your own custom files. Each individual file is short, simple, and does
+only one action. You can even just symlink in existing programs to run
+them.
+
+For example, here's how to configure it to run `git-gc` after each apt run,
+which will save a lot of disk space:
+
+	cd /etc/etckeeper/post-apt.d
+	ln -s /usr/bin/git-gc 99git-gc
+	git add .
+	git-commit -m "run git-gc after each apt run"
 
 Note that the etckeeper commands are careful to not hardcode anything about
 git. If you want to use some other revision control system, that's
