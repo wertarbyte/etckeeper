@@ -6,7 +6,7 @@ permissions of `/etc/shadow`. It's quite modular and configurable, while
 also being simple to use if you understand the basics of working with git.
 
 
-## security warning
+## security warnings
 
 First, a big warning: By checking /etc into revision control, you are
 creating a copy of files like /etc/shadow that must remain secret. Anytime
@@ -22,6 +22,9 @@ doesn't keep track of the mode of files like the shadow file, it will check
 it out world readable, before etckeeper fixes the permissions. The tutorial
 has some examples of safe ways to avoid these problems when cloning an /etc
 repository.
+
+Also note that `etckeeper init` runs code stored in the git repository.
+So don't use it on git repositories from untrusted sources.
 
 
 ## what etckeeper does
@@ -40,21 +43,19 @@ empty directories, and special files.
 git has only limited tracking of file metadata, being able to track the
 executable bit, but not other permissions or owner info. So file metadata
 storage is handled by `metastore`. Amoung other chores, `etckeeper init`
-sets up a git hook that use `metastore` to store metadata about file
-owners, permissions, and even extended attributes into a /etc/.metadata
-file. This metadata is stored in git along with everything else, and can be
-applied if the repo should need to be checked back out.
+sets up a `pre-commit` hook that uses `metastore` to store metadata about
+file owners, permissions, and even extended attributes into a
+`/etc/.metadata` file. This metadata is stored in git along with everything
+else, and can be applied if the repo should need to be checked back out.
 
-git cannot track empty directories. So `etckeeper init` also sets up a git
-hook to run `etckeeper pre-commit`, which checks for empty directories
-before committing, and warns about them. You can then either ignore the
-empty directory, if it's not significant, or put a file (such as
-`.gitignore`) in the directory to enable git to track it.
+git cannot track empty directories, but they can be significant sometimes
+in /etc. So the `pre-commit` hook also stores information that can be used
+to recreate the empty directories in a `/etc/.etckeeper` file.
 
 git doesn't support several special files that you _probably_ won't have in
 /etc, such as unix sockets, named pipes, hardlinked files (but softlinks
-are fine), and device files. Again git hooks are used to warn if your /etc
-contains such untrackable special files.
+are fine), and device files. The `pre-commit` hook will warn if your /etc
+contains such special files.
 
 
 ## tutorial
@@ -127,14 +128,14 @@ Each etckeeper command uses `run-parts` to run the executable files in
 `/etc/etckeeper/$command.d/`. By default these directories contain a bunch of
 symlinks to the actual files; you can remove or reorder the symlinks, or
 add your own custom files. Each individual file is short, simple, and does
-only one action. You can even just symlink in existing programs to run
-them.
+only one action.
 
-For example, here's how to configure it to run `git-gc` after each apt run,
+For example, here's how to configure it to run `git gc` after each apt run,
 which will save a lot of disk space:
 
 	cd /etc/etckeeper/post-apt.d
-	ln -s /usr/bin/git-gc 99git-gc
+	(echo '#!/bin/sh' ; echo 'exec git-gc') > 99git-gc
+	chmod +x 99git-gc
 	git add .
 	git-commit -m "run git-gc after each apt run"
 

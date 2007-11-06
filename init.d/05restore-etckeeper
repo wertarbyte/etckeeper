@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+# Yes, this runs code from the repository. As documented, etckeeper-init
+# should only be run on repositories you trust.
+if [ -e .etckeeper ]; then
+	. ./.etckeeper
+fi
