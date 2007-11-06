@@ -26,6 +26,7 @@ any uncommitted changes in /etc before the apt run.
 .TP
 .B post-apt
 This is called by apt's DPkg::Post-Invoke hook. It commits changes made by
-packages to the repository.
+packages to the repository. (You can also call this by hand after running
+dpkg by hand.)
 .SH AUTHOR 
 Joey Hess, <joey@kitenet.net>.
