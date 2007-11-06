@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
 build:
+	dh_testdir
 
 clean:
 	dh_testdir
@@ -13,18 +14,20 @@ binary-indep: build
 	dh_testdir
 	dh_testroot
 	dh_clean -k
-	dh_install
-	dh_installdocs
+	$(MAKE) PREFIX=debian/etckeeper
+	dh_installdocs README
 	dh_installexamples
-	dh_installman
 	dh_installchangelogs
 	dh_compress
 	dh_fixperms
-	dh_perl
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
+
+# Not intended for use by anyone except the author.
+announcedir:
+	@echo ${HOME}/src/joeywiki/code/etckeeper/news
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary

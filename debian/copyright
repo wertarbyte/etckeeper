@@ -1,5 +1,5 @@
 Files: *
-Copyright: (c) 2007 Joey Hess <joeyh@debian.org>
+Copyright: © 2007 Joey Hess <joey@kitenet.net>
 License: GPL-2+
- On Debian systems, the complete text of the GPL can be found in
- /usr/share/common-licenses/GPL.
+ The full text of the GPL is distributed as doc/GPL in etckeeper's source,
+ and is distributed in /usr/share/common-licenses/GPL-2 on Debian systems.
