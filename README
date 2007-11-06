@@ -65,7 +65,7 @@ A quick walkthrough of using etckeeper.
 	cd /etc
 	etckeeper init
 
-This `etckeeper init` command initialises an /etc/.git/ repository. This
+The `etckeeper init` command initialises an /etc/.git/ repository. This
 command is careful to never overwrite existing files or directories in
 /etc. It will create a `.gitignore` if one doesn't already exist, sets up
 git hooks if they don't already exist, and so on. It does *not* commit any
@@ -124,9 +124,9 @@ control, the sky's the limit..
 
 ## configuration
 
-Each etckeeper command uses `run-parts` to run the executable files in
-`/etc/etckeeper/$command.d/`. By default these directories contain a bunch of
-symlinks to the actual files; you can remove or reorder the symlinks, or
+etckeeper uses `run-parts` to run the executable files in
+`/etc/etckeeper/$command.d/`. By default these directories contain a bunch
+of symlinks to the actual files; you can remove or reorder the symlinks, or
 add your own custom files. Each individual file is short, simple, and does
 only one action.
 
@@ -159,7 +159,7 @@ Two blog posts provided inspiration for techniques used by etckeeper:
 isisetup (http://www.isisetup.ch/) has some of the same aims as etckeeper,
 however, unlike it, etckeeper does not aim to be a git porcelain with its
 own set of commands for manipulating the /etc repository. Instead,
-etckeeper provides a couple of simple tools and hooks for setting up an /etc
+etckeeper provides a simple setup procedure and hooks for setting up an /etc
 repsository, and then gets out of your way; you manage the repository using
 regular git commands.
 
