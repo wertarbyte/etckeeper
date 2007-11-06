@@ -6,5 +6,5 @@ set -e
 # file won't do anything shady, because, as documented, etckeeper-init
 # should only be run on repositories you trust.
 if [ -e .metadata ]; then
-	metastore --apply
+	metastore --apply --mtime
 fi
