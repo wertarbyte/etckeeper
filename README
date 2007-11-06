@@ -138,6 +138,11 @@ which will save a lot of disk space:
 	git add .
 	git-commit -m "run git-gc after each apt run"
 
+Here's how to disable the automatic commits after each apt run, while still
+letting it git-add new files and git-rm removed ones:
+
+	rm /etc/etckeeper/post-apt.d/75git-commit
+
 Note that the etckeeper commands are careful to not hardcode anything about
 git. If you want to use some other revision control system, that's
 theoretically possible to accomplish by just changing the files in
