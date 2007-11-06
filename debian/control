@@ -1,0 +1,14 @@
+Source: 
+Section: utils
+Priority: optional
+Build-Depends: debhelper (>= 5)
+Maintainer: Joey Hess <joeyh@debian.org>
+Standards-Version: 3.7.2
+Homepage: 
+Vcs-Git: 
+
+Package: 
+Architecture: all
+Section: 
+Depends: 
+Description: 
