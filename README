@@ -60,24 +60,24 @@ contains such special files.
 
 ## tutorial
 
-A quick walkthrough of using etckeeper.
+A quick walkthrough of using etckeeper. The `etckeeper init` command
+initialises an /etc/.git/ repository. This command is careful to never
+overwrite existing files or directories in /etc. It will create a `.gitignore`
+if one doesn't already exist, sets up git hooks if they don't already exist,
+and so on. It does *not* commit any files into to git, but does `git-add` all
+interesting files for an initial commit.
 
 	etckeeper init
 
-The `etckeeper init` command initialises an /etc/.git/ repository. This
-command is careful to never overwrite existing files or directories in
-/etc. It will create a `.gitignore` if one doesn't already exist, sets up
-git hooks if they don't already exist, and so on. It does *not* commit any
-files into to git, but does `git-add` all interesting files for an initial
-commit. So you might want to use git status to check that it includes all
+Now you might want to use git status to check that it includes all
 the right files, and none of the wrong files. And you can edit the
-.gitignore and so forth. Once you're ready:
+.gitignore and so forth. Once you're ready, it's time to commit:
 
 	cd /etc
 	git commit -m "initial checkin"
 	git gc # pack git repo to save a lot of space
 
-After this first checkin, you can use regular git commands to check in
+After this first commit, you can use regular git commands to handle
 further changes:
 
 	passwd someuser
