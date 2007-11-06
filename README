@@ -86,7 +86,12 @@ further changes:
 	git status
 	git commit -a -m "changed a password"
 
-Rinse, lather, repeat.
+Rinse, lather, repeat. You might find that some files are changed by
+daemons and shouldn't be tracked by git. These can be removed from git:
+
+	git rm --cached printcap # modified by CUPS
+	echo printcap >> .gitignore
+	git commit -a -m "don't track printcap" 
 
 etckeeper hooks into apt so changes to interesting files in /etc caused by
 installing or upgrading packages will automatically be committed. Here
