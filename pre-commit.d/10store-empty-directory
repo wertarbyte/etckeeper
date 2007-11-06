@@ -1,5 +1,5 @@
 #!/bin/sh
-set -ex
+set -e
 
 # Make sure the file is not readable by others, since it can leak
 # information about contents of non-readable directories in /etc.
