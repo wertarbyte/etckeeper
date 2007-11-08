@@ -1,5 +1,6 @@
 * use debconf for the pre-apt prompting, so it will work better when run from
   frontend like synaptic
+
 * keep an origin branch with the files debian ships
   
   Not sure quite how to do this yet, it seems it would need to clone
@@ -12,3 +13,14 @@
 
   Of coure, unless etckeeper is installed by debootstrap or thereabouts,
   you won't have a true pristine origin branch.
+
+* split the repo
+
+  One way to split it would be to put private (non-world-readable) files
+  in one repo, and public in another. This would need either symlink
+  farming or git "fake bare" repos, both of which are not pleasant, yet.
+
+  Another way would be to allow splitting out subdirs into their own
+  repos. This is already doable, would just need modifying the pre-apt and
+  post-apt stuff (ie, it needs to commit in the subdirs too). Using
+  mr would be a possibility..
