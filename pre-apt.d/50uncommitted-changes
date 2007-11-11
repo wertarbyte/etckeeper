@@ -1,15 +1,22 @@
 #!/bin/sh
 set -e
 if ! LANG=C git-status 2>&1 | grep -q "working directory clean"; then
-	git-status || true
-	echo "etckeeper warning: /etc is not clean" >&2
-	printf "Press Enter to commit changes and continue. "
-	read line </dev/tty
-	git add .
-	if ! git commit -m "saving uncommitted changes in /etc prior to apt run"; then
-		echo "etckeeper warning: git commit failed" >&2
-		echo "Please resolve the uncommitted changes by hand."
-		printf "Press Enter when ready to continue. "
-		read line </dev/tty
+	. /usr/share/debconf/confmodule
+	db_capb escape
+	db_title etckeeper
+
+	db_reset etckeeper/unclean || true
+	db_subst etckeeper/unclean STATUS $(git-status | debconf-escape -e) || true
+	db_input critical etckeeper/unclean || true
+	db_go || true
+	db_get etckeeper/unclean
+	if [ "$RET" = true ]; then
+		git add .
+		if ! git commit -m "saving uncommitted changes in /etc prior to apt run"; then
+			db_input critical etckeeper/commit_failed || true
+			db_go || true
+			db_reset etckeeper/commit_failed || true
+		fi
 	fi
+	db_reset etckeeper/unclean || true
 fi

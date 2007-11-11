@@ -1,6 +1,3 @@
-* use debconf for the pre-apt prompting, so it will work better when run from
-  frontend like synaptic
-
 * keep an origin branch with the files debian ships
   
   Not sure quite how to do this yet, it seems it would need to clone

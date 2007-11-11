@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+# source confmodule to ensure templates are loaded
+. /usr/share/debconf/confmodule
+
+#DEBHELPER
