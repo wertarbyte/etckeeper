@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
+"POT-Creation-Date: 2007-11-11 01:13-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "Commit changed files in /etc to git?"
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"etckeeper has detected that /etc contains uncommitted files or other "
+"changes. It's best to have everything in /etc committed to git before "
+"running apt. etckeeper can add any new files listed below, and commit all "
+"the changed files for you."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "${STATUS}"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../templates:2001
+msgid "git commit failed"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../templates:2001
+msgid ""
+"etckeeper failed to commit changes in /etc using git. You may want to "
+"resolve the uncommitted changes by hand before continuing."
+msgstr ""

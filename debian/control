@@ -10,7 +10,7 @@ Homepage: http://kitenet.net/~joey/code/etckeeper/
 Package: etckeeper
 Architecture: all
 Section: admin
-Depends: metastore, git-core, ${misc:Depends}, debconf-2.0 | debconf
+Depends: metastore, git-core, ${misc:Depends}, debconf | debconf-2.0
 Description: store /etc in git
  etckeeper is a collection of tools to let /etc be stored in a git
  repository. It hooks into apt to automatically commit changes made to /etc
