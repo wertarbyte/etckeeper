@@ -11,9 +11,10 @@ if [ ! -e .gitignore ]; then
 blkid.tab
 blkid.tab.old
 
+# some other files in /etc that typically do not need to be tracked
 ld.so.cache
 mtab
-
+.pwd.lock
 
 EOF
 fi
