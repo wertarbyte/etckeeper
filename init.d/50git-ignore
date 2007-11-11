@@ -8,7 +8,12 @@ if [ ! -e .gitignore ]; then
 *.dpkg-*
 
 # mount(8) records system state here, no need to keep these in git
-blkid.tab(|.old)
+blkid.tab
+blkid.tab.old
+
+ld.so.cache
 mtab
+
+
 EOF
 fi
