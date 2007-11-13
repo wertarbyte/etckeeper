@@ -1,6 +1,14 @@
 #!/bin/sh
 set -e
 
+if [ -e /etc/etckeeper/etckeeper.conf ]; then
+	. /etc/etckeeper/etckeeper.conf
+fi
+
+if [ ! -z "$GIT_COMMIT_OPTION" ]; then
+	export GIT_COMMIT_OPTION
+fi
+
 if [ -z "$1" ]; then
 	echo "usage: etckeeper command [directory]" >&2
 	exit 1

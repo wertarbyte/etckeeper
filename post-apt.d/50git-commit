@@ -8,5 +8,5 @@ if [ -d .git ]; then
 	message="committing changes after apt run"
 
 	# ignore exit code since it exits nonzero if there is nothing to do
-	git commit -m "$message" || true
+	git commit $GIT_COMMIT_OPTION -m "$message" || true
 fi
