@@ -5,8 +5,8 @@ if [ -e /etc/etckeeper/etckeeper.conf ]; then
 	. /etc/etckeeper/etckeeper.conf
 fi
 
-if [ ! -z "$GIT_COMMIT_OPTION" ]; then
-	export GIT_COMMIT_OPTION
+if [ ! -z "$GIT_COMMIT_OPTIONS" ]; then
+	export GIT_COMMIT_OPTIONS
 fi
 
 if [ -z "$1" ]; then

@@ -12,7 +12,7 @@ if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; 
 	db_get etckeeper/unclean
 	if [ "$RET" = true ]; then
 		git add .
-		if ! git commit $GIT_COMMIT_OPTION -m "saving uncommitted changes in /etc prior to apt run"; then
+		if ! git commit $GIT_COMMIT_OPTIONS -m "saving uncommitted changes in /etc prior to apt run"; then
 			db_input critical etckeeper/commit_failed || true
 			db_go || true
 			db_reset etckeeper/commit_failed || true
