@@ -1,0 +1,8 @@
+_etckeeper() { 
+	local cur;
+	COMPREPLY=();
+	cur=${COMP_WORDS[COMP_CWORD]};
+	COMPREPLY=( $( compgen -W '$(cd /etc/etckeeper/; for i in *.d/; do echo ${i%.d/}; done)' -- $cur ) );
+}
+
+complete -F _etckeeper etckeeper
