@@ -1,4 +1,4 @@
-etckeeper (0.2) UNRELEASED; urgency=low
+etckeeper (0.2) unstable; urgency=low
 
   * Add .pwd.lock to default ignores, this file is created by programs
     that call getspent().
@@ -6,7 +6,7 @@ etckeeper (0.2) UNRELEASED; urgency=low
     Closes: #451185
   * If /etc/.git doesn't exist, display a suggestion to run etckeeper-init.
 
- -- Joey Hess <joeyh@debian.org>  Tue, 13 Nov 2007 19:07:14 -0500
+ -- Joey Hess <joeyh@debian.org>  Tue, 13 Nov 2007 19:09:11 -0500
 
 etckeeper (0.1) unstable; urgency=low
 
