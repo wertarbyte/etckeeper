@@ -1,3 +1,10 @@
+etckeeper (0.3) UNRELEASED; urgency=low
+
+  * Patch from Remi Vanicat adding an etckeeper.conf file and
+    a GIT_COMMIT_OPTIONS configuration setting. Closes: #451167
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 14 Nov 2007 13:29:59 -0500
+
 etckeeper (0.2) unstable; urgency=low
 
   * Add .pwd.lock to default ignores, this file is created by programs
