@@ -3,8 +3,10 @@ set -e
 
 TAB="	"
 
-for file in $(git ls-files --deleted); do
-	if [ ! -d "$file" ]; then 
-		git rm "$file"
-	fi
-done
+if [ -d .git ]; then
+	for file in $(git ls-files --deleted); do
+		if [ ! -d "$file" ]; then 
+			git rm "$file"
+		fi
+	done
+fi
