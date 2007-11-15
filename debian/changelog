@@ -2,8 +2,9 @@ etckeeper (0.3) UNRELEASED; urgency=low
 
   * Patch from Remi Vanicat adding an etckeeper.conf file and
     a GIT_COMMIT_OPTIONS configuration setting. Closes: #451167
+  * Add network/run and adjtime to default gitignore. Closes: #451347
 
- -- Joey Hess <joeyh@debian.org>  Wed, 14 Nov 2007 13:29:59 -0500
+ -- Joey Hess <joeyh@debian.org>  Thu, 15 Nov 2007 11:59:09 -0500
 
 etckeeper (0.2) unstable; urgency=low
 
