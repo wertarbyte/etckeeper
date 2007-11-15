@@ -1,4 +1,4 @@
-etckeeper (0.3) UNRELEASED; urgency=low
+etckeeper (0.3) unstable; urgency=low
 
   * Patch from Remi Vanicat adding an etckeeper.conf file and
     a GIT_COMMIT_OPTIONS configuration setting. Closes: #451167
@@ -6,7 +6,7 @@ etckeeper (0.3) UNRELEASED; urgency=low
   * Patch from Rémi Vanicat adding bash completion. Closes: #451302
   * Remove redundant dependency on debconf. Closes: #451378
 
- -- Joey Hess <joeyh@debian.org>  Thu, 15 Nov 2007 12:17:31 -0500
+ -- Joey Hess <joeyh@debian.org>  Thu, 15 Nov 2007 12:21:02 -0500
 
 etckeeper (0.2) unstable; urgency=low
 
