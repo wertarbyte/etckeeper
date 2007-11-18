@@ -1,0 +1,60 @@
+# translation of etckeeper debconf to Portuguese
+# Copyright (C) 2007 Américo Monteiro
+# This file is distributed under the same license as the etckeeper package.
+#
+# Américo Monteiro <a_monteiro@netcabo.pt>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: etckeeper 0.1\n"
+"Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
+"POT-Creation-Date: 2007-11-11 01:13-0500\n"
+"PO-Revision-Date: 2007-11-15 23:23+0000\n"
+"Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
+"Language-Team: Portuguese <traduz@debianpt.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "Commit changed files in /etc to git?"
+msgstr "Submeter ficheiros alterados em /etc para o git?"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"etckeeper has detected that /etc contains uncommitted files or other "
+"changes. It's best to have everything in /etc committed to git before "
+"running apt. etckeeper can add any new files listed below, and commit all "
+"the changed files for you."
+msgstr ""
+"etckeeper detectou que /etc contém ficheiros não submetidos ou outras "
+"alterações. É preferível ter tudo em /etc submetido ao git antes de correr "
+"o apt. etckeeper pode adicionar quaisquer novos ficheiros listados abaixo, "
+"e submeter todos os ficheiros alterados para si."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "${STATUS}"
+msgstr "${STATUS}"
+
+#. Type: error
+#. Description
+#: ../templates:2001
+msgid "git commit failed"
+msgstr "falha a submeter ao git"
+
+#. Type: error
+#. Description
+#: ../templates:2001
+msgid ""
+"etckeeper failed to commit changes in /etc using git. You may want to "
+"resolve the uncommitted changes by hand before continuing."
+msgstr ""
+"etckeeper falhou em submeter alterações em /etc usando git. Você poderá "
+"desejar resolver as alterações não submetidas manualmente antes de continuar."
+

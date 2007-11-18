@@ -1,3 +1,9 @@
+etckeeper (0.4) UNRELEASED; urgency=low
+
+  * Portuguese translation from Américo Monteiro. Closes: #451798
+
+ -- Joey Hess <joeyh@debian.org>  Sun, 18 Nov 2007 13:06:58 -0500
+
 etckeeper (0.3) unstable; urgency=low
 
   * Patch from Remi Vanicat adding an etckeeper.conf file and
