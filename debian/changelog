@@ -1,9 +1,9 @@
-etckeeper (0.4) UNRELEASED; urgency=low
+etckeeper (0.4) unstable; urgency=low
 
   * Portuguese translation from Américo Monteiro. Closes: #451798
   * Pass --quiet to git-rm calls.
 
- -- Joey Hess <joeyh@debian.org>  Sun, 18 Nov 2007 13:06:58 -0500
+ -- Joey Hess <joeyh@debian.org>  Tue, 20 Nov 2007 01:04:32 -0500
 
 etckeeper (0.3) unstable; urgency=low
 
