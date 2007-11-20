@@ -6,7 +6,7 @@ TAB="	"
 if [ -d .git ]; then
 	for file in $(git ls-files --deleted); do
 		if [ ! -d "$file" ]; then 
-			git rm "$file"
+			git rm --quiet "$file"
 		fi
 	done
 fi
