@@ -1,3 +1,9 @@
+etckeeper (0.5) unstable; urgency=low
+
+  * Typo. Closes: #452926
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 26 Nov 2007 03:16:14 -0500
+
 etckeeper (0.4) unstable; urgency=low
 
   * Portuguese translation from Américo Monteiro. Closes: #451798
