@@ -1,3 +1,9 @@
+etckeeper (0.6) UNRELEASED; urgency=low
+
+  * Depend on a fairly recent git-core. Closes: #453063
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 26 Nov 2007 21:55:55 -0500
+
 etckeeper (0.5) unstable; urgency=low
 
   * Typo. Closes: #452926
