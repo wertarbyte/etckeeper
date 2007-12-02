@@ -1,8 +1,8 @@
-etckeeper (0.6) UNRELEASED; urgency=low
+etckeeper (0.6) unstable; urgency=low
 
   * Depend on a fairly recent git-core. Closes: #453063
 
- -- Joey Hess <joeyh@debian.org>  Mon, 26 Nov 2007 21:55:55 -0500
+ -- Joey Hess <joeyh@debian.org>  Sun, 02 Dec 2007 15:46:12 -0500
 
 etckeeper (0.5) unstable; urgency=low
 
