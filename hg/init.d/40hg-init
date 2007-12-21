@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
-if [ ! -e .git ]; then
-	git-init
-	echo "$(hostname) /etc repository" > .git/description
+if [ ! -e .hg ]; then
+	hg init
+	echo  "[web]\n" > .hg/hgrc
+	echo  "$(hostname) /etc repository" > .hg/hgrc
 fi

@@ -1,22 +1,57 @@
 #!/bin/sh
 set -e
-if [ ! -e .gitignore ]; then
-	cat >.gitignore <<EOF
-*~
+if [ ! -e .hgignore ]; then
+	cat >.hgignore <<EOF
+*~$
+.lock$
+/\.keep
+^X11/xdm/authdir/authfiles/.*:[0-9]-
+^mail/aliases\.db$
+adjtime
+axfrdns/log/
+axfrdns/supervise/
+^blkid\.tab
+config-archive
+cups/.*\.O
+dnscache/log/
+dnscache/root/servers/
+dnscache/seed
+dnscache/supervise/
+^mtab$
+group-
+ld.so.cache
+mtab\.fuselock
+openvpn/.*\.wav
+passwd-
+postfix/.*\.db
+shadow-
+skey/skeykeys
+splash/.*/images/
+splash/.*\.ttf
+tinydns/log/
+tinydns/root/\.serial
+tinydns/root/data.cdb
+tinydns/supervise/
+vmware/vmnet.*/dhcpd/dhcpd.lease*
+.old$
+.rpmsave$
+.rpmorig$
+.bak$
+squid/errors
+.OLD$
+.orig$
+.swp$
+^.java/.*
 
 # new and old versions of conffiles, stored by dpkg
 *.dpkg-*
 
-# mount(8) records system state here, no need to keep these in git
+# mount(8) records system state here, no need to keep these in hg
 blkid.tab
 blkid.tab.old
 
 # some other files in /etc that typically do not need to be tracked
-ld.so.cache
-mtab
-.pwd.lock
 network/run
-adjtime
 
 EOF
 fi
