@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
-special=$(find -not -type d -not -type f -not -type l | grep -v /.git/) || true
+special=$(find -not -type d -not -type f -not -type l | grep -v /.hg/) || true
 if [ -n "$special" ]; then
-	echo "etckeeper warning: special files could cause problems with git:" >&2
+	echo "etckeeper warning: special files could cause problems with mercurial:" >&2
 	echo "$special" >&2
 fi
 

@@ -14,5 +14,5 @@ fi
 # everytime, so avoid changing the file if nothing really changed.
 if [ ! -z "$(metastore --compare)" ]; then
 	metastore --save
-	git add .metadata
+	hg add .metadata
 fi
