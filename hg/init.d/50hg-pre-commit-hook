@@ -3,7 +3,7 @@ set -e
 if [ -e .hg/hgrc ] && grep "^\[hooks\]" .hg/hgrc; then
 	echo "etckeeper warning: [hooks] section in .hg/hgrc  needs to be manually modified to run: etckeeper pre-commit `pwd`" >&2
 else
-	touch
+	touch .hg/hgrc
 	cat >>.hg/hgrc <<EOF
 [hooks]
 # pre-commit hook for etckeeper, to store metadata and do sanity checks
