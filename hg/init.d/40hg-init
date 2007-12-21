@@ -2,6 +2,6 @@
 set -e
 if [ ! -e .hg ]; then
 	hg init
-	echo  "[web]\n" > .hg/hgrc
-	echo  "$(hostname) /etc repository" > .hg/hgrc
+	echo  "[web]" > .hg/hgrc
+	echo  "description = $(hostname) /etc repository" >> .hg/hgrc
 fi
