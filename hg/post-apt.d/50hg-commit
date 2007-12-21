@@ -1,12 +1,12 @@
 #!/bin/sh
 set -e
 
-if [ -d .git ]; then
+if [ -d .hg ]; then
 
 	# TODO: figure out what packages were acted on by the apt run, and
 	# include that info in the commit message
 	message="committing changes after apt run"
 
 	# ignore exit code since it exits nonzero if there is nothing to do
-	git commit $GIT_COMMIT_OPTIONS -m "$message" || true
+	hg commit $GIT_COMMIT_OPTIONS -m "$message" || true
 fi
