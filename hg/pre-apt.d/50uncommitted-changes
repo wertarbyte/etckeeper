@@ -1,18 +1,18 @@
 #!/bin/sh
 set -e
-if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; then
+if [ -d .hg ] && ! hg status 2>&1 | wc -l | grep -q "^0$"; then
 	. /usr/share/debconf/confmodule
 	db_capb escape
 	db_title etckeeper
 
 	db_reset etckeeper/unclean || true
-	db_subst etckeeper/unclean STATUS $(git-status | debconf-escape -e) || true
+	db_subst etckeeper/unclean STATUS $(hg status | debconf-escape -e) || true
 	db_input critical etckeeper/unclean || true
 	db_go || true
 	db_get etckeeper/unclean
 	if [ "$RET" = true ]; then
-		git add .
-		if ! git commit $GIT_COMMIT_OPTIONS -m "saving uncommitted changes in /etc prior to apt run"; then
+		hg addremove .
+		if ! hg commit $GIT_COMMIT_OPTIONS -m "saving uncommitted changes in /etc prior to apt run"; then
 			db_input critical etckeeper/commit_failed || true
 			db_go || true
 			db_reset etckeeper/commit_failed || true
