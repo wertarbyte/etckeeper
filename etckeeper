@@ -5,6 +5,11 @@ if [ -e /etc/etckeeper/etckeeper.conf ]; then
 	. /etc/etckeeper/etckeeper.conf
 fi
 
+if [ -z "$VCS" ]; then
+	echo "Please configure a VCS in /etc/etckeeper/etckeeper.conf" >&2
+	exit 1
+fi
+
 if [ ! -z "$GIT_COMMIT_OPTIONS" ]; then
 	export GIT_COMMIT_OPTIONS
 fi
@@ -19,8 +24,8 @@ fi
 command="$1"
 shift 1
 
-if [ ! -d "/etc/etckeeper/$command.d" ]; then
-	echo "etckeeper: /etc/etckeeper/$command.d does not exist" >&2
+if [ ! -d "/etc/etckeeper/$VCS/$command.d" ]; then
+	echo "etckeeper: /etc/etckeeper/$VCS/$command.d does not exist" >&2
 	exit 1
 fi
 
@@ -30,4 +35,4 @@ else
 	cd /etc
 fi
 
-run-parts --exit-on-error "/etc/etckeeper/$command.d"
+run-parts --exit-on-error "/etc/etckeeper/$VCS/$command.d"

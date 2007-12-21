@@ -1,0 +1,13 @@
+Executable files in this directory are run to initialise the working directory
+for use by etckeeper. If the working directory is not already in version
+control, that includes setting up the version control, but not actually
+committing anything. If the working directory is in version control,
+it includes applying stored metadata to the checked out files in the
+working directory.
+
+Please be careful to *never* overwrite existing files/directories
+in the working directory (or use absolute care when doing so). If a file
+you need to write already exists, check if its contents are sane, and 
+if not, emit a warning on stderr.
+
+If initialisation fails, exit nonzero and no later files will be run.

@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+if [ ! -e .gitignore ]; then
+	cat >.gitignore <<EOF
+*~
+
+# new and old versions of conffiles, stored by dpkg
+*.dpkg-*
+
+# mount(8) records system state here, no need to keep these in git
+blkid.tab
+blkid.tab.old
+
+# some other files in /etc that typically do not need to be tracked
+ld.so.cache
+mtab
+.pwd.lock
+network/run
+adjtime
+
+EOF
+fi

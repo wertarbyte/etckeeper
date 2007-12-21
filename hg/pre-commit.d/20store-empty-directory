@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+# Make sure the file is not readable by others, since it can leak
+# information about contents of non-readable directories in /etc.
+umask 077
+
+if [ -e .etckeeper ]; then
+	egrep -v '^mkdir ' .etckeeper > .etckeeper.new || true
+fi
+find -type d -empty | grep -v /.git/ | sort | 
+	sed -e "s/^/mkdir -p '/" -e "s/\$/'/" >> .etckeeper.new
+
+if [ ! -e .etckeeper ] || ! cmp -s .etckeeper .etckeeper.new ; then
+	mv -f .etckeeper.new .etckeeper
+	git add .etckeeper
+else
+	rm -f .etckeeper.new
+fi

@@ -1,0 +1,2 @@
+This is run by a git pre-commit hook before committing changes to the
+repository. This can be used for storing metadata, and for sanity checks.
