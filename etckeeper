@@ -8,6 +8,9 @@ fi
 if [ ! -z "$GIT_COMMIT_OPTIONS" ]; then
 	export GIT_COMMIT_OPTIONS
 fi
+if [ ! -z "$HG_COMMIT_OPTIONS" ]; then
+	export HG_COMMIT_OPTIONS
+fi
 
 if [ -z "$1" ]; then
 	echo "usage: etckeeper command [directory]" >&2
