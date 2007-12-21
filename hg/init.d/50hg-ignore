@@ -2,7 +2,7 @@
 set -e
 if [ ! -e .hgignore ]; then
 	cat >.hgignore <<EOF
-*~$
+~$
 .lock$
 /\.keep
 ^X11/xdm/authdir/authfiles/.*:[0-9]-
@@ -45,7 +45,7 @@ squid/errors
 .pacsave$
 
 # new and old versions of conffiles, stored by dpkg
-*.dpkg-*
+.dpkg-.*$
 
 # mount(8) records system state here, no need to keep these in hg
 blkid.tab
