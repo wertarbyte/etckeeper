@@ -42,6 +42,7 @@ squid/errors
 .orig$
 .swp$
 ^.java/.*
+.pacsave$
 
 # new and old versions of conffiles, stored by dpkg
 *.dpkg-*
