@@ -2,10 +2,10 @@ DESTDIR        ?=
 prefix         	= /usr
 bindir       	= ${prefix}/bin
 etcdir       	= /etc
-mandir          = ${prefix}/man1
+mandir          = ${prefix}/man
 
 INSTALL         = install 
-INSTALL_EXE     = ${INSTALL}
+INSTALL_EXE     = ${INSTALL} -D
 INSTALL_DATA    = ${INSTALL} -m 0644 -D
 
 install:
