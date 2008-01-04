@@ -1,14 +1,12 @@
 #!/bin/sh
 
-pre_sysupgrade()
-{
+pre_sysupgrade() {
 	if [ -x /usr/bin/etckeeper ]; then
 		etckeeper pre-apt
 	fi
 }
 
-post_sysupgrade()
-{
+post_sysupgrade() {
 	if [ -x /usr/bin/etckeeper ]; then
 		etckeeper post-apt
 	fi
