@@ -16,6 +16,7 @@ EOF
 EOF
 	fi
 	cat >>.gitignore <<EOF
+
 *~
 
 # mount(8) records system state here, no need to keep these in git
