@@ -1,22 +1,35 @@
 #!/bin/sh
 set -e
-if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; then
-	. /usr/share/debconf/confmodule
-	db_capb escape
-	db_title etckeeper
 
-	db_reset etckeeper/unclean || true
-	db_subst etckeeper/unclean STATUS $(git-status | debconf-escape -e) || true
-	db_input critical etckeeper/unclean || true
-	db_go || true
-	db_get etckeeper/unclean
+. /etc/etckeeper/etckeeper.conf
+
+if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; then
+	RET="true"
+	if [ "$HIGHLEVEL_PACKAGE_MANAGER" = "apt" ]; then
+		. /usr/share/debconf/confmodule
+		db_capb escape
+		db_title etckeeper
+
+		db_reset etckeeper/unclean || true
+		db_subst etckeeper/unclean STATUS $(git-status | debconf-escape -e) || true
+		db_input critical etckeeper/unclean || true
+		db_go || true
+		db_get etckeeper/unclean
+	fi
 	if [ "$RET" = true ]; then
 		git add .
 		if ! git commit $GIT_COMMIT_OPTIONS -m "saving uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run"; then
-			db_input critical etckeeper/commit_failed || true
-			db_go || true
-			db_reset etckeeper/commit_failed || true
+			if [ "$HIGHLEVEL_PACKAGE_MANAGER" = "apt" ]; then
+				db_input critical etckeeper/commit_failed || true
+				db_go || true
+				db_reset etckeeper/commit_failed || true
+			elif [ "$HIGHLEVE_PACKAGE_MANAGER" = "pacman-g2" ]; then
+				echo "error: etckeeper failed to commit changes in /etc using git (git commit failed)"
+				exit 1
+			fi
 		fi
 	fi
-	db_reset etckeeper/unclean || true
+	if [ "$HIGHLEVEL_PACKAGE_MANAGER" = "apt" ]; then
+		db_reset etckeeper/unclean || true
+	fi
 fi

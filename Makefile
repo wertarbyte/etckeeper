@@ -13,3 +13,6 @@ install:
 ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt))
 	install -m 0644 -D apt.conf $(PREFIX)/etc/apt/apt.conf.d/05etckeeper
 endif
+ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),pacman-g2))
+	install -m 0644 -D pacman-g2.hook $(PREFIX)/etc/pacman-g2/hooks/etckeeper
+endif

@@ -7,6 +7,14 @@ if [ ! -e .gitignore ]; then
 *.dpkg-*
 EOF
 	fi
+	if [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" ]; then
+		cat >.gitignore <<EOF
+# new and old versions of conffiles, stored by pacman
+*.pacnew
+*.pacorig
+*.pacsave
+EOF
+	fi
 	cat >>.gitignore <<EOF
 *~
 
