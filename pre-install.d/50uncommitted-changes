@@ -1,7 +1,35 @@
 #!/bin/sh
 set -e
 
-if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; then
+unclean() {
+	if [ "$VCS" = git ]; then
+		[ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"
+	elif [ "$VCS" = hg ]; then
+		[ -d .hg ] && ! hg status 2>&1 | wc -l | grep -q "^0$"
+	fi
+}
+
+status() {
+	if [ "$VCS" = git ]; then
+		git status
+	elif [ "$VCS" = hg ]; then
+		hg status
+	fi
+}
+
+commit() {
+	message="$1"
+
+	if [ "$VCS" = git ]; then
+		git add .
+		git commit $GIT_COMMIT_OPTIONS -m "$message"
+	elif [ "$VCS" = hg ]; then
+		hg addremove .
+		hg commit $HG_COMMIT_OPTIONS -m "$message"
+	fi
+}
+
+if unclean; then
 	RET="true"
 	if [ -e /usr/share/debconf/confmodule ]; then
 		. /usr/share/debconf/confmodule
@@ -9,20 +37,19 @@ if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; 
 		db_title etckeeper
 
 		db_reset etckeeper/unclean || true
-		db_subst etckeeper/unclean STATUS $(git status | debconf-escape -e) || true
+		db_subst etckeeper/unclean STATUS $(status | debconf-escape -e) || true
 		db_input critical etckeeper/unclean || true
 		db_go || true
 		db_get etckeeper/unclean
 	fi
 	if [ "$RET" = true ]; then
-		git add .
-		if ! git commit $GIT_COMMIT_OPTIONS -m "saving uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run"; then
+		if ! commit "saving uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run"; then
 			if [ -e /usr/share/debconf/confmodule ]; then
 				db_input critical etckeeper/commit_failed || true
 				db_go || true
 				db_reset etckeeper/commit_failed || true
 			else
-				echo "error: etckeeper failed to commit changes in /etc using git (git commit failed)"
+				echo "error: etckeeper failed to commit changes in /etc using $VCS"
 				exit 1
 			fi
 		fi

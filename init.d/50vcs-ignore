@@ -1,0 +1,70 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = git ] && [ ! -e .gitignore ]; then
+	file=.gitignore
+elif [ "$VCS" = hg ] && [ ! -e .hgignore ]; then
+	file=.hgignore
+fi
+
+if [ -z "$file" ] || [ -e "$file" ]; then
+	exit 0
+fi
+
+nl() {
+	echo >>$file
+}
+
+comment() {
+	comment="$1"
+	echo "# $comment" >>$file
+}
+
+ignore() {
+	glob="$1"
+	
+	case "$VCS" in
+		git)
+			echo "$glob" >> $file
+		;;
+		hg)
+			# rather than converting the glob to a regexp, just
+			# configure hg to use globs
+			if [ -z "$hg_syntax_printed" ]; then
+				comment "use glob syntax"
+				echo "syntax: glob" >> $file
+				nl
+				hg_syntax_printed=1
+			fi
+			echo "$glob" >> $file
+		;;
+	esac
+}
+
+if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
+	comment "new and old versions of conffiles, stored by dpkg"
+	ignore "*.dpkg-*"
+	nl
+elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" ]; then
+	comment "new and old versions of conffiles, stored by pacman"
+	ignore "*.pacnew"
+	ignore "*.pacorig"
+	ignore "*.pacsave"
+	nl
+fi
+
+ignore "*~"
+nl
+
+comment "mount(8) records system state here, no need to store these"
+ignore blkid.tab
+ignore blkid.tab.old
+nl
+
+comment "some other files in /etc that typically do not need to be tracked"
+ignore ld.so.cache
+ignore mtab
+ignore .pwd.lock
+ignore network/run
+ignore adjtime
+nl

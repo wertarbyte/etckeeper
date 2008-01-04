@@ -3,7 +3,7 @@ set -e
 
 TAB="	"
 
-if [ -d .git ]; then
+if [ "$VCS" = git ] && [ -d .git ]; then
 	for file in $(git ls-files --deleted); do
 		if [ ! -d "$file" ]; then 
 			git rm --quiet "$file"

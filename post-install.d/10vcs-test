@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+	
+not_enabled_warning() {
+	echo "etckeeper warning: etckeeper is not yet enabled for $(pwd)" >&2
+	echo "etckeeper warning: run etckeeper init to enable it" >&2
+}
+
+if [ "$VCS" = git ] && [ ! -d .git ]; then
+	not_enabled_warning
+elif [ "$VCS" = hg ] && [ ! -d .hg ]; then
+	not_enabled_warning
+fi

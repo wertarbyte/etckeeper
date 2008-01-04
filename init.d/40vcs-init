@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = git ] && [ ! -e .git ]; then
+	git init
+	echo "$(hostname) /etc repository" > .git/description
+elif [ "$VCS" = hg ] && [ ! -e .hg ]; then
+	hg init
+	echo  "[web]" > .hg/hgrc
+	echo  "description = $(hostname) /etc repository" >> .hg/hgrc
+fi

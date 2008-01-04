@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = git ]; then
+	if ! git add .; then
+		echo "etckeeper warning: git add failed" >&2
+	fi
+elif [ "$VCS" = hg ]; then
+	if ! hg add .; then
+		echo "etckeeper warning: hg add failed" >&2
+	fi
+fi

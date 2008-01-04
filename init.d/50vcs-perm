@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = git ]; then
+	chmod 700 .git
+elif [ "$VCS" = hg ]; then
+	chmod 700 .hg
+fi

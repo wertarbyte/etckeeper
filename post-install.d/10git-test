@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-if [ ! -d .git ]; then
-	echo "etckeeper warning: etckeeper is not yet enabled for $(pwd)" >&2
-	echo "etckeeper warning: run etckeeper init to enable it" >&2
-fi

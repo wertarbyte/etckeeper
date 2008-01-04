@@ -1,18 +1,25 @@
 #!/bin/sh
 set -e
 
-# Make sure the file is not readable by others, since it can leak
-# information about contents of non-readable directories in /etc.
-umask 077
+if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
+	# Make sure the file is not readable by others, since it can leak
+	# information about contents of non-readable directories in /etc.
+	umask 077
 
-# ensure the file exists so that it will list its own metadata
-if [ ! -e .metadata ]; then
-	metastore --save
-fi
+	# ensure the file exists so that it will list its own metadata
+	if [ ! -e .metadata ]; then
+		metastore --save
+	fi
 
-# metastore doesn't produce the same output file for the same metadata
-# everytime, so avoid changing the file if nothing really changed.
-if [ ! -z "$(metastore --compare)" ]; then
-	metastore --save
-	git add .metadata
+	# metastore doesn't produce the same output file for the same metadata
+	# everytime, so avoid changing the file if nothing really changed.
+	if [ ! -z "$(metastore --compare)" ]; then
+		metastore --save
+
+		if [ "$VCS" = git ]; then
+			git add .metadata
+		elif [ "$VCS" = hg ]; then
+			hg add .metadata
+		fi
+	fi
 fi

@@ -3,16 +3,26 @@
 CONFFILE=etckeeper.conf
 include $(CONFFILE)
 
+DESTDIR?=
+prefix=/usr
+bindir=${prefix}/bin
+etcdir=/etc
+mandir=${prefix}/share/man
+
+INSTALL=install 
+INSTALL_EXE=${INSTALL} -D
+INSTALL_DATA=${INSTALL} -m 0644 -D
+
 install:
-	mkdir -p $(PREFIX)/etc/etckeeper/
-	cp -a *.d $(PREFIX)/etc/etckeeper/
-	cp $(CONFFILE) $(PREFIX)/etc/etckeeper/etckeeper.conf
-	install -D etckeeper $(PREFIX)/usr/bin/etckeeper
-	install -m 0644 -D etckeeper.1 $(PREFIX)/usr/share/man/man1/etckeeper.1
-	install -m 0644 -D bash_completion $(PREFIX)/etc/bash_completion.d/etckeeper
+	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/
+	cp -a *.d $(DESTDIR)$(etcdir)/etckeeper/
+	$(INSTALL_DATA) $(CONFFILE) $(DESTDIR)$(etcdir)/etckeeper/etckeeper.conf
+	$(INSTALL_EXE) etckeeper $(DESTDIR)$(bindir)/etckeeper
+	$(INSTALL_DATA) etckeeper.1 $(DESTDIR)$(mandir)/man1/etckeeper.1
+	$(INSTALL_DATA) bash_completion $(DESTDIR)$(etcdir)/bash_completion.d/etckeeper
 ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt))
-	install -m 0644 -D apt.conf $(PREFIX)/etc/apt/apt.conf.d/05etckeeper
+	$(INSTALL_DATA) apt.conf $(DESTDIR)$(etcdir)/apt/apt.conf.d/05etckeeper
 endif
 ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2))
-	install -m 0644 -D pacman-g2.hook $(PREFIX)/etc/pacman-g2/hooks/etckeeper
+	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/etc/pacman-g2/hooks/etckeeper
 endif

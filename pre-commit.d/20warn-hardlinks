@@ -1,7 +1,10 @@
 #!/bin/sh
 set -e
-hardlinks=$(find -type f -not -links 1 | grep -v /.git/) || true
-if [ -n "$hardlinks" ]; then
-	echo "etckeeper warning: hardlinked files could cause problems with git:" >&2
-	echo "$hardlinks" >&2
+
+if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
+	hardlinks=$(find -type f -not -links 1 | grep -v /.git/) || true
+	if [ -n "$hardlinks" ]; then
+		echo "etckeeper warning: hardlinked files could cause problems with $VCS:" >&2
+		echo "$hardlinks" >&2
+	fi
 fi

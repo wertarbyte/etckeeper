@@ -1,13 +1,24 @@
 #!/bin/sh
 set -e
+conf=/etc/etckeeper/etckeeper.conf
 
-if [ -e /etc/etckeeper/etckeeper.conf ]; then
-	. /etc/etckeeper/etckeeper.conf
+if [ -e $conf ]; then
+	. $conf
 fi
+
+if [ -z "$VCS" ]; then
+	echo "Please configure a VCS in $conf" >&2
+	exit 1
+fi
+export VCS
 
 if [ ! -z "$GIT_COMMIT_OPTIONS" ]; then
 	export GIT_COMMIT_OPTIONS
 fi
+if [ ! -z "$HG_COMMIT_OPTIONS" ]; then
+	export HG_COMMIT_OPTIONS
+fi
+
 if [ ! -z "$HIGHLEVEL_PACKAGE_MANAGER" ]; then
 	export HIGHLEVEL_PACKAGE_MANAGER
 fi
