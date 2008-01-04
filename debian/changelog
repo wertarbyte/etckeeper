@@ -9,8 +9,10 @@ etckeeper (0.7) UNRELEASED; urgency=low
     to be used for other package managers.
   * Use the name of the highlevel package manager in commit messages.
   * Add gnarly conffile renaming code.
-  * Add support for frugalware's pacman-g2 package manager. (Miklos Vajna)
-  * Stop using git-foo commands (Miklos Vajna)
+
+  [ Miklos Vajna ]
+  * Add support for frugalware's pacman-g2 package manager.
+  * Stop using git-foo commands.
 
   [ Christian Perrier ]
   * Debconf templates and debian/control reviewed by the debian-l10n-
