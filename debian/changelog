@@ -8,6 +8,7 @@ etckeeper (0.7) UNRELEASED; urgency=low
     to be used for other package managers.
   * Use the name of the highlevel package manager in commit messages.
   * Add gnarly conffile renaming code.
+  * Add support for frugalware's pacman-g2 package manager. (Miklos Vajna)
 
  -- Joey Hess <joeyh@debian.org>  Thu, 03 Jan 2008 20:43:23 -0500
 
