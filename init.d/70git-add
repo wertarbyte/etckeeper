@@ -1,5 +1,5 @@
 #!/bin/sh
 set -e
-if ! git-add .; then
-	echo "etckeeper warning: git-add failed" >&2
+if ! git add .; then
+	echo "etckeeper warning: git add failed" >&2
 fi

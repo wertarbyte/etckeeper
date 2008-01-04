@@ -9,7 +9,7 @@ if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; 
 		db_title etckeeper
 
 		db_reset etckeeper/unclean || true
-		db_subst etckeeper/unclean STATUS $(git-status | debconf-escape -e) || true
+		db_subst etckeeper/unclean STATUS $(git status | debconf-escape -e) || true
 		db_input critical etckeeper/unclean || true
 		db_go || true
 		db_get etckeeper/unclean

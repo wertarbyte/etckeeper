@@ -66,7 +66,7 @@ A quick walkthrough of using etckeeper. The `etckeeper init` command
 initialises an /etc/.git/ repository. This command is careful to never
 overwrite existing files or directories in /etc. It will create a `.gitignore`
 if one doesn't already exist, sets up git hooks if they don't already exist,
-and so on. It does *not* commit any files into to git, but does `git-add` all
+and so on. It does *not* commit any files into to git, but does `git add` all
 interesting files for an initial commit.
 
 	etckeeper init
@@ -106,7 +106,7 @@ make sure you run "etckeeper init" again, to get any metadata changes:
 	etckeeper init
 
 Often it's better to clone /etc to elsewhere and do potentially dangerous
-stuff in a staging directory. You can clone the repository using git-clone,
+stuff in a staging directory. You can clone the repository using git clone,
 but be careful that the directory it's cloned into starts out mode 700, to
 prevent anyone else from seeing files like shadow, before `etckeeper init`
 fixes their permissions:
@@ -120,7 +120,7 @@ fixes their permissions:
 	chmod 755 ..
 
 Another common reason to clone the repository is to make a backup to a
-server. When using git-push to create a new remote clone, make sure the new
+server. When using git push to create a new remote clone, make sure the new
 remote clone is mode 700! (And, obviously, only push over a secure
 transport like ssh, and only to a server you trust.)
 
@@ -144,13 +144,13 @@ For example, here's how to configure it to run `git gc` after each apt run,
 which will save a lot of disk space:
 
 	cd /etc/etckeeper/post-install.d
-	(echo '#!/bin/sh' ; echo 'exec git-gc') > 99git-gc
+	(echo '#!/bin/sh' ; echo 'exec git gc') > 99git-gc
 	chmod +x 99git-gc
 	git add .
-	git-commit -m "run git-gc after each apt run"
+	git commit -m "run git gc after each apt run"
 
 Here's how to disable the automatic commits after each apt run, while still
-letting it git-add new files and git-rm removed ones:
+letting it git add new files and git rm removed ones:
 
 	chmod -x /etc/etckeeper/post-install.d/75git-commit
 

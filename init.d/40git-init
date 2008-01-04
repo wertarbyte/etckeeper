@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 if [ ! -e .git ]; then
-	git-init
+	git init
 	echo "$(hostname) /etc repository" > .git/description
 fi
