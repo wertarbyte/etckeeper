@@ -1,11 +1,14 @@
 #!/bin/sh
 set -e
 if [ ! -e .gitignore ]; then
-	cat >.gitignore <<EOF
-*~
-
+	if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
+		cat >.gitignore <<EOF
 # new and old versions of conffiles, stored by dpkg
 *.dpkg-*
+EOF
+	fi
+	cat >>.gitignore <<EOF
+*~
 
 # mount(8) records system state here, no need to keep these in git
 blkid.tab

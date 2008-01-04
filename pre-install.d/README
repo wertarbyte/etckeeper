@@ -1,0 +1,3 @@
+Files in this directory are run before packages are installed, upgraded,
+etc. This is mostly used for sanity checks, ie, does /etc have any
+uncommitted changes?

@@ -1,2 +1,0 @@
-Files in this directory are run before apt is run. This is mostly used for
-sanity checks, ie, does /etc have any uncommitted changes?

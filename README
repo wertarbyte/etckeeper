@@ -33,8 +33,8 @@ So don't use it on git repositories from untrusted sources.
 
 etckeeper has special support to handle changes to /etc caused by
 installing and upgrading packages. Before apt installs packages,
-`etckeeper pre-apt` will check that /etc contains no uncommitted changes.
-After apt installs packages, `etckeeper post-apt` will add any new
+`etckeeper pre-install` will check that /etc contains no uncommitted changes.
+After apt installs packages, `etckeeper post-install` will add any new
 interesting files to the repository, and commit the changes.
 
 git is designed as a way to manage source code, not as a way to manage
@@ -143,7 +143,7 @@ action.
 For example, here's how to configure it to run `git gc` after each apt run,
 which will save a lot of disk space:
 
-	cd /etc/etckeeper/post-apt.d
+	cd /etc/etckeeper/post-install.d
 	(echo '#!/bin/sh' ; echo 'exec git-gc') > 99git-gc
 	chmod +x 99git-gc
 	git add .
@@ -152,7 +152,7 @@ which will save a lot of disk space:
 Here's how to disable the automatic commits after each apt run, while still
 letting it git-add new files and git-rm removed ones:
 
-	chmod -x /etc/etckeeper/post-apt.d/75git-commit
+	chmod -x /etc/etckeeper/post-install.d/75git-commit
 
 Note that the etckeeper commands are careful to not hardcode anything about
 git. If you want to use some other revision control system, that's

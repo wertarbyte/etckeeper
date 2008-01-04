@@ -17,7 +17,10 @@
   in one repo, and public in another. This would need either symlink
   farming or git "fake bare" repos, both of which are not pleasant, yet.
 
-  Another way would be to allow splitting out subdirs into their own
-  repos. This is already doable, would just need modifying the pre-apt and
-  post-apt stuff (ie, it needs to commit in the subdirs too). Using
-  mr would be a possibility..
+  Another way would be to allow splitting out subdirs into their own repos.
+  This is already doable, would just need modifying the pre-install and
+  post-instlal stuff (ie, it needs to commit in the subdirs too). Using mr
+  would be a possibility..
+
+* Figure out what packages were acted on, and include that info in the commit
+  message

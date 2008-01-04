@@ -8,6 +8,12 @@ fi
 if [ ! -z "$GIT_COMMIT_OPTIONS" ]; then
 	export GIT_COMMIT_OPTIONS
 fi
+if [ ! -z "$HIGHLEVEL_PACKAGE_MANAGER" ]; then
+	export HIGHLEVEL_PACKAGE_MANAGER
+fi
+if [ ! -z "$LOWLEVEL_PACKAGE_MANAGER" ]; then
+	export LOWLEVEL_PACKAGE_MANAGER
+fi
 
 if [ -z "$1" ]; then
 	echo "usage: etckeeper command [directory]" >&2

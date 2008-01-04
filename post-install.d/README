@@ -1,0 +1,2 @@
+Files in this directory are run after packages are installed, upgraded, etc.
+They should commit changes and new files in /etc to repository.

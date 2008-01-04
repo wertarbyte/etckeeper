@@ -1,0 +1,5 @@
+Before running 'make install', you should edit etckeeper.conf and make sure
+it configured appropriately for your distribution.
+
+Distribution packagers may find it more convenient to set CONFFILE to point
+to a different etckeeper.conf that is preconfigured for your distribution.

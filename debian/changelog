@@ -1,3 +1,15 @@
+etckeeper (0.7) UNRELEASED; urgency=low
+
+  * Added configuration options for highlevel and lowlevel package managers
+    in etckeeper.conf.
+  * Only install apt hooks if apt is used.
+  * Only add backup conffile exclusion to gitignore if dpkg is used.
+  * Rename pre/post-apt.d to pre/post-install.d to allow the same directories
+    to be used for other package managers.
+  * Use the name of the highlevel package manager in commit messages.
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 03 Jan 2008 20:43:23 -0500
+
 etckeeper (0.6) unstable; urgency=low
 
   * Depend on a fairly recent git-core. Closes: #453063
