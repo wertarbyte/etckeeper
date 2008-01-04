@@ -31,7 +31,13 @@ etckeeper (0.7) UNRELEASED; urgency=low
   * Basque. Closes: #457830
   * Russian. Closes: #457871
 
- -- Christian Perrier <bubulle@debian.org>  Wed, 02 Jan 2008 15:36:33 +0100
+  [ Joey Hess ]
+  * Commit removed files in the pre-install hook to git, as was already done
+    for hg. Avoided changing the debconf template so bubulle doesn't murder
+    me; the current wording is just vague enough to still work with the
+    current behavior.
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 04 Jan 2008 18:38:25 -0500
 
 etckeeper (0.6) unstable; urgency=low
 

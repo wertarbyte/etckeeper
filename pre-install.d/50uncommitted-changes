@@ -22,6 +22,11 @@ commit() {
 
 	if [ "$VCS" = git ]; then
 		git add .
+		for file in $(git ls-files --deleted); do
+			if [ ! -d "$file" ]; then
+				git rm --quiet "$file"
+			fi
+		done
 		git commit $GIT_COMMIT_OPTIONS -m "$message"
 	elif [ "$VCS" = hg ]; then
 		hg addremove .
