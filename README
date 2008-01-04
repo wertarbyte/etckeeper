@@ -1,10 +1,10 @@
-etckeeper is a collection of tools to let /etc be stored in a git
-repository. It hooks into apt to automatically commit changes made to /etc
-during package upgrades. It uses [metastore][1] to track file metadata
-that git does not normally support, but that is important for /etc, such as
-the permissions of `/etc/shadow`. It's quite modular and configurable,
-while also being simple to use if you understand the basics of working with
-git.
+etckeeper is a collection of tools to let /etc be stored in a git or
+mercurial repository. It hooks into apt to automatically commit changes
+made to /etc during package upgrades. It uses [metastore][1] to track file
+metadata that git does not normally support, but that is important for
+/etc, such as the permissions of `/etc/shadow`. It's quite modular and
+configurable, while also being simple to use if you understand the basics
+of working with version control.
 
    [1]: http://david.hardeman.nu/software.php
 
@@ -19,14 +19,16 @@ to read their contents. However, you *also* must take care when cloning
 or copying these repositories, not to allow anyone else to see the data.
 
 Since git mushes all the files into packs under the .git directory, the
-whole .git directory content needs to be kept secret. Also, since git
-doesn't keep track of the mode of files like the shadow file, it will check
-it out world readable, before etckeeper fixes the permissions. The tutorial
-has some examples of safe ways to avoid these problems when cloning an /etc
-repository.
+whole .git directory content needs to be kept secret. (Ditto for mercurial
+and .hg)
 
-Also note that `etckeeper init` runs code stored in the git repository.
-So don't use it on git repositories from untrusted sources.
+Also, since revision control systems don't keep track of the mode of files
+like the shadow file, it will check out world readable, before etckeeper
+fixes the permissions. The tutorial has some examples of safe ways to avoid
+these problems when cloning an /etc repository.
+
+Also note that `etckeeper init` runs code stored in the repository.
+So don't use it on repositories from untrusted sources.
 
 
 ## what etckeeper does
@@ -37,43 +39,51 @@ installing and upgrading packages. Before apt installs packages,
 After apt installs packages, `etckeeper post-install` will add any new
 interesting files to the repository, and commit the changes.
 
-git is designed as a way to manage source code, not as a way to manage
-arbitrary directories like /etc. This means it has a few limitations that
-etckeeper has to work around. These include file metadata storage,
-empty directories, and special files.
+Revsion control systems are designed as a way to manage source code, not as
+a way to manage arbitrary directories like /etc. This means there are a few
+limitations that etckeeper has to work around. These include file metadata
+storage, empty directories, and special files.
 
-git has only limited tracking of file metadata, being able to track the
-executable bit, but not other permissions or owner info. So file metadata
-storage is handled by `metastore`. Amoung other chores, `etckeeper init`
-sets up a `pre-commit` hook that uses `metastore` to store metadata about
-file owners, permissions, and even extended attributes into a
-`/etc/.metadata` file. This metadata is stored in git along with everything
-else, and can be applied if the repo should need to be checked back out.
+git and mercurial have only limited tracking of file metadata, being able
+to track the executable bit, but not other permissions or owner info. So
+file metadata storage is handled by `metastore`. Amoung other chores,
+`etckeeper init` sets up a `pre-commit` hook that uses `metastore` to store
+metadata about file owners, permissions, and even extended attributes into
+a `/etc/.metadata` file. This metadata is stored in git along with
+everything else, and can be applied if the repo should need to be checked
+back out.
 
-git cannot track empty directories, but they can be significant sometimes
-in /etc. So the `pre-commit` hook also stores information that can be used
-to recreate the empty directories in a `/etc/.etckeeper` file.
+git and mercurial cannot track empty directories, but they can be
+significant sometimes in /etc. So the `pre-commit` hook also stores
+information that can be used to recreate the empty directories in a
+`/etc/.etckeeper` file.
 
-git doesn't support several special files that you _probably_ won't have in
-/etc, such as unix sockets, named pipes, hardlinked files (but softlinks
-are fine), and device files. The `pre-commit` hook will warn if your /etc
-contains such special files.
+git and mercurial don't support several special files that you _probably_
+won't have in /etc, such as unix sockets, named pipes, hardlinked files
+(but softlinks are fine), and device files. The `pre-commit` hook will warn
+if your /etc contains such special files.
 
 
 ## tutorial
 
-A quick walkthrough of using etckeeper. The `etckeeper init` command
-initialises an /etc/.git/ repository. This command is careful to never
-overwrite existing files or directories in /etc. It will create a `.gitignore`
-if one doesn't already exist, sets up git hooks if they don't already exist,
-and so on. It does *not* commit any files into to git, but does `git add` all
-interesting files for an initial commit.
+A quick walkthrough of using etckeeper.
+
+First, edit `/etc/etckeeper/etckeeper.conf` to select which version control
+system to use. The default is git, and this tutorial assumes you're using
+it. Mercurial is similar.
+
+The `etckeeper init` command initialises an /etc/.git/ repository. This
+command is careful to never overwrite existing files or directories in
+/etc. It will create a `.gitignore` if one doesn't already exist, sets up
+pre-commit hooks if they don't already exist, and so on. It does *not*
+commit any files, but does `git add` all interesting files for an initial
+commit later.
 
 	etckeeper init
 
-Now you might want to run git status to check that it includes all
+Now you might want to run `git status` to check that it includes all
 the right files, and none of the wrong files. And you can edit the
-.gitignore and so forth. Once you're ready, it's time to commit:
+`.gitignore` and so forth. Once you're ready, it's time to commit:
 
 	cd /etc
 	git commit -m "initial checkin"
@@ -135,6 +145,8 @@ control, the sky's the limit..
 
 ## configuration
 
+The main configuration file is `/etc/etckeeper/etckeeper.conf`
+
 etckeeper uses `run-parts` to run the executable files in
 `/etc/etckeeper/$command.d/`. You can modify these files, or add your own
 custom files. Each individual file is short, simple, and does only one
@@ -152,12 +164,7 @@ which will save a lot of disk space:
 Here's how to disable the automatic commits after each apt run, while still
 letting it git add new files and git rm removed ones:
 
-	chmod -x /etc/etckeeper/post-install.d/75git-commit
-
-Note that the etckeeper commands are careful to not hardcode anything about
-git. If you want to use some other revision control system, that's
-theoretically possible to accomplish by just changing the files in
-/etc/etckeeper/. If you do this, please let me know.
+	chmod -x /etc/etckeeper/post-install.d/75vcs-commit
 
 
 ## inspiration

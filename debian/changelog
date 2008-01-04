@@ -9,6 +9,8 @@ etckeeper (0.7) UNRELEASED; urgency=low
     to be used for other package managers.
   * Use the name of the highlevel package manager in commit messages.
   * Add gnarly conffile renaming code.
+  * Support mercurial as an alternative to git. Original patch by Mathieu
+    Clabaut, significantly changed.
 
   [ Miklos Vajna ]
   * Add support for frugalware's pacman-g2 package manager.

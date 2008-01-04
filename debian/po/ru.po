@@ -21,19 +21,19 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../templates:2001
-msgid "Commit changed files in /etc to git?"
-msgstr "Зафиксировать изменённые файлы /etc в git?"
+msgid "Commit changed files in /etc to ${VCS}?"
+msgstr "Зафиксировать изменённые файлы /etc в ${VCS}?"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
 msgid ""
 "The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to git before running APT. Added and "
+"for all files in /etc to be committed to ${VCS} before running APT. Added and "
 "changed files listed below can be committed automatically:"
 msgstr ""
 "Каталог /etc содержит незафиксированные файлы или другие изменения. Перед "
-"работой APT лучше зафиксировать все файлы /etc в git. Перечисленные ниже "
+"работой APT лучше зафиксировать все файлы /etc в ${VCS}. Перечисленные ниже "
 "добавленные и изменённые файлы могут быть зафиксированы автоматически:"
 
 #. Type: error
@@ -45,8 +45,8 @@ msgstr "Фиксация завершилась неудачно"
 #. Type: error
 #. Description
 #: ../templates:3001
-msgid "An attempt to commit /etc changes to git failed."
-msgstr "Попытка зафиксировать изменения /etc в git завершилась неудачно."
+msgid "An attempt to commit /etc changes to ${VCS} failed."
+msgstr "Попытка зафиксировать изменения /etc в ${VCS} завершилась неудачно."
 
 #. Type: error
 #. Description

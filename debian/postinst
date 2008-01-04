@@ -22,16 +22,34 @@ case "$1" in
 configure)
 	if dpkg --compare-versions "$2" le "0.7"; then
 		if [ -d /etc/etckeeper/pre-apt.d ]; then
-			for c in README 50uncommitted-changes; do
-				mv_conffile "/etc/etckeeper/pre-apt.d/$c" "/etc/etckeeper/pre-install.d/$c"
-			done
+			mv_conffile "/etc/etckeeper/pre-apt.d/README" \
+				"/etc/etckeeper/pre-install.d/README"
+			mv_conffile "/etc/etckeeper/pre-apt.d/50uncommitted-changes" \
+				"/etc/etckeeper/pre-install.d/50uncommitted-changes"
 			rmdir --ignore-fail-on-non-empty /etc/etckeeper/pre-apt.d
 		fi
 		if [ -d /etc/etckeeper/post-apt.d ]; then
-			for c in README 10git-test 30git-add 40git-rm 50git-commit; do
-				mv_conffile "/etc/etckeeper/post-apt.d/$c" "/etc/etckeeper/post-install.d/$c"
-			done
+			mv_conffile "/etc/etckeeper/post-apt.d/README" \
+				"/etc/etckeeper/post-install.d/README"
+			mv_conffile "/etc/etckeeper/post-apt.d/10git-test" \
+				"/etc/etckeeper/post-install.d/10vcs-test"
+			mv_conffile "/etc/etckeeper/post-apt.d/30git-add" \
+				"/etc/etckeeper/post-install.d/30git-add"
+			mv_conffile "/etc/etckeeper/post-apt.d/40git-rm" \
+				"/etc/etckeeper/post-install.d/40git-rm"
+			mv_conffile "/etc/etckeeper/post-apt.d/50git-commit" \
+				"/etc/etckeeper/post-install.d/50vcs-commit"
 			rmdir --ignore-fail-on-non-empty /etc/etckeeper/post-apt.d
 		fi
+		mv_conffile "/etc/etckeeper/init.d/40git-init" \
+			"/etc/etckeeper/init.d/40vcs-init"
+		mv_conffile "/etc/etckeeper/init.d/50git-ignore" \
+			"/etc/etckeeper/init.d/50vcs-ignore"
+		mv_conffile "/etc/etckeeper/init.d/50git-perm" \
+			"/etc/etckeeper/init.d/50vcs-perm"
+		mv_conffile "/etc/etckeeper/init.d/50git-pre-commit-hook" \
+			"/etc/etckeeper/init.d/50vcs-pre-commit-hook"
+		mv_conffile "/etc/etckeeper/init.d/70git-add" \
+			"/etc/etckeeper/init.d/70git-add"
 	fi
 esac

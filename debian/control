@@ -10,11 +10,12 @@ Homepage: http://kitenet.net/~joey/code/etckeeper/
 Package: etckeeper
 Architecture: all
 Section: admin
-Depends: metastore, git-core (>= 1:1.5.3.4), ${misc:Depends}
-Description: store /etc in git
- The etckeeper program is a tool to let /etc be stored in a git
+Depends: metastore, git-core (>= 1:1.5.3.4) | mercurial, ${misc:Depends}
+Description: store /etc in git or mercurial
+ The etckeeper program is a tool to let /etc be stored in a git or mercurial
  repository. It hooks into APT to automatically commit changes made to /etc
  during package upgrades. It uses 'metastore' to track file metadata that
- git does not normally support, but that is important for /etc, such as the
- permissions of /etc/shadow. It's quite modular and configurable, while
- also being simple to use if you understand the basics of working with git.
+ version control systems do not normally support, but that is important for
+ /etc, such as the permissions of /etc/shadow. It's quite modular and
+ configurable, while also being simple to use if you understand the basics of
+ working with version control.

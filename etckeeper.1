@@ -1,24 +1,25 @@
 .\" -*- nroff -*-
 .TH ETCKEEPER 1 "" "" ""
 .SH NAME
-etckeeper \- store /etc in git
+etckeeper \- store /etc in git or mercurial
 .SH SYNOPSIS
 .B etckeeper command [directory]
 .SH DESCRIPTION
-etckeeper manages /etc be stored in a git repository. By default each
-of the commands operates on /etc, but a different directory can be
-specified as a parameter to operate on a clone of the /etc repository
+etckeeper manages /etc be stored in a git or mercurial repository. By
+default each of the commands operates on /etc, but a different directory
+can be specified as a parameter to operate on a clone of the /etc repository
 located elsewhere.
 .SH COMMANDS
 .TP
 .B init
 This is the only command you typically need to run by hand. It initialises
-and sets up a git repository. Typically this is run in /etc once when
-starting to use etckeeper on a machine. It can also be used to initialise
+and sets up a git or mercurial repository (depending on the VCS setting in
+/etc/etckeeper/etckeeper.conf). Typically this is run in /etc once
+when starting to use etckeeper on a machine. It can also be used to initialise
 a clone of the /etc repository located elsewhere.
 .TP
 .B pre-commit
-This is called as a git pre-commit hook. It stores metadata and does sanity
+This is called as a pre-commit hook. It stores metadata and does sanity
 checks.
 .TP
 .B pre-install
@@ -30,5 +31,10 @@ packages are installed, upgraded, etc.
 This is called by apt's DPkg::Post-Invoke hook, or by equivilant hooks
 of other package managers. It commits changes made by packages into the
 repository. (You can also call this by hand after running dpkg by hand.)
+.SH FILES
+/etc/etckeeper/etckeeper.conf is the configuration file.
+
+/etc/etckeeper also contains directories containing the programs that are
+run for each of the above commands.
 .SH AUTHOR 
 Joey Hess, <joey@kitenet.net>.

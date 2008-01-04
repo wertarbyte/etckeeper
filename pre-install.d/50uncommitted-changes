@@ -37,6 +37,7 @@ if unclean; then
 		db_title etckeeper
 
 		db_reset etckeeper/unclean || true
+		db_subst etckeeper/unclean VCS "$VCS"
 		db_subst etckeeper/unclean STATUS $(status | debconf-escape -e) || true
 		db_input critical etckeeper/unclean || true
 		db_go || true
@@ -45,6 +46,7 @@ if unclean; then
 	if [ "$RET" = true ]; then
 		if ! commit "saving uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run"; then
 			if [ -e /usr/share/debconf/confmodule ]; then
+				db_subst etckeeper/commit_failed VCS "$VCS"
 				db_input critical etckeeper/commit_failed || true
 				db_go || true
 				db_reset etckeeper/commit_failed || true

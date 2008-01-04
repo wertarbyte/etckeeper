@@ -18,19 +18,19 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../templates:2001
-msgid "Commit changed files in /etc to git?"
-msgstr "Zapsat změněné soubory v /etc do gitu?"
+msgid "Commit changed files in /etc to ${VCS}?"
+msgstr "Zapsat změněné soubory v /etc do ${VCS}?"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
 msgid ""
 "The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to git before running APT. Added and "
+"for all files in /etc to be committed to ${VCS} before running APT. Added and "
 "changed files listed below can be committed automatically:"
 msgstr ""
 "Adresář /etc obsahuje nezapsané soubory nebo jiné změny. Před spuštěním APT "
-"je lepší mít všechny soubory v /etc uloženy do gitu. Přidané a změněné "
+"je lepší mít všechny soubory v /etc uloženy do ${VCS}. Přidané a změněné "
 "soubory vypsané níže budou uloženy automaticky:"
 
 #. Type: error
@@ -42,8 +42,8 @@ msgstr "Zápis selhal"
 #. Type: error
 #. Description
 #: ../templates:3001
-msgid "An attempt to commit /etc changes to git failed."
-msgstr "Pokus o zapsání změn v /etc do gitu selhal."
+msgid "An attempt to commit /etc changes to ${VCS} failed."
+msgstr "Pokus o zapsání změn v /etc do ${VCS} selhal."
 
 #. Type: error
 #. Description
