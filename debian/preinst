@@ -1,0 +1,29 @@
+#!/bin/sh
+set -e
+
+#DEBHELPER#
+
+# Prepare to move a conffile without triggering a dpkg question
+prep_mv_conffile() {
+	CONFFILE="$1"
+
+	if [ -e "$CONFFILE" ]; then
+		md5sum="`md5sum \"$CONFFILE\" | sed -e \"s/ .*//\"`"
+		old_md5sum="`sed -n -e \"/^Conffiles:/,/^[^ ]/{\\\\' $CONFFILE'{s/.* //;p}}\" /var/lib/dpkg/status`"
+		if [ "$md5sum" = "$old_md5sum" ]; then
+			rm -f "$CONFFILE"
+		fi
+	fi
+}
+
+case "$1" in
+install|upgrade)
+	if dpkg --compare-versions "$2" le "0.7"; then
+		for c in README 50uncommitted-changes; do
+			prep_mv_conffile "/etc/etckeeper/pre-apt.d/$c"
+		done
+		for c in README 10git-test 30git-add 40git-rm 50git-commit; do
+			prep_mv_conffile "/etc/etckeeper/post-apt.d/$c"
+		done
+	fi
+esac

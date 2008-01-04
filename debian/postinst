@@ -5,3 +5,33 @@ set -e
 . /usr/share/debconf/confmodule
 
 #DEBHELPER#
+
+# Move a conffile without triggering a dpkg question
+mv_conffile() {
+	OLDCONFFILE="$1"
+	NEWCONFFILE="$2"
+
+	if [ -e "$OLDCONFFILE" ]; then
+		echo "Preserving user changes to $NEWCONFFILE ..."
+		mv -f "$NEWCONFFILE" "$NEWCONFFILE".dpkg-new
+		mv -f "$OLDCONFFILE" "$NEWCONFFILE"
+	fi
+}
+
+case "$1" in
+configure)
+	if dpkg --compare-versions "$2" le "0.7"; then
+		if [ -d /etc/etckeeper/pre-apt.d ]; then
+			for c in README 50uncommitted-changes; do
+				mv_conffile "/etc/etckeeper/pre-apt.d/$c" "/etc/etckeeper/pre-install.d/$c"
+			done
+			rmdir --ignore-fail-on-non-empty /etc/etckeeper/pre-apt.d
+		fi
+		if [ -d /etc/etckeeper/post-apt.d ]; then
+			for c in README 10git-test 30git-add 40git-rm 50git-commit; do
+				mv_conffile "/etc/etckeeper/post-apt.d/$c" "/etc/etckeeper/post-install.d/$c"
+			done
+			rmdir --ignore-fail-on-non-empty /etc/etckeeper/post-apt.d
+		fi
+	fi
+esac
