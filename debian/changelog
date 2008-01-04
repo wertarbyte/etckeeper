@@ -1,5 +1,6 @@
 etckeeper (0.7) UNRELEASED; urgency=low
 
+  [ Joey Hess ]
   * Added configuration options for highlevel and lowlevel package managers
     in etckeeper.conf.
   * Only install apt hooks if apt is used.
@@ -9,8 +10,24 @@ etckeeper (0.7) UNRELEASED; urgency=low
   * Use the name of the highlevel package manager in commit messages.
   * Add gnarly conffile renaming code.
   * Add support for frugalware's pacman-g2 package manager. (Miklos Vajna)
+  * Stop using git-foo commands (Miklos Vajna)
 
- -- Joey Hess <joeyh@debian.org>  Thu, 03 Jan 2008 20:43:23 -0500
+  [ Christian Perrier ]
+  * Debconf templates and debian/control reviewed by the debian-l10n-
+    english team as part of the Smith review project. Closes: #454774
+  * [Debconf translation updates]
+  * Galician. Closes: #455790
+  * Finnish. Closes: #455967
+  * Italian. Closes: #456509
+  * Portuguese. Closes: #456543
+  * French. Closes: #456920
+  * Vietnamese. Closes: #457307
+  * Czech. Closes: #457678
+  * Dutch. Closes: #457806
+  * Basque. Closes: #457830
+  * Russian. Closes: #457871
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 02 Jan 2008 15:36:33 +0100
 
 etckeeper (0.6) unstable; urgency=low
 

@@ -1,16 +1,28 @@
+# These templates have been reviewed by the debian-l10n-english
+# team
+#
+# If modifications/additions/rewording are needed, please ask
+# debian-l10n-english@lists.debian.org for advice.
+#
+# Even minor modifications require translation updates and such
+# changes should be coordinated with translators and reviewers.
+
 Template: etckeeper/unclean
 Type: boolean
 Default: true
+#flag:translate!:3
 _Description: Commit changed files in /etc to git?
- etckeeper has detected that /etc contains uncommitted files
- or other changes. It's best to have everything in /etc committed
- to git before running apt. etckeeper can add any new files listed below,
- and commit all the changed files for you.
+ The /etc directory contains uncommitted files
+ or other changes. It's best for all files in /etc to be committed
+ to git before running APT. Added and changed files listed below can
+ be committed automatically:
  .
  ${STATUS}
 
 Template: etckeeper/commit_failed
 Type: error
-_Description: git commit failed
- etckeeper failed to commit changes in /etc using git.
- You may want to resolve the uncommitted changes by hand before continuing.
+_Description: Commit failed
+ An attempt to commit /etc changes to git failed.
+ .
+ You may manually resolve the issues with the uncommitted changes
+ before continuing.

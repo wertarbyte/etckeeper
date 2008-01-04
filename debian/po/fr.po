@@ -1,0 +1,63 @@
+# Translation of etckeeper debconf templates to French
+# Copyright (C) 2007 Jean-Baka Domelevo Entfellner <domelevo@gmail.com>
+# This file is distributed under the same license as the etckeeper package.
+#
+# Jean-Baka Domelevo Entfellner <domelevo@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: etckeeper\n"
+"Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
+"POT-Creation-Date: 2007-12-12 00:45+0530\n"
+"PO-Revision-Date: 2007-12-12 08:28+0100\n"
+"Last-Translator: Jean-Baka Domelevo Entfellner <domelevo@gmail.com>\n"
+"Language-Team: French <debian-l10n-french@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Commit changed files in /etc to git?"
+msgstr ""
+"Faut-il enregistrer dans git les modifications de fichiers faites dans /etc ?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"The /etc directory contains uncommitted files or other changes. It's best "
+"for all files in /etc to be committed to git before running APT. Added and "
+"changed files listed below can be committed automatically:"
+msgstr ""
+"Le répertoire /etc contient des fichiers non synchronisés ou d'autres "
+"changements. Il est préférable que toutes les modifications apportées dans /"
+"etc soient enregistrées dans git avant de lancer APT. Les ajouts et "
+"modifications de fichiers dont la liste suit peuvent être enregistrés "
+"automatiquement :"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "Commit failed"
+msgstr "Échec de la synchronisation"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "An attempt to commit /etc changes to git failed."
+msgstr ""
+"La tentative d'enregistrement des modifications de /etc vers git a échoué."
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid ""
+"You may manually resolve the issues with the uncommitted changes before "
+"continuing."
+msgstr ""
+"Avant de poursuivre, vous devriez résoudre vous-même les problèmes liés aux "
+"changements non sauvegardés."

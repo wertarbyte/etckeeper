@@ -1,0 +1,59 @@
+# translation of ru.po to Russian
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Yuri Kozlov <kozlov.y@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.3\n"
+"Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
+"POT-Creation-Date: 2007-12-12 00:45+0530\n"
+"PO-Revision-Date: 2007-12-12 21:23+0300\n"
+"Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
+"Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Commit changed files in /etc to git?"
+msgstr "Зафиксировать изменённые файлы /etc в git?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"The /etc directory contains uncommitted files or other changes. It's best "
+"for all files in /etc to be committed to git before running APT. Added and "
+"changed files listed below can be committed automatically:"
+msgstr ""
+"Каталог /etc содержит незафиксированные файлы или другие изменения. Перед "
+"работой APT лучше зафиксировать все файлы /etc в git. Перечисленные ниже "
+"добавленные и изменённые файлы могут быть зафиксированы автоматически:"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "Commit failed"
+msgstr "Фиксация завершилась неудачно"
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid "An attempt to commit /etc changes to git failed."
+msgstr "Попытка зафиксировать изменения /etc в git завершилась неудачно."
+
+#. Type: error
+#. Description
+#: ../templates:3001
+msgid ""
+"You may manually resolve the issues with the uncommitted changes before "
+"continuing."
+msgstr ""
+"Перед тем как продолжить вы можете исправить это вручную через "
+"незафиксированные изменения."

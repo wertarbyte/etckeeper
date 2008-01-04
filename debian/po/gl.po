@@ -1,26 +1,24 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Galician translation of etckeeper's debconf templates
+# This file is distributed under the same license as the etckeeper package.
+# Jacobo Tarrio <jtarrio@debian.org>, 2007.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: etckeeper\n"
 "Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
 "POT-Creation-Date: 2007-12-12 00:45+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2007-12-11 20:52+0000\n"
+"Last-Translator: Jacobo Tarrio <jtarrio@debian.org>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
 msgid "Commit changed files in /etc to git?"
-msgstr ""
+msgstr "¿Gardar en git os ficheiros modificados de /etc?"
 
 #. Type: boolean
 #. Description
@@ -30,18 +28,22 @@ msgid ""
 "for all files in /etc to be committed to git before running APT. Added and "
 "changed files listed below can be committed automatically:"
 msgstr ""
+"O directorio /etc contén ficheiros ou outros cambios sen gardar. É mellor "
+"que se garden en git tódolos ficheiros de /etc antes de executar APT. Os "
+"ficheiros engadidos e modificados da lista de embaixo pódense gardar "
+"automaticamente:"
 
 #. Type: error
 #. Description
 #: ../templates:3001
 msgid "Commit failed"
-msgstr ""
+msgstr "O gardado fallou"
 
 #. Type: error
 #. Description
 #: ../templates:3001
 msgid "An attempt to commit /etc changes to git failed."
-msgstr ""
+msgstr "Fallou unha tentativa de gardar en git os cambios de /etc."
 
 #. Type: error
 #. Description
@@ -49,4 +51,4 @@ msgstr ""
 msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
-msgstr ""
+msgstr "configurar apt para que instale paquetes adicionais do CD.<"
