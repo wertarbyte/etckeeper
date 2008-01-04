@@ -25,7 +25,7 @@ install|upgrade)
 		for c in README 10git-test 30git-add 40git-rm 50git-commit; do
 			prep_mv_conffile "/etc/etckeeper/post-apt.d/$c"
 		done
-		for c in 40git-init 50git-ignore 50git-prerm \
+		for c in 40git-init 50git-ignore 50git-perm \
 		         50git-pre-commit-hook 70git-add; do
 			prep_mv_conffile "/etc/etckeeper/init.d/$c"
 		done
