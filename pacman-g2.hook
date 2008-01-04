@@ -1,0 +1,19 @@
+#!/bin/sh
+
+pre_sysupgrade()
+{
+	if [ -x /usr/bin/etckeeper ]; then
+		etckeeper pre-apt
+	fi
+}
+
+post_sysupgrade()
+{
+	if [ -x /usr/bin/etckeeper ]; then
+		etckeeper post-apt
+	fi
+}
+
+op=$1
+shift
+$op $*
