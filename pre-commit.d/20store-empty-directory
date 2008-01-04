@@ -16,11 +16,12 @@ if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 
 	if [ ! -e .etckeeper ] || ! cmp -s .etckeeper .etckeeper.new ; then
 		mv -f .etckeeper.new .etckeeper
+		# stage the file as part of the current commit
 		if [ "$VCS" = git ]; then
 			git add .etckeeper
-		elif [ "$VCS" = hg ]; then
-			hg add .etckeeper
 		fi
+		# hg add not done, hg will automatically include the file
+		# in the current commit
 	else
 		rm -f .etckeeper.new
 	fi

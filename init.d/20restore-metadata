@@ -7,4 +7,6 @@ set -e
 # should only be run on repositories you trust.
 if [ -e .metadata ]; then
 	metastore --apply --mtime
+else
+	metastore --save
 fi

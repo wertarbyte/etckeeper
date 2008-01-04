@@ -16,10 +16,11 @@ if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 	if [ ! -z "$(metastore --compare)" ]; then
 		metastore --save
 
+		# stage the file as part of the current commit
 		if [ "$VCS" = git ]; then
 			git add .metadata
-		elif [ "$VCS" = hg ]; then
-			hg add .metadata
 		fi
+		# hg add not done, hg will automatically include the file
+		# in the current commit
 	fi
 fi
