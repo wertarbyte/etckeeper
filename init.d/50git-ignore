@@ -7,6 +7,11 @@ if [ ! -e .gitignore ]; then
 # new and old versions of conffiles, stored by dpkg
 *.dpkg-*
 
+# new and old versions of conffiles, stored by pacman
+*.pacnew
+*.pacorig
+*.pacsave
+
 # mount(8) records system state here, no need to keep these in git
 blkid.tab
 blkid.tab.old
