@@ -21,14 +21,15 @@ a clone of the /etc repository located elsewhere.
 This is called as a git pre-commit hook. It stores metadata and does sanity
 checks.
 .TP
-.B pre-apt
-This is called by apt's DPkg::Pre-Install-Pkgs hook. It allows committing
-any uncommitted changes before the apt run.
+.B pre-merge
+This is called by Paludis' install_all_pre hook, which runs at the
+beginning of a complete merge instruction. It commits any uncommitted
+changes before the Paludis run.
 .TP
-.B post-apt
-This is called by apt's DPkg::Post-Invoke hook. It commits changes made by
-packages into the repository. (You can also call this by hand after running
-dpkg by hand.)
+.B post-merge
+This is called by Paludis' install_post hook, which runs after each
+individual package is merged. It commits changes made by packages into
+the repository. (You can call this manually after running emerge by hand.)
 .SH NOTES
 .B /etc/etckeeper/package_managed_dirs
 This is an extension to etckeeper's hooks into the package management

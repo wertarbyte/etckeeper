@@ -1,5 +1,6 @@
 #!/bin/sh
 set -e
+
 if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; then
 	. /usr/share/debconf/confmodule
 	db_capb escape

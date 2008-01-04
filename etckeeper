@@ -21,10 +21,14 @@ if [ ! -d "/etc/etckeeper/$command.d" ]; then
 	exit 1
 fi
 
-if [ -n "$1" ]; then
-	cd "$1"
+if [ -n "$1" ] && [ "$1" == "::AUTO::" ]; then
+	for i in `tail -n +1 /etc/etckeeper/package_managed_dirs`; do
+		cd $i && run-parts --exit-on-error "/etc/etckeeper/$command.d"
+	done
+elif [ -n "$1" ]
+	cd "$1" && run-parts --exit-on-error "/etc/etckeeper/$command.d"
 else
-	cd /etc
+	cd /etc && run-parts --exit-on-error "/etc/etckeeper/$command.d"
 fi
 
-run-parts --exit-on-error "/etc/etckeeper/$command.d"
+

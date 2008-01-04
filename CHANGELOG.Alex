@@ -1,0 +1,13 @@
+2007-12-31		Alex Elsayed		<eternaleye@gmail.com>
+
+	* Added Paludis hooks equivalent to APT hooks
+	
+	* Extended package-manager intervention via a
+		whitespace-delimited configuration file at
+		/etc/etckeeper/package_managed_dirs. All
+		lines except the first are significant.
+
+	* Added modified man page for Gentoo
+
+	* Added ebuilds for HEAD of both metastore and
+		etckeeper

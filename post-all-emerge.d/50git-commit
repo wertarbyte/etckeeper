@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+if [ -d .git ]; then
+	message="committing changes after installing $TARGET with paludis"
+
+	# ignore exit code since it exits nonzero if there is nothing to do
+	git commit $GIT_COMMIT_OPTIONS -m "$message" || true
+fi

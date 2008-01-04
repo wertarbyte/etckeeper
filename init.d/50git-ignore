@@ -7,6 +7,10 @@ if [ ! -e .gitignore ]; then
 # new and old versions of conffiles, stored by dpkg
 *.dpkg-*
 
+# new versions of conffiles, stored by paludis/portage
+# (keeping old versions is up to the user in Gentoo)
+.cfg*
+
 # mount(8) records system state here, no need to keep these in git
 blkid.tab
 blkid.tab.old

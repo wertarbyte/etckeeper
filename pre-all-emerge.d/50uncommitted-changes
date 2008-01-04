@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+if [ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"; then
+# Interactive checking for uncommitted files removed -
+# paludis is a non-interactive client
+	git add .
+	if ! git commit $GIT_COMMIT_OPTIONS -m "saving uncommitted changes in /etc prior to paludis run"; then
+		db_input critical etckeeper/commit_failed || true
+		db_go || true
+		db_reset etckeeper/commit_failed || true
+	fi
+fi
