@@ -1,26 +1,25 @@
-# SOME DESCRIPTIVE TITLE.
+# Czech translation of etckeeper debconf messages.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is distributed under the same license as the etckeeper package.
+# Miroslav Kure <kurem@debian.cz>, 2007
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: etckeeper\n"
 "Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
 "POT-Creation-Date: 2007-12-12 00:45+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2007-12-24 13:10+0100\n"
+"Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
+"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
 msgid "Commit changed files in /etc to git?"
-msgstr ""
+msgstr "Zapsat změněné soubory v /etc do gitu?"
 
 #. Type: boolean
 #. Description
@@ -30,18 +29,21 @@ msgid ""
 "for all files in /etc to be committed to git before running APT. Added and "
 "changed files listed below can be committed automatically:"
 msgstr ""
+"Adresář /etc obsahuje nezapsané soubory nebo jiné změny. Před spuštěním APT "
+"je lepší mít všechny soubory v /etc uloženy do gitu. Přidané a změněné "
+"soubory vypsané níže budou uloženy automaticky:"
 
 #. Type: error
 #. Description
 #: ../templates:3001
 msgid "Commit failed"
-msgstr ""
+msgstr "Zápis selhal"
 
 #. Type: error
 #. Description
 #: ../templates:3001
 msgid "An attempt to commit /etc changes to git failed."
-msgstr ""
+msgstr "Pokus o zapsání změn v /etc do gitu selhal."
 
 #. Type: error
 #. Description
@@ -50,3 +52,4 @@ msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
 msgstr ""
+"Před pokračováním byste měli ručně vyřešit problémy s nezapsanými změnami."

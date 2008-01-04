@@ -12,10 +12,9 @@ Architecture: all
 Section: admin
 Depends: metastore, git-core, ${misc:Depends}, debconf | debconf-2.0
 Description: store /etc in git
- etckeeper is a collection of tools to let /etc be stored in a git
- repository. It hooks into apt to automatically commit changes made to /etc
- during package upgrades. It uses `metastore` to track file metadata that
+ The etckeeper program is a tool to let /etc be stored in a git
+ repository. It hooks into APT to automatically commit changes made to /etc
+ during package upgrades. It uses 'metastore' to track file metadata that
  git does not normally support, but that is important for /etc, such as the
- permissions of `/etc/shadow`. It's quite modular and configurable, while
+ permissions of /etc/shadow. It's quite modular and configurable, while
  also being simple to use if you understand the basics of working with git.
-

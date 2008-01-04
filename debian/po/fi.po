@@ -1,26 +1,22 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: etckeeper 0.3\n"
 "Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
 "POT-Creation-Date: 2007-12-12 00:45+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2007-12-12 19:54+0200\n"
+"Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
+"Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Finnish\n"
+"X-Poedit-Country: Finland\n"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
 msgid "Commit changed files in /etc to git?"
-msgstr ""
+msgstr "Talletetaanko hakemiston /etc muutetut tiedostot gitiin?"
 
 #. Type: boolean
 #. Description
@@ -30,18 +26,22 @@ msgid ""
 "for all files in /etc to be committed to git before running APT. Added and "
 "changed files listed below can be committed automatically:"
 msgstr ""
+"Hakemisto /etc sisältää tallettamattomia tiedostoja tai muita muutoksia. On "
+"parasta tallettaa kaikki /etc:n tiedostot git-varastoon ennen APTin "
+"ajamista. Alla luetellut lisätyt tai muutetut tiedostot voidaan tallettaa "
+"automaattisesti."
 
 #. Type: error
 #. Description
 #: ../templates:3001
 msgid "Commit failed"
-msgstr ""
+msgstr "Tallettaminen epäonnistui"
 
 #. Type: error
 #. Description
 #: ../templates:3001
 msgid "An attempt to commit /etc changes to git failed."
-msgstr ""
+msgstr "Yritys tallettaa /etc:n muutokset git-varastoon epäonnistui."
 
 #. Type: error
 #. Description
@@ -50,3 +50,4 @@ msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
 msgstr ""
+"Voit selvittää tallettamattomien muutosten ongelmat käsin ennen jatkamista."
