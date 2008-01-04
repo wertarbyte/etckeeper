@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2007-12-12 00:45+0530\n"
+"Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
+"POT-Creation-Date: 2008-01-04 18:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,8 +27,8 @@ msgstr ""
 #: ../templates:2001
 msgid ""
 "The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to ${VCS} before running APT. Added and "
-"changed files listed below can be committed automatically:"
+"for all files in /etc to be committed to ${VCS} before running APT. Added "
+"and changed files listed below can be committed automatically:"
 msgstr ""
 
 #. Type: error

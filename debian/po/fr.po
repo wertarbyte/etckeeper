@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: etckeeper\n"
-"Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2007-12-12 00:45+0530\n"
+"Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
+"POT-Creation-Date: 2008-01-04 18:15-0500\n"
 "PO-Revision-Date: 2007-12-12 08:28+0100\n"
 "Last-Translator: Jean-Baka Domelevo Entfellner <domelevo@gmail.com>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
@@ -23,15 +23,16 @@ msgstr ""
 #: ../templates:2001
 msgid "Commit changed files in /etc to ${VCS}?"
 msgstr ""
-"Faut-il enregistrer dans ${VCS} les modifications de fichiers faites dans /etc ?"
+"Faut-il enregistrer dans ${VCS} les modifications de fichiers faites dans /"
+"etc ?"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
 msgid ""
 "The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to ${VCS} before running APT. Added and "
-"changed files listed below can be committed automatically:"
+"for all files in /etc to be committed to ${VCS} before running APT. Added "
+"and changed files listed below can be committed automatically:"
 msgstr ""
 "Le répertoire /etc contient des fichiers non synchronisés ou d'autres "
 "changements. Il est préférable que toutes les modifications apportées dans /"

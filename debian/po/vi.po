@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: etckeeper 0.3\n"
-"Report-Msgid-Bugs-To: Source: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2007-12-12 00:45+0530\n"
+"Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
+"POT-Creation-Date: 2008-01-04 18:15-0500\n"
 "PO-Revision-Date: 2007-12-21 22:43+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -19,16 +19,23 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../templates:2001
-msgid "Commit changed files in /etc to git?"
+#, fuzzy
+#| msgid "Commit changed files in /etc to git?"
+msgid "Commit changed files in /etc to ${VCS}?"
 msgstr "Ghi vào git các tập tin bị thay đổi trong « /etc » không?"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
+#, fuzzy
+#| msgid ""
+#| "The /etc directory contains uncommitted files or other changes. It's best "
+#| "for all files in /etc to be committed to git before running APT. Added "
+#| "and changed files listed below can be committed automatically:"
 msgid ""
 "The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to git before running APT. Added and "
-"changed files listed below can be committed automatically:"
+"for all files in /etc to be committed to ${VCS} before running APT. Added "
+"and changed files listed below can be committed automatically:"
 msgstr ""
 "Thư mục « /etc » chứa các tập tin hay thay đổi khác mà chưa ghi chép. Tốt "
 "nhất nếu mọi tập tin trong « /etc » được ghi chép, trước khi chạy APT. Có thể "
@@ -44,7 +51,9 @@ msgstr "Lỗi ghi chép"
 #. Type: error
 #. Description
 #: ../templates:3001
-msgid "An attempt to commit /etc changes to git failed."
+#, fuzzy
+#| msgid "An attempt to commit /etc changes to git failed."
+msgid "An attempt to commit /etc changes to ${VCS} failed."
 msgstr "Gặp lỗi khi thử ghi vào git các thay đổi trong « /etc »."
 
 #. Type: error
