@@ -24,5 +24,5 @@ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt))
 	$(INSTALL_DATA) apt.conf $(DESTDIR)$(etcdir)/apt/apt.conf.d/05etckeeper
 endif
 ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2))
-	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/etc/pacman-g2/hooks/etckeeper
+	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/pacman-g2/hooks/etckeeper
 endif
