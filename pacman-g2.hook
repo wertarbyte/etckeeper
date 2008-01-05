@@ -2,13 +2,13 @@
 
 pre_sysupgrade() {
 	if [ -x /usr/bin/etckeeper ]; then
-		etckeeper pre-apt
+		etckeeper pre-install
 	fi
 }
 
 post_sysupgrade() {
 	if [ -x /usr/bin/etckeeper ]; then
-		etckeeper post-apt
+		etckeeper post-install
 	fi
 }
 
