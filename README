@@ -46,7 +46,7 @@ storage, empty directories, and special files.
 
 git and mercurial have only limited tracking of file metadata, being able
 to track the executable bit, but not other permissions or owner info. So
-file metadata storage is handled by `metastore`. Amoung other chores,
+file metadata storage is handled by `metastore`. Among other chores,
 `etckeeper init` sets up a `pre-commit` hook that uses `metastore` to store
 metadata about file owners, permissions, and even extended attributes into
 a `/etc/.metadata` file. This metadata is stored in git along with
@@ -176,7 +176,7 @@ Two blog posts provided inspiration for techniques used by etckeeper:
 [isisetup][2] has some of the same aims as etckeeper, however, unlike it,
 etckeeper does not aim to be a git porcelain with its own set of commands
 for manipulating the /etc repository. Instead, etckeeper provides a simple
-setup procedure and hooks for setting up an /etc repsository, and then gets
+setup procedure and hooks for setting up an /etc repository, and then gets
 out of your way; you manage the repository using regular git commands.
 
    [2]: http://www.isisetup.ch/
