@@ -1,6 +1,7 @@
 etckeeper (0.8) UNRELEASED; urgency=low
 
   * Typo fixes from Miklos Vajna
+  * Add backwards compatability code to handle post-apt action. Closes: #459441
 
  -- Joey Hess <joeyh@debian.org>  Sat, 05 Jan 2008 00:42:11 -0500
 

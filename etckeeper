@@ -33,6 +33,13 @@ fi
 command="$1"
 shift 1
 
+# compatability code
+if [ "$command" = "post-apt" ]; then
+	command=post-install
+elif [ "$command" = "pre-apt" ]; then
+	command=pre-install
+fi
+
 if [ ! -d "/etc/etckeeper/$command.d" ]; then
 	echo "etckeeper: /etc/etckeeper/$command.d does not exist" >&2
 	exit 1
