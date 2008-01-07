@@ -1,3 +1,13 @@
+etckeeper (0.9) UNRELEASED; urgency=low
+
+  * Separate debconf use from the main flow of the script so the commit
+    stage can use editors etc. Closes: #459547
+  * Remove the hint about setting -e to get interactive commits, since
+    I don't want to encourage users to do that. (For one thing, it's unlikely
+    to work if a graphical package manager is used..)
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 07 Jan 2008 13:44:40 -0500
+
 etckeeper (0.8) unstable; urgency=low
 
   * Typo fixes from Miklos Vajna
