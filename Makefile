@@ -20,9 +20,9 @@ install:
 	$(INSTALL_EXE) etckeeper $(DESTDIR)$(bindir)/etckeeper
 	$(INSTALL_DATA) etckeeper.1 $(DESTDIR)$(mandir)/man1/etckeeper.1
 	$(INSTALL_DATA) bash_completion $(DESTDIR)$(etcdir)/bash_completion.d/etckeeper
-ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt))
+ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt)
 	$(INSTALL_DATA) apt.conf $(DESTDIR)$(etcdir)/apt/apt.conf.d/05etckeeper
 endif
-ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2))
+ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2)
 	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/pacman-g2/hooks/etckeeper
 endif
