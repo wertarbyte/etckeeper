@@ -52,4 +52,11 @@ configure)
 		mv_conffile "/etc/etckeeper/init.d/70git-add" \
 			"/etc/etckeeper/init.d/70git-add"
 	fi
+	if dpkg --compare-versions "$2" le "0.10"; then
+        	for c in 10vcs-test 30git-add 30hg-addremove 40git-rm; do
+			mv_conffile "/etc/etckeeper/post-install.d/$c" \
+				"/etc/etckeeper/commit.d/$c"
+
+		done
+	fi
 esac
