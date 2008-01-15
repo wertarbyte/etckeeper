@@ -10,6 +10,7 @@ etckeeper (0.10) UNRELEASED; urgency=low
   * Don't commit in post-install.d if there are no uncommitted changes.
   * Add preinst code to remove old post-install.d scripts.
   * German debconf translation. Closes: #460940, #458751
+  * Use git status instead of git-status (missed this one before).
 
  -- Joey Hess <joeyh@debian.org>  Tue, 15 Jan 2008 13:20:29 -0500
 
