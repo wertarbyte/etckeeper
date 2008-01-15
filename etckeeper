@@ -2,6 +2,11 @@
 set -e
 conf=/etc/etckeeper/etckeeper.conf
 
+usage() {
+	echo "usage: etckeeper command [-d directory]" >&2
+	exit 1
+}
+
 if [ -e $conf ]; then
 	. $conf
 fi
@@ -27,8 +32,7 @@ if [ ! -z "$LOWLEVEL_PACKAGE_MANAGER" ]; then
 fi
 
 if [ -z "$1" ]; then
-	echo "usage: etckeeper command [directory]" >&2
-	exit 1
+	usage
 fi
 command="$1"
 shift 1
@@ -45,10 +49,26 @@ if [ ! -d "/etc/etckeeper/$command.d" ]; then
 	exit 1
 fi
 
-if [ -n "$1" ]; then
-	cd "$1"
+if [ "x$1" = "x-d" ]; then
+	if [ -n "$2" ]; then
+		cd "$2"
+		shift 2
+	else
+		usage
+	fi
 else
 	cd /etc
 fi
 
-run-parts --exit-on-error "/etc/etckeeper/$command.d"
+lsscripts() {
+	perl -e '
+		$dir=shift;
+		print join "\n", grep { ! -d $_ && -x $_ }
+			grep /^\Q$dir\/\E[-a-zA-Z0-9]+$/,
+			glob "$dir/*";
+	' "$1"
+}
+
+for script in $(lsscripts "/etc/etckeeper/$command.d"); do
+	"$script" "$@"
+done

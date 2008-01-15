@@ -126,7 +126,7 @@ fixes their permissions:
 	chmod 700 .
 	git clone /etc
 	cd etc
-	etckeeper init .
+	etckeeper init -d .
 	chmod 755 ..
 
 Another common reason to clone the repository is to make a backup to a
@@ -164,7 +164,7 @@ which will save a lot of disk space:
 Here's how to disable the automatic commits after each apt run, while still
 letting it git add new files and git rm removed ones:
 
-	chmod -x /etc/etckeeper/post-install.d/75vcs-commit
+	chmod -x /etc/etckeeper/commit.d/50vcs-commit
 
 
 ## inspiration

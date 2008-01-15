@@ -17,6 +17,25 @@ prep_mv_conffile() {
 	fi
 }
 
+# Remove a no-longer used conffile
+rm_conffile() {
+	PKGNAME="$1"
+	CONFFILE="$2"
+
+	if [ -e "$CONFFILE" ]; then
+		md5sum="`md5sum \"$CONFFILE\" | sed -e \"s/ .*//\"`"
+		old_md5sum="`dpkg-query -W -f='${Conffiles}' $PKGNAME | sed -n -e \"\\\\' $CONFFILE'{s/ obsolete$//;s/.* //p}\"`"
+		if [ "$md5sum" != "$old_md5sum" ]; then
+			echo "Obsolete conffile $CONFFILE has been modified by you."
+			echo "Saving as $CONFFILE.dpkg-bak ..."
+			mv -f "$CONFFILE" "$CONFFILE".dpkg-bak
+		else
+			echo "Removing obsolete conffile $CONFFILE ..."
+			rm -f "$CONFFILE"
+		fi
+	fi
+}
+
 case "$1" in
 install|upgrade)
 	if dpkg --compare-versions "$2" le "0.7"; then
@@ -29,6 +48,12 @@ install|upgrade)
 		for c in 40git-init 50git-ignore 50git-perm \
 		         50git-pre-commit-hook 70git-add; do
 			prep_mv_conffile etckeeper "/etc/etckeeper/init.d/$c"
+		done
+	fi
+	if dpkg --compare-versions "$2" le "0.10"; then
+        	for c in 10vcs-test 30git-add 30hg-addremove 40git-rm; do
+			rm_conffile etckeeper "/etc/etckeeper/post-install.d/$c"
+
 		done
 	fi
 esac

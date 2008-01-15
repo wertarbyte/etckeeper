@@ -1,3 +1,16 @@
+etckeeper (0.10) UNRELEASED; urgency=low
+
+  * Convert the directory parameter of etckeeper into "-d directory".
+  * Pass other patameters on from etckeeper to the .d scripts.
+  * Stop using run-parts for various reasons.
+  * Split out a commit.d that contains committing code that's used by
+    both the pre-install.d and post-install.d scripts.
+  * Split out an unclean.d that tests if the WC contains uncommitted
+    changes.
+  * Add preinst code to remove old post-install.d scripts.
+
+ -- Joey Hess <joeyh@debian.org>  Tue, 15 Jan 2008 13:20:29 -0500
+
 etckeeper (0.9) unstable; urgency=low
 
   * Separate debconf use from the main flow of the script so the commit

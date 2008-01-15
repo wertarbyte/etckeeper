@@ -1,11 +1,6 @@
 #!/bin/sh
 set -e
 
-message="committing changes after $HIGHLEVEL_PACKAGE_MANAGER run"
-
-if [ "$VCS" = git ] && [ -d .git ]; then
-	# ignore exit code since it exits nonzero if there is nothing to do
-	git commit $GIT_COMMIT_OPTIONS -m "$message" || true
-elif [ "$VCS" = hg ] && [ -d .hg ]; then
-	hg commit $HG_COMMIT_OPTIONS -m "$message" || true
+if etckeeper unclean; then
+	etckeeper commit "committing changes after $HIGHLEVEL_PACKAGE_MANAGER run"
 fi

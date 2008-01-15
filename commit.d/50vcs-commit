@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+
+message="$1"
+
+if [ "$VCS" = git ] && [ -d .git ]; then
+	if [ -n "$message" ]; then
+		git commit $GIT_COMMIT_OPTIONS -m "$message"
+	else
+		git commit $GIT_COMMIT_OPTIONS
+	fi
+elif [ "$VCS" = hg ] && [ -d .hg ]; then
+	if [ -n "$message" ]; then
+		hg commit $HG_COMMIT_OPTIONS -m "$message"
+	else
+		hg commit $HG_COMMIT_OPTIONS
+	fi
+fi

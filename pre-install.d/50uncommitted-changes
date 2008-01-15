@@ -1,36 +1,11 @@
 #!/bin/sh
 set -e
 
-unclean() {
-	if [ "$VCS" = git ]; then
-		[ -d .git ] && ! LANG=C git-status 2>&1 | grep -q "working directory clean"
-	elif [ "$VCS" = hg ]; then
-		[ -d .hg ] && ! hg status 2>&1 | wc -l | grep -q "^0$"
-	fi
-}
-
 status() {
 	if [ "$VCS" = git ]; then
 		git status
 	elif [ "$VCS" = hg ]; then
 		hg status
-	fi
-}
-
-commit() {
-	message="$1"
-
-	if [ "$VCS" = git ]; then
-		git add .
-		for file in $(git ls-files --deleted); do
-			if [ ! -d "$file" ]; then
-				git rm --quiet "$file"
-			fi
-		done
-		git commit $GIT_COMMIT_OPTIONS -m "$message"
-	elif [ "$VCS" = hg ]; then
-		hg addremove .
-		hg commit $HG_COMMIT_OPTIONS -m "$message"
 	fi
 }
 
@@ -60,7 +35,7 @@ elif [ "$1" = "fail-debconf" ]; then
 	db_reset etckeeper/commit_failed || true
 fi
 
-if unclean; then
+if etckeeper unclean; then
 	docommit="true"
 	if [ -e /usr/share/debconf/confmodule ]; then
 		if $0 ask-debconf; then
@@ -70,7 +45,7 @@ if unclean; then
 		fi
 	fi
 	if [ "$docommit" = true ]; then
-		if ! commit "saving uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run"; then
+		if ! etckeeper commit "saving uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run"; then
 			if [ -e /usr/share/debconf/confmodule ]; then
 				$0 fail-debconf
 			else
