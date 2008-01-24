@@ -67,4 +67,5 @@ ignore mtab
 ignore .pwd.lock
 ignore network/run
 ignore adjtime
+ignore lvm/cache
 nl
