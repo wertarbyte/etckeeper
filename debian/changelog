@@ -1,6 +1,7 @@
 etckeeper (0.11) UNRELEASED; urgency=low
 
   * Add lvm cache dir to default ignores. (#462355)
+  * Updated German translation. Closes: #463153
 
  -- Joey Hess <joeyh@debian.org>  Thu, 24 Jan 2008 16:19:05 -0500
 

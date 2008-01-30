@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: etckeeper 0.3\n"
+"Project-Id-Version: etckeeper 0.10\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2007-12-12 00:45+0530\n"
-"PO-Revision-Date: 2008-01-09 16:06+0100\n"
+"POT-Creation-Date: 2008-01-04 18:15-0500\n"
+"PO-Revision-Date: 2008-01-29 21:41+0100\n"
 "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: de <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,20 +17,20 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../templates:2001
-msgid "Commit changed files in /etc to git?"
-msgstr "Geänderte Dateien in /etc an Git übergeben?"
+msgid "Commit changed files in /etc to ${VCS}?"
+msgstr "Geänderte Dateien in /etc an ${VCS} übergeben?"
 
 #. Type: boolean
 #. Description
 #: ../templates:2001
 msgid ""
 "The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to git before running APT. Added and "
-"changed files listed below can be committed automatically:"
+"for all files in /etc to be committed to ${VCS} before running APT. Added "
+"and changed files listed below can be committed automatically:"
 msgstr ""
 "Das Verzeichnis /etc enthält Dateien, die noch nicht an Git übergeben wurden "
-"(»uncommitted« sind) oder andere Änderungen. Am besten werden alle Dateien in "
-"/etc an Git übergeben, bevor APT ausgeführt wird. Die im folgenden "
+"(»uncommitted« sind) oder andere Änderungen. Am besten werden alle Dateien "
+"in /etc an ${VCS} übergeben, bevor APT ausgeführt wird. Die im folgenden "
 "aufgeführten hinzugefügten und geänderten Dateien können automatisch "
 "übergeben werden:"
 
@@ -43,8 +43,9 @@ msgstr "Übergabe (commit) fehlgeschlagen"
 #. Type: error
 #. Description
 #: ../templates:3001
-msgid "An attempt to commit /etc changes to git failed."
-msgstr "Ein Versuch, die Änderungen an /etc an Git zu übergeben, schlug fehl."
+msgid "An attempt to commit /etc changes to ${VCS} failed."
+msgstr ""
+"Ein Versuch, die Änderungen an /etc an ${VCS} zu übergeben, schlug fehl."
 
 #. Type: error
 #. Description
