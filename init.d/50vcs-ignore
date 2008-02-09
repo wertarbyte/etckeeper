@@ -45,6 +45,10 @@ if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
 	comment "new and old versions of conffiles, stored by dpkg"
 	ignore "*.dpkg-*"
 	nl
+elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "rpm" ]; then
+	comment "new and old versions of conffiles, stored by apt/rpm"
+	ignore "*.rpm*"
+	nl
 elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" ]; then
 	comment "new and old versions of conffiles, stored by pacman"
 	ignore "*.pacnew"
