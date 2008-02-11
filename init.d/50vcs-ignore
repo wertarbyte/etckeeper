@@ -66,6 +66,7 @@ ignore blkid.tab.old
 nl
 
 comment "some other files in /etc that typically do not need to be tracked"
+ignore nologin
 ignore ld.so.cache
 ignore mtab
 ignore .pwd.lock
