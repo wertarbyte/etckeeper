@@ -10,7 +10,7 @@ Homepage: http://kitenet.net/~joey/code/etckeeper/
 Package: etckeeper
 Architecture: all
 Section: admin
-Depends: metastore, git-core (>= 1:1.5.3.4) | mercurial, ${misc:Depends}
+Depends: metastore, git-core (>= 1:1.5.4) | mercurial, ${misc:Depends}
 Description: store /etc in git or mercurial
  The etckeeper program is a tool to let /etc be stored in a git or mercurial
  repository. It hooks into APT to automatically commit changes made to /etc

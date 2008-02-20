@@ -2,7 +2,7 @@
 set -e
 
 if [ "$VCS" = git ]; then
-	[ -d .git ] && ! LANG=C git status 2>&1 | grep -q "working directory clean"
+	[ -d .git ] && [ -n "`git-ls-files --modified --deleted --others --exclude-standard`" ]
 elif [ "$VCS" = hg ]; then
 	[ -d .hg ] && ! hg status 2>&1 | wc -l | grep -q "^0$"
 fi
