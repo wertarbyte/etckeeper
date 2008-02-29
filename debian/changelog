@@ -1,3 +1,9 @@
+etckeeper (0.12) UNRELEASED; urgency=low
+
+  * Use git ls-files instead of git status. Depend on new enough git for this.
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 29 Feb 2008 15:12:51 -0500
+
 etckeeper (0.11) unstable; urgency=low
 
   * Add lvm cache dir to default ignores. (#462355)
