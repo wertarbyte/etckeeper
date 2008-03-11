@@ -1,10 +1,10 @@
-etckeeper (0.12) UNRELEASED; urgency=low
+etckeeper (0.12) unstable; urgency=low
 
   * Use git ls-files instead of git status. Depend on new enough git for this.
   * Add support for bzr, thanks to Mark A. Hershberger. Closes: #470515
     (Note that bzr does not support etckeeper's pre-commit hook.)
 
- -- Joey Hess <joeyh@debian.org>  Fri, 29 Feb 2008 15:12:51 -0500
+ -- Joey Hess <joeyh@debian.org>  Tue, 11 Mar 2008 15:06:29 -0400
 
 etckeeper (0.11) unstable; urgency=low
 
