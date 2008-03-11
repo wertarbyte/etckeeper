@@ -9,4 +9,8 @@ elif [ "$VCS" = hg ]; then
 	if ! hg add .; then
 		echo "etckeeper warning: hg add failed" >&2
 	fi
+elif [ "$VCS" = bzr ]; then
+	if ! bzr add .; then
+		echo "etckeeper warning: bzr add failed" >&2
+	fi
 fi

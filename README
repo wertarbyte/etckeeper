@@ -1,10 +1,11 @@
-etckeeper is a collection of tools to let /etc be stored in a git or
-mercurial repository. It hooks into apt to automatically commit changes
-made to /etc during package upgrades. It uses [metastore][1] to track file
-metadata that git does not normally support, but that is important for
-/etc, such as the permissions of `/etc/shadow`. It's quite modular and
-configurable, while also being simple to use if you understand the basics
-of working with version control.
+etckeeper is a collection of tools to let /etc be stored in a git,
+mercurial, or bazaar repository. It hooks into apt to automatically
+commit changes made to /etc during package upgrades. It uses
+[metastore][1] to track file metadata that git does not normally
+support, but that is important for /etc, such as the permissions of
+`/etc/shadow`. It's quite modular and configurable, while also being
+simple to use if you understand the basics of working with version
+control.
 
    [1]: http://david.hardeman.nu/software.php
 
@@ -20,7 +21,7 @@ or copying these repositories, not to allow anyone else to see the data.
 
 Since git mushes all the files into packs under the .git directory, the
 whole .git directory content needs to be kept secret. (Ditto for mercurial
-and .hg)
+and .hg as well as bazaar and .bzr)
 
 Also, since revision control systems don't keep track of the mode of files
 like the shadow file, it will check out world readable, before etckeeper
@@ -44,24 +45,29 @@ a way to manage arbitrary directories like /etc. This means there are a few
 limitations that etckeeper has to work around. These include file metadata
 storage, empty directories, and special files.
 
-git and mercurial have only limited tracking of file metadata, being able
-to track the executable bit, but not other permissions or owner info. So
-file metadata storage is handled by `metastore`. Among other chores,
-`etckeeper init` sets up a `pre-commit` hook that uses `metastore` to store
-metadata about file owners, permissions, and even extended attributes into
-a `/etc/.metadata` file. This metadata is stored in git along with
-everything else, and can be applied if the repo should need to be checked
-back out.
+Most VCS, including git, mercurial and bazaar have only limited tracking of
+file metadata, being able to track the executable bit, but not other
+permissions or owner info. So file metadata storage is handled by
+`metastore`. Among other chores, `etckeeper init` sets up a `pre-commit`
+hook that uses `metastore` to store metadata about file owners,
+permissions, and even extended attributes into a `/etc/.metadata` file.
+This metadata is stored in version control along with everything else, and
+can be applied if the repo should need to be checked back out.
+
+Warning: bazaar cannot support running etckeeper's pre-commit hook. To
+ensure that all file metadata is stored in bzr, you have to manually
+run "etckeeper pre-commit" before committing to bazaar.
 
 git and mercurial cannot track empty directories, but they can be
 significant sometimes in /etc. So the `pre-commit` hook also stores
 information that can be used to recreate the empty directories in a
 `/etc/.etckeeper` file.
 
-git and mercurial don't support several special files that you _probably_
-won't have in /etc, such as unix sockets, named pipes, hardlinked files
-(but softlinks are fine), and device files. The `pre-commit` hook will warn
-if your /etc contains such special files.
+Most VCS, including git, mercurial, and bazaar don't support several
+special files that you _probably_ won't have in /etc, such as unix
+sockets, named pipes, hardlinked files (but softlinks are fine), and
+device files. The `pre-commit` hook will warn if your /etc contains
+such special files.
 
 
 ## tutorial
@@ -70,7 +76,7 @@ A quick walkthrough of using etckeeper.
 
 First, edit `/etc/etckeeper/etckeeper.conf` to select which version control
 system to use. The default is git, and this tutorial assumes you're using
-it. Mercurial is similar.
+it. Mercurial and bazaar are similar.
 
 The `etckeeper init` command initialises an /etc/.git/ repository. This
 command is careful to never overwrite existing files or directories in

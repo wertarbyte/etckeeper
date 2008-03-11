@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
+if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ]; then
 	hardlinks=$(find -type f -not -links 1 | grep -v /.git/) || true
 	if [ -n "$hardlinks" ]; then
 		echo "etckeeper warning: hardlinked files could cause problems with $VCS:" >&2

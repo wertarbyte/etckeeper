@@ -15,4 +15,10 @@ elif [ "$VCS" = hg ] && [ -d .hg ]; then
 	else
 		hg commit $HG_COMMIT_OPTIONS
 	fi
+elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
+	if [ -n "$message" ]; then
+		bzr commit $BZR_COMMIT_OPTIONS -m "$message"
+	else
+		bzr commit $BZR_COMMIT_OPTIONS
+	fi
 fi

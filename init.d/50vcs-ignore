@@ -5,6 +5,8 @@ if [ "$VCS" = git ] && [ ! -e .gitignore ]; then
 	file=.gitignore
 elif [ "$VCS" = hg ] && [ ! -e .hgignore ]; then
 	file=.hgignore
+elif [ "$VCS" = bzr ] && [ ! -e .bzrignore ]; then
+	file=.bzrignore
 fi
 
 if [ -z "$file" ] || [ -e "$file" ]; then
@@ -24,7 +26,7 @@ ignore() {
 	glob="$1"
 	
 	case "$VCS" in
-		git)
+		git|bzr)
 			echo "$glob" >> $file
 		;;
 		hg)

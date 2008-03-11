@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
+if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ]; then; then
 	# Make sure the file is not readable by others, since it can leak
 	# information about contents of non-readable directories in /etc.
 	umask 077
@@ -20,7 +20,7 @@ if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 		if [ "$VCS" = git ]; then
 			git add .metadata
 		fi
-		# hg add not done, hg will automatically include the file
-		# in the current commit
+		# hg and bzr add not done, they will automatically
+		# include the file in the current commit
 	fi
 fi

@@ -8,4 +8,6 @@ elif [ "$VCS" = hg ] && [ ! -e .hg ]; then
 	hg init
 	echo  "[web]" > .hg/hgrc
 	echo  "description = $(hostname) /etc repository" >> .hg/hgrc
+elif [ "$VCS" = bzr ] && [ ! -e .bzr ]; then
+	bzr init
 fi

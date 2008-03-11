@@ -5,4 +5,6 @@ if [ "$VCS" = git ]; then
 	chmod 700 .git
 elif [ "$VCS" = hg ]; then
 	chmod 700 .hg
+elif [ "$VCS" = bzr ]; then
+	chmod 700 .bzr
 fi

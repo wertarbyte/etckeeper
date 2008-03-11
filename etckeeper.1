@@ -1,22 +1,23 @@
 .\" -*- nroff -*-
 .TH ETCKEEPER 1 "" "" ""
 .SH NAME
-etckeeper \- store /etc in git or mercurial
+etckeeper \- store /etc in git, mercurial, or bazaar
 .SH SYNOPSIS
 .B etckeeper command [-d directory]
 .SH DESCRIPTION
-etckeeper manages /etc be stored in a git or mercurial repository. By
-default each of the commands operates on /etc, but a different directory
-can be specified to operate on a clone of the /etc repository located 
-elsewhere.
+etckeeper manages /etc be stored in a git, mercurial, or bazaar
+repository. By default each of the commands operates on /etc, but a
+different directory can be specified to operate on a clone of the /etc
+repository located elsewhere.
 .SH COMMANDS
 .TP
 .B init
-This is the only command you typically need to run by hand. It initialises
-and sets up a git or mercurial repository (depending on the VCS setting in
+This is the only command you typically need to run by hand. It
+initialises and sets up a git, mercurial, or bazaar repository
+(depending on the VCS setting in
 /etc/etckeeper/etckeeper.conf). Typically this is run in /etc once
-when starting to use etckeeper on a machine. It can also be used to initialise
-a clone of the /etc repository located elsewhere.
+when starting to use etckeeper on a machine. It can also be used to
+initialise a clone of the /etc repository located elsewhere.
 .TP
 .B commit [message]
 Commits changes in /etc to the repository. A commit message can be

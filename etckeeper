@@ -23,6 +23,9 @@ fi
 if [ ! -z "$HG_COMMIT_OPTIONS" ]; then
 	export HG_COMMIT_OPTIONS
 fi
+if [ ! -z "$BZR_COMMIT_OPTIONS" ]; then
+	export BZR_COMMIT_OPTIONS
+fi
 
 if [ ! -z "$HIGHLEVEL_PACKAGE_MANAGER" ]; then
 	export HIGHLEVEL_PACKAGE_MANAGER
