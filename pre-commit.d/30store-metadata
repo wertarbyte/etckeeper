@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ]; then; then
+if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ]; then
 	# Make sure the file is not readable by others, since it can leak
 	# information about contents of non-readable directories in /etc.
 	umask 077
