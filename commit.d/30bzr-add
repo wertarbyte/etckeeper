@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = bzr ] && [ -d .bzr ]; then
+	if ! bzr add .; then
+		echo "etckeeper warning: bzr add failed" >&2
+	fi
+fi
