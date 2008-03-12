@@ -1,13 +1,11 @@
 etckeeper is a collection of tools to let /etc be stored in a git,
 mercurial, or bazaar repository. It hooks into apt to automatically
-commit changes made to /etc during package upgrades. It uses
-[metastore][1] to track file metadata that git does not normally
+commit changes made to /etc during package upgrades.
+It tracks file metadata that git does not normally
 support, but that is important for /etc, such as the permissions of
 `/etc/shadow`. It's quite modular and configurable, while also being
 simple to use if you understand the basics of working with version
 control.
-
-   [1]: http://david.hardeman.nu/software.php
 
 ## security warnings
 
@@ -47,10 +45,9 @@ storage, empty directories, and special files.
 
 Most VCS, including git, mercurial and bazaar have only limited tracking of
 file metadata, being able to track the executable bit, but not other
-permissions or owner info. So file metadata storage is handled by
-`metastore`. Among other chores, `etckeeper init` sets up a `pre-commit`
-hook that uses `metastore` to store metadata about file owners,
-permissions, and even extended attributes into a `/etc/.metadata` file.
+permissions or owner info. So file metadata storage is stored separately.
+Among other chores, `etckeeper init` sets up a `pre-commit` hook that stores
+metadata about file owners and permissions into a `/etc/.metadata` file.
 This metadata is stored in version control along with everything else, and
 can be applied if the repo should need to be checked back out.
 
