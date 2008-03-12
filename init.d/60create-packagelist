@@ -1,5 +1,14 @@
 #!/bin/sh
 set -e
 
-# The output is already sorted
-dpkg-query --show > /etc/package-list
+# NOTE: the output of this command should always be emtpy!
+#    diff init.d/60create-packagelist post-install.d/10update-packagelist
+# todo: fix this with symlinks?  Or with metadata.d?
+
+if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
+	# The output is already sorted
+	dpkg-query --show > /etc/package-list
+elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "rpm" ]; then
+	rpm -qa | sort > /etc/package-list
+fi
+
