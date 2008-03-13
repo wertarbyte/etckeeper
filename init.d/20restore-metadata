@@ -1,12 +1,8 @@
 #!/bin/sh
 set -e
 
-# Note that metastore doesn't check that the .metastore file only changes
-# perms of files in the current directory. It's ok to trust the .metastore
-# file won't do anything shady, because, as documented, etckeeper-init
-# should only be run on repositories you trust.
-if [ -e .metadata ]; then
-	metastore --apply --mtime
-else
-	metastore --save
+# It's ok to trust that the .fix-metadata file won't do anything shady because,
+# as documented, etckeeper-init should only be run on repositories you trust.
+if [ -x .fix-metadata ]; then
+	./.fix-metadata
 fi
