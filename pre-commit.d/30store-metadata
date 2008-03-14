@@ -2,32 +2,36 @@
 set -e
 
 
+# Filters out UNKNOWN users and groups, prints a warning on stderr.
+filter_unknown() {
+	CMD=$1
+	while read line; do
+		if [ "${line:0:8+${#CMD}}" = "$CMD UNKNOWN" ]; then
+			# error message like "Bad owner for ./ppp/peers"
+			echo Bad "$2" for "${line:9+${#CMD}}" >&2
+		else
+			echo "$line"
+		fi
+	done
+}
+
 generate_metadata() {
 	# This function generates the script commands to fix any files
 	# that aren't owner=root, group=root, or mode=0644 or 0755.
 	# Script is produced on stdout.  Errors go to stderr.
 
 	# Find all files and directories that don't have root as the owner
-	# Need to be sure UNKNOWN users and groups don't end up in the
-	# .fix-metadata file because chown and chgrp will choke on it.
-	output=$(find . \! -user root -exec stat --format="chown %U {}" {} \; | sort)
-	if [ -n "$output" ]; then
-		echo "$output" | grep "^chown UNKNOWN" >&2 || true
-		echo "$output" | grep -v "^chown UNKNOWN" || true
-	fi
-
+	find . \! -user root -exec stat --format="chown %U {}" {} \; \
+		| sort | filter_unknown chown owner
 	# Find all files and directories that don't have root as the group
-	output=$(find . \! -group root -exec stat --format="chgrp %G {}" {} \; | sort)
-	if [ -n "$output" ]; then
-		echo "$output" | grep "^chgrp UNKNOWN" >&2 || true
-		echo "$output" | grep -v "^chgrp UNKNOWN" || true
-	fi
+	find . \! -group root -exec stat --format="chgrp %G {}" {} \; \
+		| sort | filter_unknown chgrp group
 
 	# Find all directories that aren't 0755
 	find . -type d \! -perm 0755 -exec stat --format="chmod %a {}" {} \; | sort
 
-	# Find all files that aren't 0644 or 0755 (git keeps track of the
-	# executable bit so we don't have to).  All the files in the
+	# Find all files that aren't 0644 or 0755 (we can assume the VCS will
+	# maintain the executable bit).  All the files in the
 	# /etc/.git/objects directory are 0444 so we'll specifically avoid it.
 	find . -wholename ./.git -prune -o \
 		-type f \! -perm 0644 \! -perm 0755 -exec stat --format="chmod %a {}" {} \; \
