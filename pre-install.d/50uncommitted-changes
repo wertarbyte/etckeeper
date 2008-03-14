@@ -1,14 +1,6 @@
 #!/bin/sh
 set -e
 
-status() {
-	if [ "$VCS" = git ]; then
-		git status
-	elif [ "$VCS" = hg ]; then
-		hg status
-	fi
-}
-
 if [ "$1" = "fail-debconf" ]; then
 	. /usr/share/debconf/confmodule
 	db_subst etckeeper/commit_failed VCS "$VCS"
