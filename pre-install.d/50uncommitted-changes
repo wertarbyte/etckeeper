@@ -9,25 +9,7 @@ status() {
 	fi
 }
 
-if [ "$1" = "ask-debconf" ]; then
-	. /usr/share/debconf/confmodule
-	db_capb escape
-	db_title etckeeper
-
-	db_reset etckeeper/unclean || true
-	db_subst etckeeper/unclean VCS "$VCS"
-	db_subst etckeeper/unclean STATUS $(status | debconf-escape -e) || true
-	db_input critical etckeeper/unclean || true
-	db_go || true
-	db_get etckeeper/unclean
-	val="$RET"
-	db_reset etckeeper/unclean || true
-	if [ "$val" = true ]; then
-		exit 0
-	else
-		exit 1
-	fi
-elif [ "$1" = "fail-debconf" ]; then
+if [ "$1" = "fail-debconf" ]; then
 	. /usr/share/debconf/confmodule
 	db_subst etckeeper/commit_failed VCS "$VCS"
 	db_input critical etckeeper/commit_failed || true
@@ -36,22 +18,12 @@ elif [ "$1" = "fail-debconf" ]; then
 fi
 
 if etckeeper unclean; then
-	docommit="true"
-	if [ -e /usr/share/debconf/confmodule ]; then
-		if $0 ask-debconf; then
-			docommit=true
+	if ! etckeeper commit "saving uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run"; then
+		if [ -e /usr/share/debconf/confmodule ]; then
+			$0 fail-debconf
 		else
-			docommit=false
-		fi
-	fi
-	if [ "$docommit" = true ]; then
-		if ! etckeeper commit "saving uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run"; then
-			if [ -e /usr/share/debconf/confmodule ]; then
-				$0 fail-debconf
-			else
-				echo "error: etckeeper failed to commit changes in /etc using $VCS"
-				exit 1
-			fi
+			echo "error: etckeeper failed to commit changes in /etc using $VCS"
+			exit 1
 		fi
 	fi
 fi

@@ -1,3 +1,10 @@
+etckeeper (0.13) UNRELEASED; urgency=low
+
+  * Drop the debconf prompt before committing in pre-install.
+    Closes: #470577, #462161
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 14 Mar 2008 01:51:53 -0400
+
 etckeeper (0.12) unstable; urgency=low
 
   * Use git ls-files instead of git status. Depend on new enough git for this.
