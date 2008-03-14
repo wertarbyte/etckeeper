@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etckeeper 0.3 debconf templates\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2008-01-04 18:15-0500\n"
+"POT-Creation-Date: 2008-03-14 01:55-0400\n"
 "PO-Revision-Date: 2007-12-14 20:32+0100\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
@@ -15,43 +15,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Type: boolean
-#. Description
-#: ../templates:2001
-msgid "Commit changed files in /etc to ${VCS}?"
-msgstr "Commit dei file modificati in /etc a ${VCS}?"
-
-#. Type: boolean
-#. Description
-#: ../templates:2001
-msgid ""
-"The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to ${VCS} before running APT. Added "
-"and changed files listed below can be committed automatically:"
-msgstr ""
-"La directory /etc contiene dei file di cui non è stato ancora fatto il "
-"commit o altre modifiche. Si consiglia di effettuare il commit di tutti i "
-"file in /etc a ${VCS} prima di eseguire APT. È possibile fare "
-"automaticamente il commit dei file nuovi o modificati elencati in seguito:"
-
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid "Commit failed"
 msgstr "Commit fallito"
 
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid "An attempt to commit /etc changes to ${VCS} failed."
 msgstr "Il tentativo di commit delle modifiche in /etc a ${VCS} è fallito."
 
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
 msgstr ""
 "Potrebbe essere necessario risolvere i problemi con le modifiche delle quali "
 "non è stato fatto il commit prima di continuare."
+
+#~ msgid "Commit changed files in /etc to ${VCS}?"
+#~ msgstr "Commit dei file modificati in /etc a ${VCS}?"
+
+#~ msgid ""
+#~ "The /etc directory contains uncommitted files or other changes. It's best "
+#~ "for all files in /etc to be committed to ${VCS} before running APT. Added "
+#~ "and changed files listed below can be committed automatically:"
+#~ msgstr ""
+#~ "La directory /etc contiene dei file di cui non è stato ancora fatto il "
+#~ "commit o altre modifiche. Si consiglia di effettuare il commit di tutti i "
+#~ "file in /etc a ${VCS} prima di eseguire APT. È possibile fare "
+#~ "automaticamente il commit dei file nuovi o modificati elencati in seguito:"

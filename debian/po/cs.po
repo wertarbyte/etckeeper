@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etckeeper\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2008-01-04 18:15-0500\n"
+"POT-Creation-Date: 2008-03-14 01:55-0400\n"
 "PO-Revision-Date: 2007-12-24 13:10+0100\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -15,41 +15,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Type: boolean
-#. Description
-#: ../templates:2001
-msgid "Commit changed files in /etc to ${VCS}?"
-msgstr "Zapsat změněné soubory v /etc do ${VCS}?"
-
-#. Type: boolean
-#. Description
-#: ../templates:2001
-msgid ""
-"The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to ${VCS} before running APT. Added "
-"and changed files listed below can be committed automatically:"
-msgstr ""
-"Adresář /etc obsahuje nezapsané soubory nebo jiné změny. Před spuštěním APT "
-"je lepší mít všechny soubory v /etc uloženy do ${VCS}. Přidané a změněné "
-"soubory vypsané níže budou uloženy automaticky:"
-
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid "Commit failed"
 msgstr "Zápis selhal"
 
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid "An attempt to commit /etc changes to ${VCS} failed."
 msgstr "Pokus o zapsání změn v /etc do ${VCS} selhal."
 
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
 msgstr ""
 "Před pokračováním byste měli ručně vyřešit problémy s nezapsanými změnami."
+
+#~ msgid "Commit changed files in /etc to ${VCS}?"
+#~ msgstr "Zapsat změněné soubory v /etc do ${VCS}?"
+
+#~ msgid ""
+#~ "The /etc directory contains uncommitted files or other changes. It's best "
+#~ "for all files in /etc to be committed to ${VCS} before running APT. Added "
+#~ "and changed files listed below can be committed automatically:"
+#~ msgstr ""
+#~ "Adresář /etc obsahuje nezapsané soubory nebo jiné změny. Před spuštěním "
+#~ "APT je lepší mít všechny soubory v /etc uloženy do ${VCS}. Přidané a "
+#~ "změněné soubory vypsané níže budou uloženy automaticky:"
