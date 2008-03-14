@@ -20,27 +20,27 @@ if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ]; then
 	# Find all files and directories that don't have root as the owner
 	# Need to be sure UNKNOWN users and groups don't end up in the .fix-metadata
 	# file because chown and chgrp will choke on it.
-	output=$(find /etc \! -user root -exec stat --format="chown %U {}" {} \; | sort)
+	output=$(find . \! -user root -exec stat --format="chown %U {}" {} \; | sort)
 	if [ -n "$output" ]; then
 		echo "$output" | grep "^chown UNKNOWN" >&2 || true
 		echo "$output" | grep -v "^chown UNKNOWN" >> .fix-metadata || true
 	fi
 
 	# Find all files and directories that don't have root as the group
-	output=$(find /etc \! -group root -exec stat --format="chgrp %G {}" {} \; | sort)
+	output=$(find . \! -group root -exec stat --format="chgrp %G {}" {} \; | sort)
 	if [ -n "$output" ]; then
 		echo "$output" | grep "^chgrp UNKNOWN" >&2 || true
 		echo "$output" | grep -v "^chgrp UNKNOWN" >> .fix-metadata || true
 	fi
 
 	# Find all directories that aren't 0755
-	find /etc -type d \! -perm 0755 -exec stat --format="chmod %a {}" {} \; \
+	find . -type d \! -perm 0755 -exec stat --format="chmod %a {}" {} \; \
 		| sort >> .fix-metadata
 
 	# Find all files that aren't either 0644 or 0755 (git keeps track of the
 	# executable bit so we don't have to).  All the files in the
 	# /etc/.git/objects directory are 0444 so we'll specifically avoid it.
-	find /etc -wholename /etc/.git -prune -o \
+	find . -wholename ./.git -prune -o \
 		-type f \! -perm 0644 \! -perm 0755 -exec stat --format="chmod %a {}" {} \; \
 		| sort >> .fix-metadata
 
