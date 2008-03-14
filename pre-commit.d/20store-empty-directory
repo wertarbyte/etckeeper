@@ -11,8 +11,8 @@ if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 	if [ -e .etckeeper ]; then
 		egrep -v '^mkdir ' .etckeeper > .etckeeper.new || true
 	fi
-	find -type d -empty | grep -v /.git/ | grep -v /.hg/ | sort | 
-		sed -e "s/^/mkdir -p '/" -e "s/\$/'/" >> .etckeeper.new
+	find -type d -empty | grep -v /.git/ | grep -v /.hg/ | grep -v /.bzr/ | 
+		sort | sed -e "s/^/mkdir -p '/" -e "s/\$/'/" >> .etckeeper.new
 
 	if [ ! -e .etckeeper ] || ! cmp -s .etckeeper .etckeeper.new ; then
 		mv -f .etckeeper.new .etckeeper
