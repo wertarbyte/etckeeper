@@ -18,24 +18,27 @@ filter_unknown() {
 generate_metadata() {
 	# This function generates the script commands to fix any files
 	# that aren't owner=root, group=root, or mode=0644 or 0755.
-	# Script is produced on stdout.  Errors go to stderr.
+	# The script is produced on stdout.  Errors go to stderr.
+
+	# We maintain the permissions on the directory containing VCS data
+	# but we want find to ignore the VCS files themselves.
+	NOVCS='. -wholename ./.git -prune -o -wholename ./.bzr -prune -o -wholename ./.hg -prune -o'
 
 	# Find all files and directories that don't have root as the owner
-	find . \! -user root -exec stat --format="chown %U {}" {} \; \
+	find $NOVCS \! -user root -exec stat --format="chown %U {}" {} \; \
 		| sort | filter_unknown chown owner
 	# Find all files and directories that don't have root as the group
-	find . \! -group root -exec stat --format="chgrp %G {}" {} \; \
+	find $NOVCS \! -group root -exec stat --format="chgrp %G {}" {} \; \
 		| sort | filter_unknown chgrp group
 
 	# Find all directories that aren't 0755
-	find . -type d \! -perm 0755 -exec stat --format="chmod %a {}" {} \; | sort
+	find $NOVCS -type d \! -perm 0755 \
+		-exec stat --format="chmod %a {}" {} \; | sort
 
 	# Find all files that aren't 0644 or 0755 (we can assume the VCS will
-	# maintain the executable bit).  All the files in the
-	# /etc/.git/objects directory are 0444 so we'll specifically avoid it.
-	find . -wholename ./.git -prune -o \
-		-type f \! -perm 0644 \! -perm 0755 -exec stat --format="chmod %a {}" {} \; \
-		| sort
+	# maintain the executable bit).
+	find $NOVCS -type f \! -perm 0644 \! -perm 0755 \
+		-exec stat --format="chmod %a {}" {} \; | sort
 
 	# We don't handle xattrs.
 	# Maybe check for getfattr/setfattr and use them if they're available?
