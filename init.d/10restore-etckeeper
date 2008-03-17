@@ -7,4 +7,5 @@ if [ -e .etckeeper ]; then
 	. ./.etckeeper
 else
 	touch .etckeeper
+	chmod 600 .etckeeper
 fi

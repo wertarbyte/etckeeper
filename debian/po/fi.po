@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etckeeper 0.3\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2008-01-04 18:15-0500\n"
+"POT-Creation-Date: 2008-03-14 01:55-0400\n"
 "PO-Revision-Date: 2007-12-12 19:54+0200\n"
 "Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
 "Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
@@ -12,42 +12,36 @@ msgstr ""
 "X-Poedit-Language: Finnish\n"
 "X-Poedit-Country: Finland\n"
 
-#. Type: boolean
-#. Description
-#: ../templates:2001
-msgid "Commit changed files in /etc to ${VCS}?"
-msgstr "Talletetaanko hakemiston /etc muutetut tiedostot ${VCS}in?"
-
-#. Type: boolean
-#. Description
-#: ../templates:2001
-msgid ""
-"The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to ${VCS} before running APT. Added "
-"and changed files listed below can be committed automatically:"
-msgstr ""
-"Hakemisto /etc sisältää tallettamattomia tiedostoja tai muita muutoksia. On "
-"parasta tallettaa kaikki /etc:n tiedostot ${VCS}-varastoon ennen APTin "
-"ajamista. Alla luetellut lisätyt tai muutetut tiedostot voidaan tallettaa "
-"automaattisesti."
-
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid "Commit failed"
 msgstr "Tallettaminen epäonnistui"
 
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid "An attempt to commit /etc changes to ${VCS} failed."
 msgstr "Yritys tallettaa /etc:n muutokset ${VCS}-varastoon epäonnistui."
 
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
 msgstr ""
 "Voit selvittää tallettamattomien muutosten ongelmat käsin ennen jatkamista."
+
+#~ msgid "Commit changed files in /etc to ${VCS}?"
+#~ msgstr "Talletetaanko hakemiston /etc muutetut tiedostot ${VCS}in?"
+
+#~ msgid ""
+#~ "The /etc directory contains uncommitted files or other changes. It's best "
+#~ "for all files in /etc to be committed to ${VCS} before running APT. Added "
+#~ "and changed files listed below can be committed automatically:"
+#~ msgstr ""
+#~ "Hakemisto /etc sisältää tallettamattomia tiedostoja tai muita muutoksia. "
+#~ "On parasta tallettaa kaikki /etc:n tiedostot ${VCS}-varastoon ennen APTin "
+#~ "ajamista. Alla luetellut lisätyt tai muutetut tiedostot voidaan tallettaa "
+#~ "automaattisesti."

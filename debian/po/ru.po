@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.3\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2008-01-04 18:15-0500\n"
+"POT-Creation-Date: 2008-03-14 01:55-0400\n"
 "PO-Revision-Date: 2007-12-12 21:23+0300\n"
 "Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
@@ -18,42 +18,37 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. Type: boolean
-#. Description
-#: ../templates:2001
-msgid "Commit changed files in /etc to ${VCS}?"
-msgstr "Зафиксировать изменённые файлы /etc в ${VCS}?"
-
-#. Type: boolean
-#. Description
-#: ../templates:2001
-msgid ""
-"The /etc directory contains uncommitted files or other changes. It's best "
-"for all files in /etc to be committed to ${VCS} before running APT. Added "
-"and changed files listed below can be committed automatically:"
-msgstr ""
-"Каталог /etc содержит незафиксированные файлы или другие изменения. Перед "
-"работой APT лучше зафиксировать все файлы /etc в ${VCS}. Перечисленные ниже "
-"добавленные и изменённые файлы могут быть зафиксированы автоматически:"
-
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid "Commit failed"
 msgstr "Фиксация завершилась неудачно"
 
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid "An attempt to commit /etc changes to ${VCS} failed."
 msgstr "Попытка зафиксировать изменения /etc в ${VCS} завершилась неудачно."
 
 #. Type: error
 #. Description
-#: ../templates:3001
+#: ../templates:2001
 msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
 msgstr ""
 "Перед тем как продолжить вы можете исправить это вручную через "
 "незафиксированные изменения."
+
+#~ msgid "Commit changed files in /etc to ${VCS}?"
+#~ msgstr "Зафиксировать изменённые файлы /etc в ${VCS}?"
+
+#~ msgid ""
+#~ "The /etc directory contains uncommitted files or other changes. It's best "
+#~ "for all files in /etc to be committed to ${VCS} before running APT. Added "
+#~ "and changed files listed below can be committed automatically:"
+#~ msgstr ""
+#~ "Каталог /etc содержит незафиксированные файлы или другие изменения. Перед "
+#~ "работой APT лучше зафиксировать все файлы /etc в ${VCS}. Перечисленные "
+#~ "ниже добавленные и изменённые файлы могут быть зафиксированы "
+#~ "автоматически:"
