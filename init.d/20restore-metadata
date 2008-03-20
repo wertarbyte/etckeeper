@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+# Note that metastore doesn't check that the .metastore file only changes
+# perms of files in the current directory. It's ok to trust the .metastore
+# file won't do anything shady, because, as documented, etckeeper-init
+# should only be run on repositories you trust.
+if [ -e .metadata ]; then
+	if which metastore >/dev/null; then
+		metastore --apply --mtime
+	else
+		echo "etckeeper warning: legacy .metastore file is present but metastore is not installed" >&2
+	fi
+fi
