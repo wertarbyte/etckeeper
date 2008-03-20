@@ -28,8 +28,8 @@ generate_metadata() {
 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 		# These version control systems do not track directories,
 		# so empty directories must be stored specially.
-		find $NOVCS -type d -empty | sort | \
-			sed -e "s/^/mkdir -p '/" -e "s/\$/'/"
+		find -type d -empty | grep -v /.git/ | grep -v /.hg/ | grep -v /.bzr/ |
+			sort | sed -e "s/^/mkdir -p '/" -e "s/\$/'/"
 	fi
 
 	# Find all files and directories that don't have root as the owner
