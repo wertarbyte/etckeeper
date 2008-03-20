@@ -6,9 +6,9 @@ set -e
 filter_unknown() {
 	CMD=$1
 	while read line; do
-		if [ "${line:0:8+${#CMD}}" = "$CMD UNKNOWN" ]; then
-			# error message like "Bad owner for ./ppp/peers"
-			echo Bad "$2" for "${line:9+${#CMD}}" >&2
+		# if the first n chars of $line equal "$CMD UNKNOWN "...
+		if [ "$(printf %.$((9+${#CMD}))s "$line")" = "$CMD UNKNOWN " ]; then
+			echo Bad "$2" for "$line" >&2
 		else
 			echo "$line"
 		fi
