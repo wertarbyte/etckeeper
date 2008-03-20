@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-
-# It's ok to trust that the .fix-metadata file won't do anything shady because,
-# as documented, etckeeper-init should only be run on repositories you trust.
-if [ -x .fix-metadata ]; then
-	./.fix-metadata
-fi
