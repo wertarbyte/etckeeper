@@ -2,6 +2,17 @@ etckeeper (0.13) UNRELEASED; urgency=low
 
   * Drop the debconf prompt before committing in pre-install.
     Closes: #470577, #462161
+  * Stop using metastore, instead add shell commands to .etckeeper
+    to handle permissions. Patch by Scott Bronson. The main advantages
+    of this approach are:
+    - .etckeeper uses less disk space than .metadata.
+    - Git diff includes changes to the commands in the file, which is more
+      transparent than a change to the binary .metadata file, and does not
+      produce conflicts during merging.
+    Note that repositories still including .metadata files will be
+    automatically transitioned, and the file removed, and etckeeper init
+    on out a historical version of a repository that still contains .metadata
+    will use it, if metastore is installed.
 
  -- Joey Hess <joeyh@debian.org>  Fri, 14 Mar 2008 01:51:53 -0400
 

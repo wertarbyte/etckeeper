@@ -59,4 +59,10 @@ configure)
 
 		done
 	fi
+	if dpkg --compare-versions "$2" le "0.13"; then
+		mv_conffile "/etc/etckeeper/init.d/10restore-etckeeper" \
+			"/etc/etckeeper/init.d/20restore-etckeeper"
+		mv_conffile "/etc/etckeeper/init.d/20restore-metadata" \
+			"/etc/etckeeper/init.d/10restore-metadata"
+	fi
 esac
