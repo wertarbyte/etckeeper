@@ -12,8 +12,8 @@ etckeeper (0.13) UNRELEASED; urgency=low
     - Revision control directories such as .hg are filtered out.
       Closes: #471371
     Note that repositories still including .metadata files will be
-    automatically transitioned, and the file removed, and etckeeper init
-    on out a historical version of a repository that still contains .metadata
+    automatically transitioned, and the file removed. Also, etckeeper init
+    on a historical version of a repository that still contains .metadata
     will use it, if metastore is installed.
 
  -- Joey Hess <joeyh@debian.org>  Fri, 14 Mar 2008 01:51:53 -0400
