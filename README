@@ -1,11 +1,10 @@
 etckeeper is a collection of tools to let /etc be stored in a git,
-mercurial, or bazaar repository. It hooks into apt to automatically
-commit changes made to /etc during package upgrades.
-It tracks file metadata that git does not normally
-support, but that is important for /etc, such as the permissions of
-`/etc/shadow`. It's quite modular and configurable, while also being
-simple to use if you understand the basics of working with version
-control.
+mercurial, or bazaar repository. It hooks into apt to automatically commit
+changes made to /etc during package upgrades. It tracks file metadata that
+git does not normally support, but that is important for /etc, such as the
+permissions of `/etc/shadow`. It's quite modular and configurable, while
+also being simple to use if you understand the basics of working with
+version control.
 
 ## security warnings
 
@@ -150,10 +149,10 @@ control, the sky's the limit..
 
 The main configuration file is `/etc/etckeeper/etckeeper.conf`
 
-etckeeper uses `run-parts` to run the executable files in
-`/etc/etckeeper/$command.d/`. You can modify these files, or add your own
-custom files. Each individual file is short, simple, and does only one
-action.
+etckeeper runs the executable files in `/etc/etckeeper/$command.d/`. (It
+ignores the same ones that run-parts(1) would ignore.) You can modify these
+files, or add your own custom files. Each individual file is short, simple,
+and does only one action.
 
 For example, here's how to configure it to run `git gc` after each apt run,
 which will save a lot of disk space:
@@ -180,7 +179,7 @@ Two blog posts provided inspiration for techniques used by etckeeper:
 etckeeper does not aim to be a git porcelain with its own set of commands
 for manipulating the /etc repository. Instead, etckeeper provides a simple
 setup procedure and hooks for setting up an /etc repository, and then gets
-out of your way; you manage the repository using regular git commands.
+out of your way; you manage the repository using regular VCS commands.
 
    [2]: http://www.isisetup.ch/
 
