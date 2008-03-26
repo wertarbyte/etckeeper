@@ -1,4 +1,4 @@
-etckeeper (0.13) UNRELEASED; urgency=low
+etckeeper (0.13) unstable; urgency=low
 
   * Drop the debconf prompt before committing in pre-install.
     Closes: #470577, #462161, #471157, #462161
@@ -18,7 +18,7 @@ etckeeper (0.13) UNRELEASED; urgency=low
   * Keep track of what packages change state during an installation,
     and include that in the commit message at the end. Closes: #459384
 
- -- Joey Hess <joeyh@debian.org>  Fri, 14 Mar 2008 01:51:53 -0400
+ -- Joey Hess <joeyh@debian.org>  Tue, 25 Mar 2008 20:53:23 -0400
 
 etckeeper (0.12) unstable; urgency=low
 
