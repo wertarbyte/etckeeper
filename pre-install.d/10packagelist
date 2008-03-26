@@ -1,0 +1,3 @@
+#!/bin/sh
+# This list will be later used when committing.
+etckeeper list-installed > /var/cache/etckeeper/packagelist.pre-install

@@ -15,6 +15,8 @@ etckeeper (0.13) UNRELEASED; urgency=low
     automatically transitioned, and the file removed. Also, etckeeper init
     on a historical version of a repository that still contains .metadata
     will use it, if metastore is installed.
+  * Keep track of what packages change state during an installation,
+    and include that in the commit message at the end. Closes: #459384
 
  -- Joey Hess <joeyh@debian.org>  Fri, 14 Mar 2008 01:51:53 -0400
 

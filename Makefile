@@ -8,13 +8,14 @@ prefix=/usr
 bindir=${prefix}/bin
 etcdir=/etc
 mandir=${prefix}/share/man
+vardir=/var
 
 INSTALL=install 
 INSTALL_EXE=${INSTALL} -D
 INSTALL_DATA=${INSTALL} -m 0644 -D
 
 install:
-	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/
+	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
 	cp -a *.d $(DESTDIR)$(etcdir)/etckeeper/
 	$(INSTALL_DATA) $(CONFFILE) $(DESTDIR)$(etcdir)/etckeeper/etckeeper.conf
 	$(INSTALL_EXE) etckeeper $(DESTDIR)$(bindir)/etckeeper

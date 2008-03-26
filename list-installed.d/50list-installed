@@ -1,0 +1,8 @@
+#!/bin/sh
+# Output to stdout a *sorted* list of all currently installed 
+# (or removed but still with config-files) packages, in the
+# format "package version\n".
+if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
+	dpkg-query -W -f '${Status}\t${Package} ${Version}\n' | \
+		egrep '(ok installed|ok config-files)' | cut -f2,3
+fi
