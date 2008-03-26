@@ -9,7 +9,10 @@ if etckeeper unclean; then
 	message="committing changes in /etc after $HIGHLEVEL_PACKAGE_MANAGER run"
 
 	if [ -e $pl.pre-install ]; then
-		message="$message$NL$(etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | egrep '^[-+]')"
+		diff="$(etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | egrep '^[-+]')"
+		if [ -n "$diff" ]; then
+			message="$message$NL${NL}Package changes:$NL$diff"
+		fi
 		rm -f $pl.pre-install
 	fi
 
