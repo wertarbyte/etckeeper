@@ -24,3 +24,7 @@
 
 * Figure out what packages were acted on, and include that info in the commit
   message
+
+  Done for dpkg, but not for other package managers like rpm.
+
+* bzr: Somehow support etckeeper's pre-commit hook.
