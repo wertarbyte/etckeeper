@@ -10,4 +10,5 @@ elif [ "$VCS" = hg ] && [ ! -e .hg ]; then
 	echo  "description = $(hostname) /etc repository" >> .hg/hgrc
 elif [ "$VCS" = bzr ] && [ ! -e .bzr ]; then
 	bzr init
+	bzr nick "$(hostname) /etc repository"
 fi
