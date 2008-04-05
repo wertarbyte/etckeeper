@@ -11,6 +11,7 @@ Package: etckeeper
 Architecture: all
 Section: admin
 Depends: git-core (>= 1:1.5.4) | mercurial | bzr (>= 1.4~), ${misc:Depends}
+Conflicts: bzr (<< 1.4~)
 Description: store /etc in git, mercurial, or bzr
  The etckeeper program is a tool to let /etc be stored in a git, mercurial,
  or bzr repository. It hooks into APT to automatically commit changes made to
