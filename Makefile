@@ -27,3 +27,4 @@ endif
 ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2)
 	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/pacman-g2/hooks/etckeeper
 endif
+	-./etckeeper-bzr/__init__.py install --root=$(DESTDIR)

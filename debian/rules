@@ -15,6 +15,7 @@ binary-indep: build
 	dh_testroot
 	dh_clean -k
 	$(MAKE) install DESTDIR=debian/etckeeper
+	dh_pysupport
 	dh_installdocs README TODO
 	dh_installexamples
 	dh_installchangelogs
