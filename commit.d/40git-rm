@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-TAB="	"
-
 if [ "$VCS" = git ] && [ -d .git ]; then
 	for file in $(git ls-files --deleted); do
 		if [ ! -d "$file" ]; then 
