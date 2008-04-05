@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+IFS='
+'
+
 if [ "$VCS" = bzr ] && [ -d .bzr ]; then
 	for file in $(bzr deleted); do
 		if [ ! -d "$file" ]; then 

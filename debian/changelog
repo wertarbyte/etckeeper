@@ -2,6 +2,8 @@ etckeeper (0.15) UNRELEASED; urgency=low
 
   * Support for the new bzr pre-commit hook. This requires bzr version 1.4.
     (Jelmer Vernooij)
+  * bzr: Set nickname for tree in init.d/40vcs-init (Daniel Hahler)
+  * Add commit hook script for bzr to add new files (Daniel Hahler)
 
  -- Joey Hess <joeyh@debian.org>  Sat, 05 Apr 2008 14:39:10 -0400
 
