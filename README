@@ -50,10 +50,6 @@ metadata about file owners and permissions into a `/etc/.metadata` file.
 This metadata is stored in version control along with everything else, and
 can be applied if the repo should need to be checked back out.
 
-Warning: bazaar cannot support running etckeeper's pre-commit hook. To
-ensure that all file metadata is stored in bzr, you have to manually
-run "etckeeper pre-commit" before committing to bazaar.
-
 git and mercurial cannot track empty directories, but they can be
 significant sometimes in /etc. So the `pre-commit` hook also stores
 information that can be used to recreate the empty directories in a
