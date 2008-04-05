@@ -26,5 +26,3 @@
   message
 
   Done for dpkg, but not for other package managers like rpm.
-
-* bzr: Somehow support etckeeper's pre-commit hook.
