@@ -9,8 +9,8 @@ from bzrlib.errors import BzrError, NotLocalUrl
 import os
 import subprocess
 
-if bzrlib.version_info[:2] < (1,4):
-    raise "Version of Bazaar to old. Need at least 1.4."
+if not (hasattr(MutableTree, "hooks") and "start_commit" in MutableTree.hooks):
+    raise "Version of Bazaar installed does not support required hooks."
 
 def etckeeper_startcommit_hook(tree):
     if not os.path.exists(tree.abspath(".etckeeper")):
