@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-
-if [ "$VCS" = bzr ] && [ -d .bzr ]; then
-    etckeeper precommit .
-fi
