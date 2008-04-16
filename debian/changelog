@@ -3,6 +3,7 @@ etckeeper (0.14.1) unstable; urgency=low
   * Fix typo in bzr-precommit script. Closes: #473069
     This is an interim fix -- full bzr precommit support has been implemented,
     but the bzr that supports it is not yet released.
+  * Fix handling of files with spaces, by setting IFS to NL.
 
  -- Joey Hess <joeyh@debian.org>  Wed, 16 Apr 2008 19:16:52 -0400
 
