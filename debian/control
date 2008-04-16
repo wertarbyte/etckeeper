@@ -1,7 +1,7 @@
 Source: etckeeper
 Section: admin
 Priority: optional
-Build-Depends: debhelper (>= 5), dpkg-dev (>= 1.9.0), bzr (>= 1.4~), python-support (>= 0.5.3) 
+Build-Depends: debhelper (>= 5), dpkg-dev (>= 1.9.0), bzr, python-support (>= 0.5.3) 
 Maintainer: Joey Hess <joeyh@debian.org>
 Standards-Version: 3.7.3
 Vcs-Git: git://git.kitenet.net/etckeeper
@@ -10,7 +10,7 @@ Homepage: http://kitenet.net/~joey/code/etckeeper/
 Package: etckeeper
 Architecture: all
 Section: admin
-Depends: git-core (>= 1:1.5.4) | mercurial | bzr (>= 1.4~), ${misc:Depends}
+Depends: git-core (>= 1:1.5.4) | mercurial | bzr, ${misc:Depends}
 Conflicts: bzr (<< 1.4~)
 Description: store /etc in git, mercurial, or bzr
  The etckeeper program is a tool to let /etc be stored in a git, mercurial,
