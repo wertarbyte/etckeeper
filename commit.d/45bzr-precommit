@@ -2,5 +2,5 @@
 set -e
 
 if [ "$VCS" = bzr ] && [ -d .bzr ]; then
-    etckeeper precommit .
+    etckeeper pre-commit .
 fi
