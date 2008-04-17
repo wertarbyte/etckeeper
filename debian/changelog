@@ -1,3 +1,9 @@
+etckeeper (0.14.2) unstable; urgency=low
+
+  * Handle nonzero exit status when building package list diff.
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 17 Apr 2008 13:00:29 -0400
+
 etckeeper (0.14.1) unstable; urgency=low
 
   * Fix typo in bzr-precommit script. Closes: #473069
