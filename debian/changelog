@@ -3,6 +3,7 @@ etckeeper (0.15) UNRELEASED; urgency=low
   [ Daniel Hahler ]
   * bzr: Set nickname for tree in init.d/40vcs-init.
   * Add script to add new files during "commit" for bzr (commit.d/30bzr-add).
+    Closes: #477321
   * Fix handling of files with spaces, by setting IFS to "newline" in
     commit.d/40git-rm.
 
