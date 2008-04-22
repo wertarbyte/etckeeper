@@ -64,4 +64,9 @@ install|upgrade)
 			prep_mv_conffile etckeeper "/etc/etckeeper/init.d/$c"
 		done
 	fi
+	if dpkg --compare-versions "$2" le "0.15"; then
+        	for c in 40bzr-rm 45bzr-precommit; do
+			rm_conffile etckeeper "/etc/etckeeper/commit.d/$c"
+		done
+	fi
 esac
