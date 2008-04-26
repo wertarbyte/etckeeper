@@ -12,6 +12,9 @@ etckeeper (0.15) UNRELEASED; urgency=low
     Closes: #473069
   * Remove pointless commit.d/40bzr-rm script. 
 
+  [ Joey Hess ]
+  * debhelper v7; rules file minimisation
+
  -- Jelmer Vernooij <jelmer@samba.org>  Sat, 05 Apr 2008 23:39:11 +0200
 
 etckeeper (0.14.2) unstable; urgency=low

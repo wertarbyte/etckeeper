@@ -1,35 +1,7 @@
 #!/usr/bin/make -f
-
-build:
-	dh_testdir
-
-clean:
-	dh_testdir
-	dh_testroot
-	dh_clean
-
-binary-arch: build
-
-binary-indep: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	$(MAKE) install DESTDIR=debian/etckeeper
-	dh_pysupport
-	dh_installdocs README TODO
-	dh_installexamples
-	dh_installchangelogs
-	dh_compress
-	dh_fixperms
-	dh_installdebconf
-	dh_installdeb
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+%:
+	dh $@
 
 # Not intended for use by anyone except the author.
 announcedir:
 	@echo ${HOME}/src/joeywiki/code/etckeeper/news
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary
