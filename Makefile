@@ -15,7 +15,7 @@ INSTALL_EXE=${INSTALL} -D
 INSTALL_DATA=${INSTALL} -m 0644 -D
 
 build:
-# Nothing need be done to build the package.
+	-./etckeeper-bzr/__init__.py build
 
 install:
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
@@ -31,3 +31,6 @@ ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2)
 	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/pacman-g2/hooks/etckeeper
 endif
 	-./etckeeper-bzr/__init__.py install --root=$(DESTDIR)
+
+clean:
+	rm -rf build
