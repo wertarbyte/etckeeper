@@ -14,6 +14,9 @@ INSTALL=install
 INSTALL_EXE=${INSTALL} -D
 INSTALL_DATA=${INSTALL} -m 0644 -D
 
+build:
+# Nothing need be done to build the package.
+
 install:
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
 	cp -a *.d $(DESTDIR)$(etcdir)/etckeeper/
