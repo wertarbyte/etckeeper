@@ -20,8 +20,12 @@ def etckeeper_startcommit_hook(tree):
     if ret != 0:
         raise BzrError("etckeeper pre-commit failed")
 
-MutableTree.hooks.install_hook('start_commit', etckeeper_startcommit_hook)
-MutableTree.hooks.name_hook(etckeeper_startcommit_hook, "etckeeper")
+install_named_hook = getattr(MutableTree.hooks, 'install_named_hook', None)
+if install_named_hook is not None:
+    install_named_hook('start_commit', etckeeper_startcommit_hook, 'etckeeper')
+else:
+    MutableTree.hooks.install_hook('start_commit', etckeeper_startcommit_hook)
+    MutableTree.hooks.name_hook(etckeeper_startcommit_hook, "etckeeper")
 
 if __name__ == "__main__":
     from distutils.core import setup
