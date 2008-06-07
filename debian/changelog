@@ -1,3 +1,11 @@
+etckeeper (0.16) UNRELEASED; urgency=low
+
+  * Add a AVOID_COMMIT_BEFORE_INSTALL option in the config file to make it
+    easy to configure etckeeper to abort an installation if there are
+    uncommitted changes in /etc. Closes: #478754
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 07 Jun 2008 16:07:09 -0400
+
 etckeeper (0.15) unstable; urgency=low
 
   [ Daniel Hahler ]

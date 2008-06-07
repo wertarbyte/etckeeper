@@ -33,6 +33,9 @@ fi
 if [ ! -z "$LOWLEVEL_PACKAGE_MANAGER" ]; then
 	export LOWLEVEL_PACKAGE_MANAGER
 fi
+if [ ! -z "$AVOID_COMMIT_BEFORE_INSTALL" ]; then
+	export AVOID_COMMIT_BEFORE_INSTALL
+fi
 
 if [ -z "$1" ]; then
 	usage
