@@ -1,8 +1,14 @@
 etckeeper (0.16) UNRELEASED; urgency=low
 
-  * Use new API in bzr plugin.
+  [ Jelmer Vernooij ]
+  * Use new Bazaar API.
 
- -- Jelmer Vernooij <jelmer@samba.org>  Thu, 15 May 2008 19:26:00 +0200
+  [ Joey Hess]
+  * Add a AVOID_COMMIT_BEFORE_INSTALL option in the config file to make it
+    easy to configure etckeeper to abort an installation if there are
+    uncommitted changes in /etc. Closes: #478754
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 07 Jun 2008 16:07:09 -0400
 
 etckeeper (0.15) unstable; urgency=low
 
