@@ -1,3 +1,9 @@
+etckeeper (0.17) unstable; urgency=low
+
+  * Fix backwards test for AVOID_COMMIT_BEFORE_INSTALL. Closes: #486922
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 18 Jun 2008 20:36:52 -0400
+
 etckeeper (0.16) unstable; urgency=low
 
   * Add a AVOID_COMMIT_BEFORE_INSTALL option in the config file to make it
