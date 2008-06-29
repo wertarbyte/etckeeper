@@ -1,3 +1,9 @@
+etckeeper (0.18) UNRELEASED; urgency=low
+
+  * Allow AVOID_COMMIT_BEFORE_INSTALL to be set to zero to disable.
+
+ -- Joey Hess <joeyh@debian.org>  Sun, 29 Jun 2008 12:56:10 -0400
+
 etckeeper (0.17) unstable; urgency=low
 
   * Fix backwards test for AVOID_COMMIT_BEFORE_INSTALL. Closes: #486922

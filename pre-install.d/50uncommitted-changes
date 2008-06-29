@@ -10,7 +10,7 @@ if [ "$1" = "fail-debconf" ]; then
 fi
 
 if etckeeper unclean; then
-	if [ "$AVOID_COMMIT_BEFORE_INSTALL" ]; then
+	if [ "$AVOID_COMMIT_BEFORE_INSTALL" = 1 ]; then
 		echo "" >&2
 		echo "** etckeeper detected uncommitted changes in /etc prior to $HIGHLEVEL_PACKAGE_MANAGER run" >&2 
 		echo "** Aborting $HIGHLEVEL_PACKAGE_MANAGER run. Manually commit and restart." >&2
