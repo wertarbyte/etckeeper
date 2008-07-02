@@ -11,6 +11,9 @@
   Of coure, unless etckeeper is installed by debootstrap or thereabouts,
   you won't have a true pristine origin branch.
 
+  etcgit manages this, maybe steal its method?
+  git://git.debian.org/git/users/jo-guest/etcgit.git
+
 * split the repo
 
   One way to split it would be to put private (non-world-readable) files
