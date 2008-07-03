@@ -1,7 +1,6 @@
 #!/bin/sh
 set -e
 
-
 # Filters out UNKNOWN users and groups, prints a warning on stderr.
 filter_unknown() {
 	CMD=$1
@@ -15,7 +14,6 @@ filter_unknown() {
 	done
 }
 
-
 generate_metadata() {
 	# This function generates the script commands to fix any files
 	# that aren't owner=root, group=root, or mode=0644 or 0755.
@@ -24,6 +22,10 @@ generate_metadata() {
 	# We maintain the permissions on the directory containing VCS data
 	# but we want find to ignore the VCS files themselves.
 	NOVCS='. -wholename ./.git -prune -o -wholename ./.bzr -prune -o -wholename ./.hg -prune -o'
+
+	# Keep the sort order the same at all times.
+	LC_COLLATE=C
+	export LC_COLLATE
 
 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 		# These version control systems do not track directories,
@@ -51,7 +53,6 @@ generate_metadata() {
 	# We don't handle xattrs.
 	# Maybe check for getfattr/setfattr and use them if they're available?
 }
-
 
 if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ]; then
 	if [ -f .metadata ]; then
