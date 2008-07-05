@@ -2,7 +2,7 @@
 set -e
 
 if [ "$VCS" = git ]; then
-	[ -d .git ] && [ -n "`git-ls-files --modified --deleted --others --exclude-standard`" ]
+	[ -d .git ] && [ -n "`git ls-files --modified --deleted --others --exclude-standard`" ]
 elif [ "$VCS" = hg ]; then
 	[ -d .hg ] && ! hg status 2>&1 | wc -l | grep -q "^0$"
 elif [ "$VCS" = bzr ]; then
