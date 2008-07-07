@@ -1,4 +1,23 @@
-etckeeper (0.16) UNRELEASED; urgency=low
+etckeeper (0.19) unstable; urgency=low
+
+  * Patch from Miklos Vajna to fix one more git- command that crept in.
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 05 Jul 2008 08:34:22 -0400
+
+etckeeper (0.18) unstable; urgency=low
+
+  * Allow AVOID_COMMIT_BEFORE_INSTALL to be set to zero to disable.
+  * Don't allow LC_COLLATE to reorder the .etckeeper file. Closes: #489057
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 03 Jul 2008 00:47:40 -0400
+
+etckeeper (0.17) unstable; urgency=low
+
+  * Fix backwards test for AVOID_COMMIT_BEFORE_INSTALL. Closes: #486922
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 18 Jun 2008 20:36:52 -0400
+
+etckeeper (0.16) unstable; urgency=low
 
   [ Jelmer Vernooij ]
   * Use new Bazaar API.
@@ -8,7 +27,7 @@ etckeeper (0.16) UNRELEASED; urgency=low
     easy to configure etckeeper to abort an installation if there are
     uncommitted changes in /etc. Closes: #478754
 
- -- Joey Hess <joeyh@debian.org>  Sat, 07 Jun 2008 16:07:09 -0400
+ -- Joey Hess <joeyh@debian.org>  Mon, 16 Jun 2008 19:21:16 -0400
 
 etckeeper (0.15) unstable; urgency=low
 
