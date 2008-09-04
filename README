@@ -107,7 +107,7 @@ installing or upgrading packages will automatically be committed. Here
 
 You can use any git commands you like, but do keep in mind that, if you
 check out a different branch or an old version, git is operating directly
-on your system's /etc. But if you do decide to check out a branch or tag,
+on your system's /etc. If you do decide to check out a branch or tag,
 make sure you run "etckeeper init" again, to get any metadata changes:
 
 	git checkout april_first_joke_etc
@@ -135,11 +135,35 @@ transport like ssh, and only to a server you trust.)
 	ssh server 'mkdir /etc-clone; cd /etc-clone; chmod 700 .; git init'
 	git push ssh://server/etc-clone master
 
-Of course, it's also possible to pull changes from a server onto client
-machines, to deploy changes to /etc. You might even set up branches for
-each machine and merge changes between them. Once /etc is under version
-control, the sky's the limit..
+If you have several machine's using etckeeper, you can start with a
+etckeeper repository on one machine, then add another machine's etckeeper
+repository as a git remote. Then you can diff against it, examine its
+history, merge with it, and so on. It would probably not, however, be wise
+to "git checkout" the other machine's branch! (And if you do, make sure to
+run "etckeeper init" to update file permissions.)
+        
+	root@kodama:/etc>git remote add dodo ssh://dodo/etc
+	root@kodama:/etc>git fetch dodo
+	root@kodama:/etc>git diff dodo/master group |head
+	diff --git a/group b/group
+	index 0242b84..b5e4384 100644
+	--- a/group
+	+++ b/group
+	@@ -5,21 +5,21 @@ sys:x:3:
+	adm:x:4:joey
+	tty:x:5:
+	disk:x:6:
+	-lp:x:7:cupsys
+	+lp:x:7:
 
+Incidentially, this also means I have a backup of dodo's /etc on kodama.
+So if kodama is compromised, that data could be used to attack dodo
+too. On the other hand, if dodo's disk dies, I can restore it from this
+handy hackup.
+
+Of course, it's also possible to pull changes from a server onto client
+machines, to deploy changes to /etc. Once /etc is under version control, the
+sky's the limit..
 
 ## configuration
 
