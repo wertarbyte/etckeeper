@@ -1,4 +1,4 @@
-etckeeper (0.21) UNRELEASED; urgency=low
+etckeeper (0.21) unstable; urgency=low
 
   * Swedish debconf translation from Martin Ågren. Closes: #492063
   * Make etckeeper init -d set up commit hooks that call etckeeper -d.
@@ -7,7 +7,7 @@ etckeeper (0.21) UNRELEASED; urgency=low
     -d.)
     Thanks, Wolfgang Karall.
 
- -- Joey Hess <joeyh@debian.org>  Wed, 23 Jul 2008 13:13:57 -0400
+ -- Joey Hess <joeyh@debian.org>  Thu, 11 Sep 2008 16:41:16 -0400
 
 etckeeper (0.20) unstable; urgency=low
 
