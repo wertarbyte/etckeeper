@@ -15,7 +15,7 @@ INSTALL_EXE=${INSTALL} -D
 INSTALL_DATA=${INSTALL} -m 0644 -D
 
 build:
-	-./etckeeper-bzr/__init__.py build
+	-./etckeeper-bzr/__init__.py build || echo "** bzr support not built"
 
 install:
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
@@ -30,7 +30,8 @@ endif
 ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2)
 	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/pacman-g2/hooks/etckeeper
 endif
-	-./etckeeper-bzr/__init__.py install --root=$(DESTDIR)
+	-./etckeeper-bzr/__init__.py install --root=$(DESTDIR) || echo "** bzr support not installed"
+	echo "** installation successful"
 
 clean:
 	rm -rf build
