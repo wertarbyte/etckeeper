@@ -1,6 +1,11 @@
 etckeeper (0.21) UNRELEASED; urgency=low
 
   * Swedish debconf translation from Martin Ågren. Closes: #492063
+  * Make etckeeper init -d set up commit hooks that call etckeeper -d.
+    (Note that if you've relied on it setting up such commit hooks for a repo
+    outside of /etc already, it created broken ones that need to be fixed to use
+    -d.)
+    Thanks, Wolfgang Karall.
 
  -- Joey Hess <joeyh@debian.org>  Wed, 23 Jul 2008 13:13:57 -0400
 

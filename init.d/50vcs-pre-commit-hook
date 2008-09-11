@@ -5,27 +5,27 @@ case "$VCS" in
 	git)
 		if [ -x .git/hooks/pre-commit ]; then
 			if ! grep -q "etckeeper pre-commit" .git/hooks/pre-commit; then
-				echo "etckeeper warning: .git/hooks/pre-commit needs to be manually modified to run: etckeeper pre-commit `pwd`" >&2
+				echo "etckeeper warning: .git/hooks/pre-commit needs to be manually modified to run: etckeeper pre-commit -d `pwd`" >&2
 			fi
 		else
 			cat >.git/hooks/pre-commit <<EOF
 #!/bin/sh
 # pre-commit hook for etckeeper, to store metadata and do sanity checks
 set -e
-etckeeper pre-commit `pwd`
+etckeeper pre-commit -d `pwd`
 EOF
 		chmod +x .git/hooks/pre-commit
 		fi
 	;;
 	hg)
 		if [ -e .hg/hgrc ] && grep "^\[hooks\]" .hg/hgrc; then
-			echo "etckeeper warning: [hooks] section in .hg/hgrc needs to be manually modified to run: etckeeper pre-commit `pwd`" >&2
+			echo "etckeeper warning: [hooks] section in .hg/hgrc needs to be manually modified to run: etckeeper pre-commit -d `pwd`" >&2
 		else
 		touch .hg/hgrc
 		cat >>.hg/hgrc <<EOF
 [hooks]
 # pre-commit hook for etckeeper, to store metadata and do sanity checks
-precommit = etckeeper pre-commit `pwd`
+precommit = etckeeper pre-commit -d `pwd`
 EOF
 		fi
 	;;
