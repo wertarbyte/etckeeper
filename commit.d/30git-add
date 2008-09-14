@@ -2,7 +2,7 @@
 set -e
 
 if [ "$VCS" = git ] && [ -d .git ]; then
-	if ! git add .; then
-		echo "etckeeper warning: git add failed" >&2
+	if ! git add --all; then
+		echo "etckeeper warning: git add --all" >&2
 	fi
 fi
