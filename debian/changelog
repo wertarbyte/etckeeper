@@ -1,3 +1,9 @@
+etckeeper (0.22) UNRELEASED; urgency=low
+
+  * Use new git add -A from git 1.6.0 (Miklos Vajna)
+
+ -- Joey Hess <joeyh@debian.org>  Sun, 14 Sep 2008 18:46:08 -0400
+
 etckeeper (0.21) unstable; urgency=low
 
   * Swedish debconf translation from Martin Ågren. Closes: #492063
