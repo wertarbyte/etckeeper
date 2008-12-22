@@ -84,6 +84,7 @@ the right files, and none of the wrong files. And you can edit the
 `.gitignore` and so forth. Once you're ready, it's time to commit:
 
 	cd /etc
+	git status
 	git commit -m "initial checkin"
 	git gc # pack git repo to save a lot of space
 

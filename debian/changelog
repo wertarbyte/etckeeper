@@ -2,6 +2,7 @@ etckeeper (0.22) UNRELEASED; urgency=low
 
   * Move etckeeper to sbin, and man page to section 8, since only an admin
     can really use etckeeper.
+  * Mention README file from man page.
 
  -- Joey Hess <joeyh@debian.org>  Mon, 22 Dec 2008 16:11:38 -0500
 
