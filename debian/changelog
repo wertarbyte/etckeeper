@@ -1,3 +1,10 @@
+etckeeper (0.22) UNRELEASED; urgency=low
+
+  * Move etckeeper to sbin, and man page to section 8, since only an admin
+    can really use etckeeper.
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 22 Dec 2008 16:11:38 -0500
+
 etckeeper (0.21) unstable; urgency=low
 
   * Swedish debconf translation from Martin Ågren. Closes: #492063
