@@ -1,4 +1,4 @@
-etckeeper (0.22) UNRELEASED; urgency=low
+etckeeper (0.22) unstable; urgency=low
 
   * Move etckeeper to sbin, and man page to section 8, since only an admin
     can really use etckeeper. Closes: #509152
@@ -6,7 +6,7 @@ etckeeper (0.22) UNRELEASED; urgency=low
   * Build using python-central. For some reason bzr does not pick up on
     plugins built using python-support.
 
- -- Joey Hess <joeyh@debian.org>  Mon, 22 Dec 2008 16:11:38 -0500
+ -- Joey Hess <joeyh@debian.org>  Tue, 23 Dec 2008 18:51:14 -0500
 
 etckeeper (0.21) unstable; urgency=low
 
