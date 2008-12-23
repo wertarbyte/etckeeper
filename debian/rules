@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 %:
-	dh $@
+	dh --with python-central $@
 
 # Not intended for use by anyone except the author.
 announcedir:
