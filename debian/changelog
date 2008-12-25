@@ -1,8 +1,8 @@
-etckeeper (0.23) UNRELEASED; urgency=low
+etckeeper (0.23) unstable; urgency=low
 
   * Fix hook scripts to use new etckeeper path. Closes: #509742
 
- -- Joey Hess <joeyh@debian.org>  Thu, 25 Dec 2008 16:24:42 -0500
+ -- Joey Hess <joeyh@debian.org>  Thu, 25 Dec 2008 16:25:25 -0500
 
 etckeeper (0.22) unstable; urgency=low
 
