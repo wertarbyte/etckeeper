@@ -1,6 +1,17 @@
 #!/bin/sh
 set -e
 
+# Used by .etckeeper to run a command if the file it acts on
+# (the last parameter) exists.
+maybe () {
+	command="$1"
+	shift 1
+
+	if [ -e "$(eval echo \$$#)" ]; then
+		"$command" "$@"
+	fi
+}
+
 # Yes, this runs code from the repository. As documented, etckeeper-init
 # should only be run on repositories you trust.
 if [ -e .etckeeper ]; then

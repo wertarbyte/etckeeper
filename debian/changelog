@@ -1,3 +1,10 @@
+etckeeper (0.24) UNRELEASED; urgency=low
+
+  * Make .etckeeper test that files actually exist
+    before acting on them. Closes: #509888
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 27 Dec 2008 14:27:43 -0500
+
 etckeeper (0.23) unstable; urgency=low
 
   * Fix hook scripts to use new etckeeper path. Closes: #509742
