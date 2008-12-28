@@ -7,7 +7,7 @@ maybe () {
 	command="$1"
 	shift 1
 
-	if [ -e "$(eval echo \$$#)" ]; then
+	if eval [ -e "\$$#" ]; then
 		"$command" "$@"
 	fi
 }
