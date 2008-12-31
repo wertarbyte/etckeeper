@@ -39,10 +39,10 @@ generate_metadata() {
 
 	# Find all files and directories that don't have root as the owner
 	find $NOVCS \! -user root -exec stat --format="maybe chown %U '{}'" {} \; \
-		| sort | filter_unknown maybe chown owner
+		| sort | filter_unknown 'maybe chown' owner
 	# Find all files and directories that don't have root as the group
 	find $NOVCS \! -group root -exec stat --format="maybe chgrp %G '{}'" {} \; \
-		| sort | filter_unknown maybe chgrp group
+		| sort | filter_unknown 'maybe chgrp' group
 
 	# Find all directories that aren't 0755
 	find $NOVCS -type d \! -perm 0755 \

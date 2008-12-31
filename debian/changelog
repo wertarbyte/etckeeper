@@ -1,3 +1,9 @@
+etckeeper (0.25) unstable; urgency=low
+
+  * Fix filter_unknown calls. Closes: 509888
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 31 Dec 2008 13:01:31 -0500
+
 etckeeper (0.24) unstable; urgency=low
 
   * Make .etckeeper test that files actually exist
