@@ -1,8 +1,11 @@
-etckeeper (0.26) UNRELEASED; urgency=low
+etckeeper (0.26) unstable; urgency=low
 
   * Add Japanese debconf translation. Closes: #512869
+  * Prevent git from removing a directory when the last file in it
+    has been removed, but the directory is left existing and empty,
+    by touching a flag file before calling git rm. Closes: 513006
 
- -- Joey Hess <joeyh@debian.org>  Sat, 24 Jan 2009 12:35:29 -0500
+ -- Joey Hess <joeyh@debian.org>  Sun, 25 Jan 2009 13:55:56 -0500
 
 etckeeper (0.25) unstable; urgency=low
 

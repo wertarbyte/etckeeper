@@ -6,8 +6,22 @@ IFS='
 
 if [ "$VCS" = git ] && [ -d .git ]; then
 	for file in $(git ls-files --deleted); do
-		if [ ! -d "$file" ]; then 
+		if [ ! -d "$file" ]; then
+			# git removes directories when the last file
+			# in them is removed, but empty directories
+			# may be significant in /etc. Touch a flag file
+			# to prevent git from removing the directory.
+			dir="$(dirname "$file")"
+			flagfile=""
+			if [ -d "$dir" ] && 
+			   [ -n "$(find "$dir" -maxdepth 0 -empty)" ]; then
+				flagfile="$dir/.etckeeper-keep-empty"
+				touch "$flagfile"
+			fi
 			git rm --quiet "$file"
+			if [ -n "$flagfile" ]; then
+				rm -f "$flagfile"
+			fi
 		fi
 	done
 fi
