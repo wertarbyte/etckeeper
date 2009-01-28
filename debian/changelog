@@ -1,3 +1,10 @@
+etckeeper (0.27) UNRELEASED; urgency=low
+
+  * Use SUDO_USER as the committer if set. Closes: #498739
+    (Thierry Carrez)
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 28 Jan 2009 13:35:16 -0500
+
 etckeeper (0.26) unstable; urgency=low
 
   * Add Japanese debconf translation. Closes: #512869
