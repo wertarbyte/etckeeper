@@ -13,10 +13,11 @@ if not (hasattr(MutableTree, "hooks") and "start_commit" in MutableTree.hooks):
     raise "Version of Bazaar installed does not support required hooks."
 
 def etckeeper_startcommit_hook(tree):
-    if not os.path.exists(tree.abspath(".etckeeper")):
+    abspath = getattr(tree, "abspath", None)
+    if abspath is None or not os.path.exists(abspath(".etckeeper")):
         # Only run the commit hook when this is an etckeeper branch
         return
-    ret = subprocess.call(["etckeeper", "pre-commit", tree.abspath(".")])
+    ret = subprocess.call(["etckeeper", "pre-commit", abspath(".")])
     if ret != 0:
         raise BzrError("etckeeper pre-commit failed")
 
