@@ -1,9 +1,11 @@
-etckeeper (0.27) UNRELEASED; urgency=low
+etckeeper (0.27) unstable; urgency=low
 
   * Use SUDO_USER as the committer if set. Closes: #498739
     (Thierry Carrez)
+  * bzr: Avoid use of etckeeper pre-commit on Trees not on the
+    filesystem. (Jelmer Vernooij)
 
- -- Joey Hess <joeyh@debian.org>  Wed, 28 Jan 2009 13:35:16 -0500
+ -- Joey Hess <joeyh@debian.org>  Sun, 01 Feb 2009 17:20:11 -0500
 
 etckeeper (0.26) unstable; urgency=low
 
