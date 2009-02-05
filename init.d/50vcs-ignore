@@ -81,9 +81,6 @@ elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" ]; then
 	nl
 fi
 
-ignore "*~"
-nl
-
 comment "mount(8) records system state here, no need to store these"
 ignore blkid.tab
 ignore blkid.tab.old
@@ -97,4 +94,8 @@ ignore .pwd.lock
 ignore network/run
 ignore adjtime
 ignore lvm/cache
+nl
+
+comment "editor backup files"
+ignore "*~"
 nl
