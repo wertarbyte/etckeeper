@@ -1,10 +1,10 @@
 etckeeper is a collection of tools to let /etc be stored in a git,
-mercurial, or bazaar repository. It hooks into apt to automatically commit
-changes made to /etc during package upgrades. It tracks file metadata that
-git does not normally support, but that is important for /etc, such as the
-permissions of `/etc/shadow`. It's quite modular and configurable, while
-also being simple to use if you understand the basics of working with
-version control.
+mercurial, bazaar or darcs repository. It hooks into apt to automatically
+commit changes made to /etc during package upgrades. It tracks file
+metadata that git does not normally support, but that is important for
+/etc, such as the permissions of `/etc/shadow`. It's quite modular and
+configurable, while also being simple to use if you understand the basics
+of working with version control.
 
 ## security warnings
 
@@ -44,22 +44,25 @@ storage, empty directories, and special files.
 
 Most VCS, including git, mercurial and bazaar have only limited tracking of
 file metadata, being able to track the executable bit, but not other
-permissions or owner info. So file metadata storage is stored separately.
-Among other chores, `etckeeper init` sets up a `pre-commit` hook that stores
-metadata about file owners and permissions into a `/etc/.metadata` file.
-This metadata is stored in version control along with everything else, and
-can be applied if the repo should need to be checked back out.
+permissions or owner info. (darcs doesn't even track executable bits.) So
+file metadata storage is stored separately. Among other chores, `etckeeper
+init` sets up a `pre-commit` hook that stores metadata about file owners
+and permissions into a `/etc/.metadata` file. This metadata is stored in
+version control along with everything else, and can be applied if the repo
+should need to be checked back out.
 
 git and mercurial cannot track empty directories, but they can be
 significant sometimes in /etc. So the `pre-commit` hook also stores
 information that can be used to recreate the empty directories in a
 `/etc/.etckeeper` file.
 
-Most VCS, including git, mercurial, and bazaar don't support several
-special files that you _probably_ won't have in /etc, such as unix
-sockets, named pipes, hardlinked files (but softlinks are fine), and
-device files. The `pre-commit` hook will warn if your /etc contains
-such special files.
+Most VCS don't support several special files that you _probably_ won't have
+in /etc, such as unix sockets, named pipes, hardlinked files (but symlinks
+are fine), and device files. The `pre-commit` hook will warn if your /etc
+contains such special files.
+
+Darcs doesn't support symlinks, so they are also stored in
+`/etc/.etckeeper`.
 
 
 ## tutorial
@@ -68,7 +71,7 @@ A quick walkthrough of using etckeeper.
 
 First, edit `/etc/etckeeper/etckeeper.conf` to select which version control
 system to use. The default is git, and this tutorial assumes you're using
-it. Mercurial and bazaar are similar.
+it. Using other VCSes should be broadly similar.
 
 The `etckeeper init` command initialises an /etc/.git/ repository. This
 command is careful to never overwrite existing files or directories in
