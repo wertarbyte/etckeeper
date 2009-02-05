@@ -37,11 +37,11 @@ generate_metadata() {
 			sort | sed -e "s/^/mkdir -p '/" -e "s/\$/'/"
 	fi
 
-	# Find all files and directories that don't have root as the owner
-	find $NOVCS \! -user root -exec stat --format="maybe chown %U '{}'" {} \; \
+	# Find all files and directories that don't have the current user as the owner
+	find $NOVCS \! -user "$USER" -exec stat --format="maybe chown %U '{}'" {} \; \
 		| sort | filter_unknown 'maybe chown' owner
 	# Find all files and directories that don't have root as the group
-	find $NOVCS \! -group root -exec stat --format="maybe chgrp %G '{}'" {} \; \
+	find $NOVCS \! -group $(id -g) -exec stat --format="maybe chgrp %G '{}'" {} \; \
 		| sort | filter_unknown 'maybe chgrp' group
 
 	# Find all directories that aren't 0755
