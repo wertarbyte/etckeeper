@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = darcs ] && [ -d _darcs ]; then
+	rc=0
+	res=$( darcs add -qr . 2>&1 ) || rc=$?
+	if test $rc -ne 0; then
+		if ! test $rc -eq 2 -a "${res%No files were added}" != "$res"; then
+			printf "%s" "$res"
+			echo "etckeeper warning: darcs add failed" >&2
+		fi
+	fi
+	unset rc res
+fi

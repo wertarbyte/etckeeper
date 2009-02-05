@@ -7,4 +7,6 @@ elif [ "$VCS" = hg ]; then
 	[ -d .hg ] && ! hg status 2>&1 | wc -l | grep -q "^0$"
 elif [ "$VCS" = bzr ]; then
 	[ -d .bzr ] && ! bzr status 2>/dev/null | wc -l | grep -q "^0$"
+elif [ "$VCS" = darcs ]; then
+	[ -d _darcs ] && darcs whatsnew -l >/dev/null
 fi

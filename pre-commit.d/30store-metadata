@@ -14,6 +14,28 @@ filter_unknown() {
 	done
 }
 
+filter_ignore() {
+	if [ "$VCS" = darcs ]; then
+		ignorefile=.darcsignore
+	fi
+
+	if [ "$VCS" = darcs ] && [ -e "$ignorefile" ]; then
+		# Spaces embedded into patterns would break it.
+		# But really, why would anyone want to use ' ' instead of '\s' ?
+		#patterns=$( grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" | xargs -n 1 printf " -e %s" )
+		#grep -Ev $patterns
+		#unset patterns
+		# Alternative using a temp file
+		patternsfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
+		grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$patternsfile" || true
+		grep -Evf "$patternsfile"
+		rm -f "$patternsfile"
+		unset patternsfile
+	else
+		cat -
+	fi
+}
+
 generate_metadata() {
 	# This function generates the script commands to fix any files
 	# that aren't owner=root, group=root, or mode=0644 or 0755.
@@ -24,7 +46,11 @@ generate_metadata() {
 
 	# We maintain the permissions on the directory containing VCS data
 	# but we want find to ignore the VCS files themselves.
-	NOVCS='. -wholename ./.git -prune -o -wholename ./.bzr -prune -o -wholename ./.hg -prune -o'
+	# 
+	# (Note that when using this, the find expression must end with 
+	# -print or -exec, else the excluded directories will actually be
+	# printed!)
+	NOVCS='. -wholename ./.git -prune -o -wholename ./.bzr -prune -o -wholename ./.hg -prune -o -wholename ./_darcs -prune -o'
 
 	# Keep the sort order the same at all times.
 	LC_COLLATE=C
@@ -33,8 +59,17 @@ generate_metadata() {
 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 		# These version control systems do not track directories,
 		# so empty directories must be stored specially.
-		find -type d -empty | grep -v /.git/ | grep -v /.hg/ | grep -v /.bzr/ |
+		find $NOVCS -type d -empty -print |
 			sort | sed -e "s/^/mkdir -p '/" -e "s/\$/'/"
+	fi
+
+	if [ "$VCS" = darcs ]; then
+		# This version control system does not track symlinks,
+		# so they must be stored specially.
+		find $NOVCS -type l -print | sort | filter_ignore | while read link; do
+			dest=$( readlink "$link" )
+			printf "ln -sf '%s' '%s'\n" "$dest" "$link"
+		done
 	fi
 
 	# Find all files and directories that don't have the current user as the owner
@@ -48,16 +83,23 @@ generate_metadata() {
 	find $NOVCS -type d \! -perm 0755 \
 		-exec stat --format="maybe chmod %a '{}'" {} \; | sort
 
-	# Find all files that aren't 0644 or 0755 (we can assume the VCS will
-	# maintain the executable bit).
-	find $NOVCS -type f \! -perm 0644 \! -perm 0755 \
-		-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+	if [ "$VCS" = darcs ]; then
+		# Find all files that aren't 0644 (darcs doesn't maintain
+		# the executable bit).
+		find $NOVCS -type f \! -perm 0644 \
+			-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+	else
+		# Find all files that aren't 0644 or 0755 (we can assume the VCS will
+		# maintain the executable bit).
+		find $NOVCS -type f \! -perm 0644 \! -perm 0755 \
+			-exec stat --format="maybe chmod %a '{}'" {} \; | sort
+	fi
 
 	# We don't handle xattrs.
 	# Maybe check for getfattr/setfattr and use them if they're available?
 }
 
-if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ]; then
+if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then
 	if [ -f .metadata ]; then
 		# remove obsolete .metadata file
 		# git allows fully deleting it at this point, other VCS
@@ -83,6 +125,6 @@ if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ]; then
 		# this will do nothing if the metadata file is unchanged.
 		git add .etckeeper
 	fi
-	# hg and bzr add not done, they will automatically
+	# hg, bzr and darcs add not done, they will automatically
 	# include the file in the current commit
 fi

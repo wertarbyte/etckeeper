@@ -11,14 +11,14 @@ Homepage: http://kitenet.net/~joey/code/etckeeper/
 Package: etckeeper
 Architecture: all
 Section: admin
-Depends: git-core (>= 1:1.5.4) | mercurial | bzr (>= 1.4~), ${misc:Depends}
+Depends: git-core (>= 1:1.5.4) | mercurial | bzr (>= 1.4~) | darcs, ${misc:Depends}
 Conflicts: bzr (<< 1.4~)
 XB-Python-Version: ${python:Versions}
-Description: store /etc in git, mercurial, or bzr
+Description: store /etc in git, mercurial, bzr or darcs
  The etckeeper program is a tool to let /etc be stored in a git, mercurial,
- or bzr repository. It hooks into APT to automatically commit changes made to
- /etc during package upgrades. It tracks file metadata that
- version control systems do not normally support, but that is important for
- /etc, such as the permissions of /etc/shadow. It's quite modular and
- configurable, while also being simple to use if you understand the basics of
- working with version control.
+ bzr or darcs repository. It hooks into APT to automatically commit changes
+ made to /etc during package upgrades. It tracks file metadata that version
+ control systems do not normally support, but that is important for /etc, such
+ as the permissions of /etc/shadow. It's quite modular and configurable, while
+ also being simple to use if you understand the basics of working with version
+ control.

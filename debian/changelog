@@ -1,3 +1,9 @@
+etckeeper (0.28) UNRELEASED; urgency=low
+
+  * Support darcs. Thanks to Gian Piero Carrubba. Closes: #510032
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 04 Feb 2009 21:44:40 -0500
+
 etckeeper (0.27) unstable; urgency=low
 
   * Use SUDO_USER as the committer if set. Closes: #498739

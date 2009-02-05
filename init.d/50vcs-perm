@@ -7,4 +7,6 @@ elif [ "$VCS" = hg ]; then
 	chmod 700 .hg
 elif [ "$VCS" = bzr ]; then
 	chmod 700 .bzr
+elif [ "$VCS" = darcs ]; then
+	chmod 700 _darcs
 fi

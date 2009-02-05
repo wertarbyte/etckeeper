@@ -7,6 +7,8 @@ elif [ "$VCS" = hg ] && [ ! -e .hgignore ]; then
 	file=.hgignore
 elif [ "$VCS" = bzr ] && [ ! -e .bzrignore ]; then
 	file=.bzrignore
+elif [ "$VCS" = darcs ] && [ ! -e .darcsignore ]; then
+	file=.darcsignore
 fi
 
 if [ -z "$file" ] || [ -e "$file" ]; then
@@ -40,8 +42,28 @@ ignore() {
 			fi
 			echo "$glob" >> $file
 		;;
+		darcs)
+			# darcs doesn't understand globs, so we need to translate
+			# them into regexs. Not a complete converter, but suitable
+			# for given globs.
+			if [ "${glob%\*}" != "$glob" ]; then
+				glob="${glob%\*}"
+			else
+				glob="$glob"'($|/)'
+			fi
+			if [ "${glob#\*}" != "$glob" ]; then
+				glob="${glob#\*}"
+			else
+				glob='(^|/)'"$glob"
+			fi
+			glob="$( printf %s $glob | sed -e 's/\./\\./g;s/\*/[^\/]*/g;' )"
+			echo "$glob" >> $file
 	esac
 }
+
+if [ "$VCS" = darcs ]; then
+	darcs setpref boringfile .darcsignore
+fi
 
 if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
 	comment "new and old versions of conffiles, stored by dpkg"

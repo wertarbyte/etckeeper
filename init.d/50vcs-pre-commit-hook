@@ -29,4 +29,19 @@ precommit = etckeeper pre-commit -d `pwd`
 EOF
 		fi
 	;;
+	darcs)
+		if [ -e _darcs/prefs/defaults ]; then
+			if ! ( grep -q "record prehook etckeeper pre-commit" _darcs/prefs/defaults &&
+				grep -q "whatsnew prehook etckeeper pre-commit" _darcs/prefs/defaults ); then
+				echo "etckeeper warning: _darcs/prefs/defaults needs to be manually modified to run: etckeeper pre-commit -d `pwd`" >&2
+			fi
+		else
+			cat >_darcs/prefs/defaults <<EOF
+record prehook etckeeper pre-commit -d `pwd`
+record run-prehook
+whatsnew prehook etckeeper pre-commit -d `pwd`
+whatsnew run-prehook
+EOF
+		fi
+	;;
 esac

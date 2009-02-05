@@ -11,4 +11,7 @@ elif [ "$VCS" = hg ] && [ ! -e .hg ]; then
 elif [ "$VCS" = bzr ] && [ ! -e .bzr ]; then
 	bzr init
 	bzr nick "$(hostname) /etc repository"
+elif [ "$VCS" = darcs ] && [ ! -e _darcs ]; then
+	darcs initialize
+	echo "$(hostname) /etc repository" > _darcs/prefs/motd
 fi

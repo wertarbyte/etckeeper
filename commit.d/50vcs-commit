@@ -32,4 +32,10 @@ elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
 	else
 		bzr commit $BZR_COMMIT_OPTIONS
 	fi
+elif [ "$VCS" = darcs ] && [ -d _darcs ]; then
+	logfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
+	printf "%b" "$message" > "$logfile"
+	darcs record $DARCS_COMMIT_OPTIONS --logfile="$logfile"
+	rm -f "$logfile"
+	unset logfile
 fi

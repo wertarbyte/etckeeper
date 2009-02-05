@@ -1,0 +1,48 @@
+#!/bin/sh
+set -e
+
+filter_ignore() {
+	if [ "$VCS" = darcs ]; then
+		ignorefile=.darcsignore
+	fi
+
+	if [ "$VCS" = darcs ] && [ -e "$ignorefile" ]; then
+		# Spaces embedded into patterns would break it.
+		# But really, why would anyone want to use ' ' instead of '\s' ?
+		#patterns=$( grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" | xargs -n 1 printf " -e %s" )
+		#grep -Ev $patterns
+		#unset patterns
+		# Alternative using a temp file
+		patternsfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
+		grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$patternsfile" || true
+		grep -Evf "$patternsfile"
+		rm -f "$patternsfile"
+		unset patternsfile
+	else
+		cat -
+	fi
+}
+
+
+if [ "$VCS" = darcs ];then
+	NOVCS='. -wholename ./.git -prune -o -wholename ./.bzr -prune -o -wholename ./.hg -prune -o -wholename ./_darcs -prune -o'
+
+	# We assume that if .etckeeper is empty this is the first run
+	if [ -s .etckeeper ]; then
+		linksindex="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
+		grep '^ln -s' .etckeeper | while IFS="'" read n n n link n; do
+			printf "%s\n" "$link" >> "$linksindex"
+		done
+
+		# Warn about symbolic links that shouldn't exist
+		if links=$( find $NOVCS -type l -print | filter_ignore | grep -vFf "$linksindex" ); then
+			printf "%s\n%s\n" \
+				"The following symbolic links should not exist:" \
+				"$links" >&2
+		fi
+
+		rm -f "$linksindex"
+		unset links linksindex
+	fi
+
+fi

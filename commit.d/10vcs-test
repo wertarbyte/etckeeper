@@ -12,4 +12,6 @@ elif [ "$VCS" = hg ] && [ ! -d .hg ]; then
 	not_enabled_warning
 elif [ "$VCS" = bzr ] && [ ! -d .bzr ]; then
 	not_enabled_warning
+elif [ "$VCS" = darcs ] && [ ! -d _darcs ]; then
+	not_enabled_warning
 fi

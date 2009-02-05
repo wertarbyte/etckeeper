@@ -13,4 +13,15 @@ elif [ "$VCS" = bzr ]; then
 	if ! bzr add .; then
 		echo "etckeeper warning: bzr add failed" >&2
 	fi
+elif [ "$VCS" = darcs ]; then
+	# Don't warn if all the files were already added.
+	rc=0
+	res=$( darcs add -qr . 2>&1 ) || rc=$?
+	if test $rc -ne 0; then
+		if ! test $rc -eq 2 -a "${res%No files were added}" != "$res"; then
+			printf "%s" "$res"
+			echo "etckeeper warning: darcs add failed" >&2
+		fi
+	fi
+	unset rc res
 fi
