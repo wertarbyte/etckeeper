@@ -8,7 +8,7 @@ of working with version control.
 
 ## security warnings
 
-First, a big warning: By checking /etc into revision control, you are
+First, a big warning: By checking /etc into version control, you are
 creating a copy of files like /etc/shadow that must remain secret. Anytime
 you have a copy of a secret file, it becomes more likely that the file
 contents won't remain secret. etckeeper is careful about file permissions,
@@ -20,7 +20,7 @@ Since git mushes all the files into packs under the .git directory, the
 whole .git directory content needs to be kept secret. (Ditto for mercurial
 and .hg as well as bazaar and .bzr)
 
-Also, since revision control systems don't keep track of the mode of files
+Also, since version control systems don't keep track of the mode of files
 like the shadow file, it will check out world readable, before etckeeper
 fixes the permissions. The tutorial has some examples of safe ways to avoid
 these problems when cloning an /etc repository.
@@ -37,7 +37,14 @@ installing and upgrading packages. Before apt installs packages,
 After apt installs packages, `etckeeper post-install` will add any new
 interesting files to the repository, and commit the changes.
 
-Revsion control systems are designed as a way to manage source code, not as
+You can also run `etckeeper commit` by hand to commit changes.
+
+There is also a cron job, that will use etckeeper to automatically
+commit any changes to /etc each day.
+
+## VCS limitations
+
+Version Control Systems are designed as a way to manage source code, not as
 a way to manage arbitrary directories like /etc. This means there are a few
 limitations that etckeeper has to work around. These include file metadata
 storage, empty directories, and special files.
