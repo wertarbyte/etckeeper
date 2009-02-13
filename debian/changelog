@@ -1,11 +1,11 @@
-etckeeper (0.29) UNRELEASED; urgency=low
+etckeeper (0.29) unstable; urgency=low
 
   * Add a daily cron job to autocommit changes to /etc. Closes: #515100
     The cron job is enabled by default but can be disabled
     via etckeeper.conf.
     (Thanks to Thierry Carrez)
 
- -- Joey Hess <joeyh@debian.org>  Fri, 13 Feb 2009 13:30:25 -0500
+ -- Joey Hess <joeyh@debian.org>  Fri, 13 Feb 2009 13:43:02 -0500
 
 etckeeper (0.28) unstable; urgency=low
 
