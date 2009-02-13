@@ -65,4 +65,11 @@ configure)
 		mv_conffile "/etc/etckeeper/init.d/20restore-metadata" \
 			"/etc/etckeeper/init.d/10restore-metadata"
 	fi
+	if dpkg --compare-versions "$2" le "0.28"; then
+		for c in commit.d/30darcs-add init.d/60darcs-deleted-symlinks; do
+			if [ -e /etc/etckeeper/$c ]; then
+				chmod +x /etc/etckeeper/$c
+			fi
+		done
+	fi
 esac

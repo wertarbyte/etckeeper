@@ -4,6 +4,7 @@ etckeeper (0.29) unstable; urgency=low
     The cron job is enabled by default but can be disabled
     via etckeeper.conf.
     (Thanks to Thierry Carrez)
+  * Fix executable bits on two darcs support scripts.
 
  -- Joey Hess <joeyh@debian.org>  Fri, 13 Feb 2009 13:43:02 -0500
 
