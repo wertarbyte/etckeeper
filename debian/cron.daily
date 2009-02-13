@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+. /etc/etckeeper/etckeeper.conf
+if [ "$AVOID_DAILY_AUTOCOMMITS" != "1" ]; then
+	if /usr/sbin/etckeeper unclean; then
+		/usr/sbin/etckeeper commit "Daily autocommit"
+	fi
+fi
