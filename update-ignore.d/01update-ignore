@@ -1,0 +1,152 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = git ]; then
+	dir=.git
+	file=.gitignore
+elif [ "$VCS" = hg ]; then
+	dir=.hg
+	file=.hgignore
+elif [ "$VCS" = bzr ]; then
+	dir=.bzr
+	file=.bzrignore
+elif [ "$VCS" = darcs ]; then
+	dir=_darcs
+	file=.darcsignore
+else
+	echo "etckeeper: unsupported VCS $VCS" >&2
+	exit 1
+fi
+
+if [ ! -d "$dir" ]; then
+	exit 0
+fi
+
+managed_by_etckeeper="managed by etckeeper"
+
+nl() {
+	echo >>"$file"
+}
+
+comment() {
+	comment="$1"
+	echo "# $comment" >>"$file"
+}
+
+ignore() {
+	glob="$1"
+	
+	case "$VCS" in
+		git|bzr)
+			echo "$glob" >>"$file"
+		;;
+		hg)
+			# rather than converting the glob to a regexp, just
+			# configure hg to use globs
+			if [ -z "$hg_syntax_printed" ]; then
+				comment "use glob syntax"
+				echo "syntax: glob" >>"$file"
+				nl
+				hg_syntax_printed=1
+			fi
+			echo "$glob" >>"$file"
+		;;
+		darcs)
+			# darcs doesn't understand globs, so we need to translate
+			# them into regexs. Not a complete converter, but suitable
+			# for given globs.
+			if [ "${glob%\*}" != "$glob" ]; then
+				glob="${glob%\*}"
+			else
+				glob="$glob"'($|/)'
+			fi
+			if [ "${glob#\*}" != "$glob" ]; then
+				glob="${glob#\*}"
+			else
+				glob='(^|/)'"$glob"
+			fi
+			glob="$( printf %s $glob | sed -e 's/\./\\./g;s/\*/[^\/]*/g;s/\?/[^\/]/g' )"
+			echo "$glob" >>"$file"
+	esac
+}
+
+writefile () {
+	comment "begin section $managed_by_etckeeper (do not edit this section by hand)"
+	nl
+
+	if [ "$VCS" = darcs ]; then
+		darcs setpref boringfile .darcsignore
+	fi
+
+	if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
+		comment "new and old versions of conffiles, stored by dpkg"
+		ignore "*.dpkg-*"
+		nl
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "rpm" ]; then
+		comment "new and old versions of conffiles, stored by apt/rpm"
+		ignore "*.rpm*"
+		nl
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" ]; then
+		comment "new and old versions of conffiles, stored by pacman"
+		ignore "*.pacnew"
+		ignore "*.pacorig"
+		ignore "*.pacsave"
+		nl
+	fi
+	
+	comment "mount(8) records system state here, no need to store these"
+	ignore blkid.tab
+	ignore blkid.tab.old
+	nl
+	
+	comment "some other files in /etc that typically do not need to be tracked"
+	ignore nologin
+	ignore ld.so.cache
+	ignore mtab
+	ignore .pwd.lock
+	ignore network/run
+	ignore adjtime
+	ignore lvm/cache
+	nl
+	
+	comment "editor temp files"
+	ignore "*~"
+	ignore ".*.sw?"
+	ignore "#*#"
+	ignore DEADJOE
+
+	nl
+	comment "end section $managed_by_etckeeper"
+}
+
+if [ -e "$file" ]; then
+	if ! grep -q "$managed_by_etckeeper" "$file"; then
+		echo "etckeeper: "$file" does not contain \"$managed_by_etckeeper\" comment; not updating"
+		exit 1
+	fi
+	realfile="$file"
+	file=$(tempfile)
+	(
+		skipping=
+		while read line; do
+			if echo "$line" | grep -q "$managed_by_etckeeper"; then
+				if [ ! "$skipping" ]; then
+					skipping=1
+				else
+					skipping=
+					writefile
+				fi
+			elif [ ! "$skipping" ]; then
+				echo "$line" >> "$file"
+			fi
+		done
+		if [ "$skipping" ]; then
+			# reached end of file w/o ending block
+			writefile
+		fi
+	) <"$realfile"
+
+	mv -f "$file" "$realfile"
+else
+	writefile
+fi

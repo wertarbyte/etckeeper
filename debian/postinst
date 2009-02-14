@@ -72,4 +72,7 @@ configure)
 			fi
 		done
 	fi
+
+	# prints error and exits nonzero if the ignore file cannot be updated
+	etckeeper update-ignore || true
 esac

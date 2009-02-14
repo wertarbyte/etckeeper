@@ -82,7 +82,8 @@ it. Using other VCSes should be broadly similar.
 
 The `etckeeper init` command initialises an /etc/.git/ repository. This
 command is careful to never overwrite existing files or directories in
-/etc. It will create a `.gitignore` if one doesn't already exist, sets up
+/etc. It will create a `.gitignore` if one doesn't already exist
+(or update content inside a "managed by etckeeper" comment block), sets up
 pre-commit hooks if they don't already exist, and so on. It does *not*
 commit any files, but does `git add` all interesting files for an initial
 commit later.

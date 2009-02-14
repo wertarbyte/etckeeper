@@ -39,6 +39,11 @@ repository. (You can also call this by hand after running dpkg by hand.)
 .TP
 .B unclean
 This returns true if the directory contains uncommitted changes.
+.TP
+.B update-ignore
+This updates the VCS ignore file. Content outside a "managed by etckeeper"
+block is not touched. This is generally run when upgrading to a new version
+of etckeeper.
 .SH FILES
 /etc/etckeeper/etckeeper.conf is the configuration file.
 
