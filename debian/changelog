@@ -1,6 +1,8 @@
 etckeeper (0.30) UNRELEASED; urgency=low
 
   * Add vim .*.sw? files to default ignores.
+  * Also add emacs #*# autosave files to default ignores.
+  * And DEADJOE files, for good measure.
 
  -- Joey Hess <joeyh@debian.org>  Fri, 13 Feb 2009 22:09:28 -0500
 
