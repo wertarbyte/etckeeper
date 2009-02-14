@@ -56,7 +56,7 @@ ignore() {
 			else
 				glob='(^|/)'"$glob"
 			fi
-			glob="$( printf %s $glob | sed -e 's/\./\\./g;s/\*/[^\/]*/g;' )"
+			glob="$( printf %s $glob | sed -e 's/\./\\./g;s/\*/[^\/]*/g;s/\?/[^\/]/g' )"
 			echo "$glob" >> $file
 	esac
 }
@@ -96,6 +96,7 @@ ignore adjtime
 ignore lvm/cache
 nl
 
-comment "editor backup files"
+comment "editor temp files"
 ignore "*~"
+ignore ".*.sw?"
 nl
