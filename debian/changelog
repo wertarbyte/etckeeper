@@ -1,15 +1,16 @@
-etckeeper (0.30) UNRELEASED; urgency=low
+etckeeper (0.30) unstable; urgency=low
 
   * Add vim .*.sw? files to default ignores.
   * Also add emacs #*# autosave files to default ignores.
   * And DEADJOE files, for good measure.
   * etckeeper update-ignore will automatically update the VCS ignore
-    file, only touching the part inside a "managed by etckeeper"
-    comment block.
+    file, only touching the part inside a "# managed by etckeeper"
+    comment block. (You may want to add such a comment block to your existing
+    .gitignore, or delete the file and regenerate it.)
   * Run etckeeper update-ignore on upgrade.
   * Fix handling of -d in recursive calls to etckeeper 
 
- -- Joey Hess <joeyh@debian.org>  Fri, 13 Feb 2009 22:09:28 -0500
+ -- Joey Hess <joeyh@debian.org>  Sat, 14 Feb 2009 01:21:22 -0500
 
 etckeeper (0.29) unstable; urgency=low
 
