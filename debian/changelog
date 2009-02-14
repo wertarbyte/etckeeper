@@ -7,6 +7,7 @@ etckeeper (0.30) UNRELEASED; urgency=low
     file, only touching the part inside a "managed by etckeeper"
     comment block.
   * Run etckeeper update-ignore on upgrade.
+  * Fix handling of -d in recursive calls to etckeeper 
 
  -- Joey Hess <joeyh@debian.org>  Fri, 13 Feb 2009 22:09:28 -0500
 

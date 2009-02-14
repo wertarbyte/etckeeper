@@ -60,14 +60,18 @@ fi
 
 if [ "x$1" = "x-d" ]; then
 	if [ -n "$2" ]; then
-		cd "$2"
+		ETCKEEPER_DIR="$2"
 		shift 2
 	else
 		usage
 	fi
-else
-	cd /etc
 fi
+
+if [ -z "$ETCKEEPER_DIR" ]; then
+	ETCKEEPER_DIR=/etc
+fi
+cd "$ETCKEEPER_DIR"
+export ETCKEEPER_DIR
 
 lsscripts() {
 	perl -e '
