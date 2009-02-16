@@ -73,7 +73,7 @@ generate_metadata() {
 	fi
 
 	# Find all files and directories that don't have the current user as the owner
-	find $NOVCS \! -user "$USER" -exec stat --format="maybe chown %U '{}'" {} \; \
+	find $NOVCS \! -user "$(id -u)" -exec stat --format="maybe chown %U '{}'" {} \; \
 		| sort | filter_unknown 'maybe chown' owner
 	# Find all files and directories that don't have root as the group
 	find $NOVCS \! -group $(id -g) -exec stat --format="maybe chgrp %G '{}'" {} \; \

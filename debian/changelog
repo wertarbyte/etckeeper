@@ -1,3 +1,10 @@
+etckeeper (0.31) UNRELEASED; urgency=low
+
+  * Avoid relying on USER being set, won't be for cron job.
+    Closes: #515602
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 16 Feb 2009 15:40:18 -0500
+
 etckeeper (0.30) unstable; urgency=low
 
   * Add vim .*.sw? files to default ignores.
