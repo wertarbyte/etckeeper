@@ -112,6 +112,7 @@ writefile () {
 	comment "editor temp files"
 	ignore "*~"
 	ignore ".*.sw?"
+	ignore ".sw?"
 	ignore "#*#"
 	ignore DEADJOE
 

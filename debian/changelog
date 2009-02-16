@@ -1,9 +1,11 @@
-etckeeper (0.31) UNRELEASED; urgency=low
+etckeeper (0.31) unstable; urgency=low
 
   * Avoid relying on USER being set, won't be for cron job.
     Closes: #515602
+  * Add .sw? to ignores. vim uses that if editing an
+    unspecified file name. Closes: #515628
 
- -- Joey Hess <joeyh@debian.org>  Mon, 16 Feb 2009 15:40:18 -0500
+ -- Joey Hess <joeyh@debian.org>  Mon, 16 Feb 2009 15:40:42 -0500
 
 etckeeper (0.30) unstable; urgency=low
 
