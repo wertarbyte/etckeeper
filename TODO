@@ -24,8 +24,3 @@
   This is already doable, would just need modifying the pre-install and
   post-instlal stuff (ie, it needs to commit in the subdirs too). Using mr
   would be a possibility..
-
-* Figure out what packages were acted on, and include that info in the commit
-  message
-
-  Done for dpkg, but not for other package managers like rpm.

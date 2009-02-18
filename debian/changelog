@@ -1,3 +1,9 @@
+etckeeper (0.32) UNRELEASED; urgency=low
+
+  * Implement list-installed for rpm. (Untested)
+
+ -- Joey Hess <joeyh@debian.org>  Tue, 17 Feb 2009 21:49:29 -0500
+
 etckeeper (0.31) unstable; urgency=low
 
   * Avoid relying on USER being set, won't be for cron job.
