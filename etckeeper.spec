@@ -46,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc GPL INSTALL TODO bash_completion README
+%doc GPL INSTALL TODO README
 %{_sbindir}/*
 %{_mandir}/*
 /etc/*
