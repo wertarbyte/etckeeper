@@ -1,0 +1,7 @@
+#!/bin/sh
+# Output to stdout a *sorted* list of all currently installed 
+# (or removed but still with config-files) packages, in the
+# format "package version\n".
+if [ "$LOWLEVEL_PACKAGE_MANAGER" = rpm ]; then
+	rpm -qa --queryformat "%{name} %{version} %{arch}\n" | sort
+fi
