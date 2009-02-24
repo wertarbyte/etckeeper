@@ -1,0 +1,8 @@
+yum pre and post install hook, this is similar to the apt get hook.
+its probably not as refined.
+
+there is a simple spec file and makefile for generating installable
+rpms. it also relies on the etckeeper package that I cooked up.
+
+i've been using it on my own systems and it appears to work fine with
+the autoupdate system and when i install/remove apps with yum.
