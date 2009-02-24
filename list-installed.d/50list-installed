@@ -1,10 +1,10 @@
 #!/bin/sh
 # Output to stdout a *sorted* list of all currently installed 
 # (or removed but still with config-files) packages, in the
-# format "package version\n".
+# format "package version\n" (or something similar).
 if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
 	dpkg-query -W -f '${Status}\t${Package} ${Version}\n' | \
 		egrep '(ok installed|ok config-files)' | cut -f2,3
 elif [ "$LOWLEVEL_PACKAGE_MANAGER" = rpm ]; then
-	rpm -qa --queryformat "%{name} %{version}\n" | sort
+	rpm -qa --queryformat "%{name} %{version} %{arch}\n" | sort
 fi
