@@ -1,6 +1,7 @@
 etckeeper (0.32) UNRELEASED; urgency=low
 
   * Implement list-installed for rpm.
+  * Added a spec file contributed by Jimmy Tang.
 
  -- Joey Hess <joeyh@debian.org>  Tue, 17 Feb 2009 21:49:29 -0500
 
