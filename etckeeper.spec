@@ -14,7 +14,7 @@ Obsoletes:	etckeeper = snapshot, yum-etckeeper
 
 %description
 The etckeeper program is a tool to let /etc be stored in a git,
-mercurial, bzr or darcs repository. It hooks into APT to automatically
+mercurial, bzr or darcs repository. It hooks into yum to automatically
 commit changes made to /etc during package upgrades. It tracks file
 metadata that version control systems do not normally support, but that
 is important for /etc, such as the permissions of /etc/shadow. It's
