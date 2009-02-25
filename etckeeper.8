@@ -1,19 +1,19 @@
 .\" -*- nroff -*-
 .TH ETCKEEPER 8 "" "" ""
 .SH NAME
-etckeeper \- store /etc in git, mercurial, or bazaar
+etckeeper \- store /etc in git, mercurial, bazaar, or darcs
 .SH SYNOPSIS
 .B etckeeper command [-d directory]
 .SH DESCRIPTION
-etckeeper manages /etc be stored in a git, mercurial, or bazaar
+etckeeper manages /etc be stored in a git, mercurial, bazaar, or darcs
 repository. By default each of the commands operates on /etc, but a
 different directory can be specified to operate on a clone of the /etc
 repository located elsewhere.
 .SH COMMANDS
 .TP
 .B init
-This initialises and sets up a git, mercurial, or bazaar repository
-(depending on the VCS setting in
+This initialises and sets up a git, mercurial, bazaar, or darcs
+repository (depending on the VCS setting in
 /etc/etckeeper/etckeeper.conf). Typically this is run in /etc once
 when starting to use etckeeper on a machine. It can also be used to
 initialise a clone of the /etc repository located elsewhere.
