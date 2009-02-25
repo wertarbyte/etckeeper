@@ -12,16 +12,15 @@ repository located elsewhere.
 .SH COMMANDS
 .TP
 .B init
-This is the only command you typically need to run by hand. It
-initialises and sets up a git, mercurial, or bazaar repository
+This initialises and sets up a git, mercurial, or bazaar repository
 (depending on the VCS setting in
 /etc/etckeeper/etckeeper.conf). Typically this is run in /etc once
 when starting to use etckeeper on a machine. It can also be used to
 initialise a clone of the /etc repository located elsewhere.
 .TP
 .B commit [message]
-Commits changes in /etc to the repository. A commit message can be
-specified.
+Commits all changes in /etc to the repository. A commit message can be
+specified. You may also use the underlying VCS to commit manually.
 .TP
 .B pre-commit
 This is called as a pre-commit hook. It stores metadata and does sanity
@@ -44,6 +43,13 @@ This returns true if the directory contains uncommitted changes.
 This updates the VCS ignore file. Content outside a "managed by etckeeper"
 block is not touched. This is generally run when upgrading to a new version
 of etckeeper.
+.TP
+.B uninit
+This command DESTROYS DATA! It is the inverse of the init command, removing
+VCS information and etckeeper's own bookkeeping information from the
+directory. Use with caution. A typical use case would be to run etckeeper
+uninit, then modify etckeeper.conf to use a different VCS, and then run
+etckeeper init.
 .SH FILES
 /etc/etckeeper/etckeeper.conf is the configuration file.
 

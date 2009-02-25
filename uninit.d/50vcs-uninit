@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+if [ "$VCS" = git ]; then
+	rm -rf .git .gitignore
+elif [ "$VCS" = hg ]; then
+	rm -rf .hg .hgignore
+elif [ "$VCS" = bzr ]; then
+	rm -rf .bzr .bzrignore
+elif [ "$VCS" = darcs ]; then
+	rm -rf _darcs .darcsignore
+fi

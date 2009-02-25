@@ -76,19 +76,19 @@ Darcs doesn't support symlinks, so they are also stored in
 
 A quick walkthrough of using etckeeper.
 
-First, edit `/etc/etckeeper/etckeeper.conf` to select which version control
-system to use. The default is git, and this tutorial assumes you're using
+Note that the default VCS is git, and this tutorial assumes you're using
 it. Using other VCSes should be broadly similar.
 
-The `etckeeper init` command initialises an /etc/.git/ repository. This
-command is careful to never overwrite existing files or directories in
-/etc. It will create a `.gitignore` if one doesn't already exist
-(or update content inside a "managed by etckeeper" comment block), sets up
-pre-commit hooks if they don't already exist, and so on. It does *not*
-commit any files, but does `git add` all interesting files for an initial
-commit later.
+The `etckeeper init` command initialises an /etc/.git/ repository. 
+If you installed etckeeper from a package, this was probably automatically
+performed during the package installation. 
 
-	etckeeper init
+The `etckeeper init` command is careful to never overwrite existing files
+or directories in /etc. It will create a `.gitignore` if one doesn't
+already exist (or update content inside a "managed by etckeeper" comment
+block), sets up pre-commit hooks if they don't already exist, and so on. It
+does *not* commit any files, but does `git add` all interesting files for
+an initial commit later.
 
 Now you might want to run `git status` to check that it includes all
 the right files, and none of the wrong files. And you can edit the
@@ -113,9 +113,10 @@ daemons and shouldn't be tracked by git. These can be removed from git:
 	echo printcap >> .gitignore
 	git commit -a -m "don't track printcap" 
 
-etckeeper hooks into apt so changes to interesting files in /etc caused by
-installing or upgrading packages will automatically be committed. Here
-"interesting" means files that are not ignored by `.gitignore`.
+etckeeper hooks into apt (and similar systems) so changes to interesting
+files in /etc caused by installing or upgrading packages will automatically
+be committed. Here "interesting" means files that are not ignored by
+`.gitignore`.
 
 You can use any git commands you like, but do keep in mind that, if you
 check out a different branch or an old version, git is operating directly
@@ -200,6 +201,25 @@ letting it git add new files and git rm removed ones:
 
 	chmod -x /etc/etckeeper/commit.d/50vcs-commit
 
+## changing VCS
+
+By default, etckeeper uses git. If you would like to use some other VCS,
+and `etckeeper init` has already been run to set up a git repository, you
+have a decision to make: Is the history recorded in that repository
+something you need to preserve, or can you afford to just blow it away
+and check the current /etc into the new VCS?
+
+In the former case, you just need to follow three steps:
+
+	etckeeper uninit # deletes /etc/.git!
+	vim /etc/etckeeper/etckeeper.conf
+	etckeeper init
+
+In the latter case, you will need to convert the git repository to the
+other VCS using whatever tools are available to do that. Then you can
+run `etckeeper uninit`, move files your new VCS will use into place,
+edit `etckeeper.conf` to change the VCS setting, and finally
+`etckeeper init`. This procedure is clearly only for the brave.
 
 ## inspiration
 

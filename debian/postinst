@@ -73,6 +73,12 @@ configure)
 		done
 	fi
 
+	if [ "$2" = "" ]; then
+		# Fresh install.
+		# Might fail if, eg, git is not installed.
+		etckeeper init || echo "etckeeper init failed; run it by hand" >&2
+	fi
+
 	# prints error and exits nonzero if the ignore file cannot be updated
 	etckeeper update-ignore || true
 esac

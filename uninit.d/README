@@ -1,0 +1,2 @@
+Executable files in this directory are run to uninitialise the working
+directory, removing files added by `etckeeper init`.
