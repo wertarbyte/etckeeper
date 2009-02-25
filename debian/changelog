@@ -1,7 +1,5 @@
 etckeeper (0.32) UNRELEASED; urgency=low
 
-  * Implement list-installed for rpm.
-  * Added a spec file contributed by Jimmy Tang.
   * Add uninit subcommand, which cleans up all etckeeper and VCS droppings
     in /etc. This is useful if you want to switch to a different VCS and
     don't have any history to preserve. (Preserving history and converting
@@ -12,6 +10,8 @@ etckeeper (0.32) UNRELEASED; urgency=low
   * Document how to change the VCS used by etckeeper, without preserving 
     any history. Preserving history left as an exersise for the reader.
     Closes: #515237
+  * Implement list-installed for rpm.
+  * Added a spec file contributed by Jimmy Tang.
 
  -- Joey Hess <joeyh@debian.org>  Tue, 17 Feb 2009 21:49:29 -0500
 
