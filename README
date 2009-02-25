@@ -42,6 +42,7 @@ You can also run `etckeeper commit` by hand to commit changes.
 There is also a cron job, that will use etckeeper to automatically
 commit any changes to /etc each day.
 
+
 ## VCS limitations
 
 Version Control Systems are designed as a way to manage source code, not as
@@ -181,6 +182,7 @@ Of course, it's also possible to pull changes from a server onto client
 machines, to deploy changes to /etc. Once /etc is under version control, the
 sky's the limit..
 
+
 ## configuration
 
 The main configuration file is `/etc/etckeeper/etckeeper.conf`
@@ -204,6 +206,7 @@ letting it git add new files and git rm removed ones:
 
 	chmod -x /etc/etckeeper/commit.d/50vcs-commit
 
+
 ## changing VCS
 
 By default, etckeeper uses git. If you would like to use some other VCS,
@@ -223,6 +226,7 @@ other VCS using whatever tools are available to do that. Then you can
 run `etckeeper uninit`, move files your new VCS will use into place,
 edit `etckeeper.conf` to change the VCS setting, and finally
 `etckeeper init`. This procedure is clearly only for the brave.
+
 
 ## inspiration
 
