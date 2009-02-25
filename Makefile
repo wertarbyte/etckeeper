@@ -30,6 +30,10 @@ endif
 ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2)
 	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/pacman-g2/hooks/etckeeper
 endif
+ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),yum)
+	$(INSTALL_DATA) yum-etckeeper.py $(DESTDIR)$(prefix)/lib/yum-plugins/etckeeper.py
+	$(INSTALL_DATA) yum-etckeeper.conf $(DESTDIR)$(etcdir)/yum/pluginconf.d/etckeeper.conf
+endif
 	-./etckeeper-bzr/__init__.py install --root=$(DESTDIR) || echo "** bzr support not installed"
 	echo "** installation successful"
 

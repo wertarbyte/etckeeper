@@ -1,5 +1,5 @@
 Name:           etckeeper
-Version:        0.31
+Version:        0.32
 Release:        1%{?dist}
 Summary:        store /etc in git, mercurial, bzr or darcs
 
@@ -10,7 +10,7 @@ Source0:        http://ftp.debian.org/debian/pool/main/e/etckeeper/%{name}_%{ver
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires:       git >= 1.6.1-1
-Obsoletes:	etckeeper = snapshot
+Obsoletes:	etckeeper = snapshot, yum-etckeeper
 
 %description
 The etckeeper program is a tool to let /etc be stored in a git,
@@ -50,8 +50,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/*
 %{_mandir}/*
 /etc/*
-
+%{_prefix}/lib/*
 
 %changelog
+* Wed Feb 25 2009 Jimmy Tang <jtang@tchpc.tcd.ie> - 0.32-1
+- yum etckeeper plugin is now apart of this package
+
 * Tue Feb 24 2009 Jimmy Tang <jtang@tchpc.tcd.ie> - 0.31-1
 - initial package

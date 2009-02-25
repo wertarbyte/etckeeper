@@ -13,10 +13,6 @@
 #   [main]
 #   enabled=1
 #
-# this was also needed in /etc/etckeeper/list-installed.d/60list-installed
-#if [ "$LOWLEVEL_PACKAGE_MANAGER" = rpm ]; then
-#	rpm -qa --queryformat "%{name} %{version} %{arch}\n" | sort
-#fi
 
 import os
 from glob import fnmatch
