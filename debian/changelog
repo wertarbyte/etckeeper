@@ -1,4 +1,4 @@
-etckeeper (0.32) UNRELEASED; urgency=low
+etckeeper (0.32) unstable; urgency=low
 
   * Add uninit subcommand, which cleans up all etckeeper and VCS droppings
     in /etc. This is useful if you want to switch to a different VCS and
@@ -13,7 +13,7 @@ etckeeper (0.32) UNRELEASED; urgency=low
   * Implement list-installed for rpm.
   * Added a spec file contributed by Jimmy Tang.
 
- -- Joey Hess <joeyh@debian.org>  Tue, 17 Feb 2009 21:49:29 -0500
+ -- Joey Hess <joeyh@debian.org>  Tue, 24 Feb 2009 23:01:55 -0500
 
 etckeeper (0.31) unstable; urgency=low
 
