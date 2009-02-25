@@ -81,7 +81,10 @@ it. Using other VCSes should be broadly similar.
 
 The `etckeeper init` command initialises an /etc/.git/ repository. 
 If you installed etckeeper from a package, this was probably automatically
-performed during the package installation. 
+performed during the package installation. If not, your first step is to
+run it by hand:
+
+	etckeeper init
 
 The `etckeeper init` command is careful to never overwrite existing files
 or directories in /etc. It will create a `.gitignore` if one doesn't
