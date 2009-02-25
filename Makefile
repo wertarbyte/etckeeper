@@ -14,8 +14,11 @@ INSTALL=install
 INSTALL_EXE=${INSTALL} -D
 INSTALL_DATA=${INSTALL} -m 0644 -D
 
-build:
+build: etckeeper.spec
 	-./etckeeper-bzr/__init__.py build || echo "** bzr support not built"
+	
+etckeeper.spec:
+	sed -i "s/Version:.*/Version: $$(perl -e '$$_=<>;print m/\((.*?)\)/'<debian/changelog)/" etckeeper.spec
 
 install:
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
@@ -39,3 +42,5 @@ endif
 
 clean:
 	rm -rf build
+
+.PHONY: etckeeper.spec

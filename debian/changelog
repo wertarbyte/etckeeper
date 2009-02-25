@@ -1,3 +1,9 @@
+etckeeper (0.33) unstable; urgency=low
+
+  * Add support for yum. Thanks, Jimmy Tang.
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 25 Feb 2009 14:38:12 -0500
+
 etckeeper (0.32) unstable; urgency=low
 
   * Add uninit subcommand, which cleans up all etckeeper and VCS droppings

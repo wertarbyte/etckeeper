@@ -1,16 +1,16 @@
-Name:           etckeeper
-Version:        0.32
-Release:        1%{?dist}
-Summary:        store /etc in git, mercurial, bzr or darcs
+Name: etckeeper
+Version: 0.33
+Release: 1%{?dist}
+Summary: store /etc in git, mercurial, bzr or darcs
 
-Group:          System Tools
-License:        GPLv2
-URL:            http://kitenet.net/~joey/code/etckeeper/
-Source0:        http://ftp.debian.org/debian/pool/main/e/etckeeper/%{name}_%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Group: System Tools
+License: GPLv2
+URL: http://kitenet.net/~joey/code/etckeeper/
+Source0: http://ftp.debian.org/debian/pool/main/e/etckeeper/%{name}_%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Requires:       git >= 1.6.1-1
-Obsoletes:	etckeeper = snapshot, yum-etckeeper
+Requires: git >= 1.6.1-1
+Obsoletes: etckeeper = snapshot, yum-etckeeper
 
 %description
 The etckeeper program is a tool to let /etc be stored in a git,
