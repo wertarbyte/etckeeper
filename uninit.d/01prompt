@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-echo "** Warning: etckeeper uninit will DESTROY all recorded history for $ETCKEEPER_DIR"
-echo "** This includes deleting the $VCS repository and ignore file."
+echo "** Warning: This will DESTROY all recorded history for $ETCKEEPER_DIR,"
+echo "** including the $VCS repository and ignore file."
 echo ""
 printf "Are you sure you want to do this? [yN] "
 read answer
