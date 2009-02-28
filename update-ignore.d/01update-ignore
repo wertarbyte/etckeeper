@@ -126,7 +126,14 @@ if [ -e "$file" ]; then
 		exit 1
 	fi
 	realfile="$file"
-	file=$(tempfile)
+	if [ -n "`type -p tempfile`" ]; then
+		tempfile="tempfile"
+	elif [ -n "`type -p mktemp`" ]; then
+		tempfile="mktemp"
+	else
+		echo "etckeeper warning: can't find tempfile or mktemp" >&2
+	fi
+	file=$($tempfile)
 	(
 		skipping=
 		while read line; do
