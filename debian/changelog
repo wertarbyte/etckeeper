@@ -1,9 +1,10 @@
-etckeeper (0.34) UNRELEASED; urgency=low
+etckeeper (0.34) unstable; urgency=low
 
   * Add support for mktemp if tempfile is not available.
   * Fix uninit prompt to accept 'y' as well as 'yes'. Closes: #517911
+  * README: Typo. Closes: #517914
 
- -- Joey Hess <joeyh@debian.org>  Sat, 28 Feb 2009 19:53:19 -0500
+ -- Joey Hess <joeyh@debian.org>  Mon, 02 Mar 2009 17:01:09 -0500
 
 etckeeper (0.33) unstable; urgency=low
 

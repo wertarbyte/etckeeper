@@ -215,13 +215,13 @@ have a decision to make: Is the history recorded in that repository
 something you need to preserve, or can you afford to just blow it away
 and check the current /etc into the new VCS?
 
-In the former case, you just need to follow three steps:
+In the latter case, you just need to follow three steps:
 
 	etckeeper uninit # deletes /etc/.git!
 	vim /etc/etckeeper/etckeeper.conf
 	etckeeper init
 
-In the latter case, you will need to convert the git repository to the
+In the former case, you will need to convert the git repository to the
 other VCS using whatever tools are available to do that. Then you can
 run `etckeeper uninit`, move files your new VCS will use into place,
 edit `etckeeper.conf` to change the VCS setting, and finally
