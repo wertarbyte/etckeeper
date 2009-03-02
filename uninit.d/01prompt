@@ -7,7 +7,7 @@ echo ""
 printf "Are you sure you want to do this? [yN] "
 read answer
 case "$answer" in 
-	[Yy][Ee][Ss])
+	[Yy]*)
 		echo "Proceeding.."
 		exit 0
 	;;

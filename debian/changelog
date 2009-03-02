@@ -1,6 +1,7 @@
 etckeeper (0.34) UNRELEASED; urgency=low
 
   * Add support for mktemp if tempfile is not available.
+  * Fix uninit prompt to accept 'y' as well as 'yes'. Closes: #517911
 
  -- Joey Hess <joeyh@debian.org>  Sat, 28 Feb 2009 19:53:19 -0500
 
