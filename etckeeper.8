@@ -44,12 +44,13 @@ This updates the VCS ignore file. Content outside a "managed by etckeeper"
 block is not touched. This is generally run when upgrading to a new version
 of etckeeper.
 .TP
-.B uninit
+.B uninit [-f]
 This command DESTROYS DATA! It is the inverse of the init command, removing
 VCS information and etckeeper's own bookkeeping information from the
 directory. Use with caution. A typical use case would be to run etckeeper
 uninit, then modify etckeeper.conf to use a different VCS, and then run
-etckeeper init.
+etckeeper init. (The -f switch can be used to force uninit without
+prompting.)
 .SH FILES
 /etc/etckeeper/etckeeper.conf is the configuration file.
 
