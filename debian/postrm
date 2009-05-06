@@ -1,0 +1,31 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = purge ]; then
+	if [ -e /etc/.etckeeper ]; then
+		. /usr/share/debconf/confmodule
+	
+		# uninit on purge is tricky because etckeeper's configuration
+		# and code has been removed at this point. This relies on a
+		# stashed away copy.
+		if [ -e /var/cache/etckeeper/stash/etckeeper.conf ] &&
+		   [ -d /var/cache/etckeeper/stash/uninit.d ] &&
+		   [ -x /var/cache/etckeeper/stash/etckeeper ]; then
+			. /var/cache/etckeeper/stash/etckeeper.conf
+			if [ -n "$VCS" ]; then
+				db_subst etckeeper/purge VCS "$VCS"
+				db_input high etckeeper/purge || true
+				db_go || true
+				db_get etckeeper/purge
+				if [ "$RET" = true ]; then
+					ETCKEEPER_CONF_DIR=/var/cache/etckeeper/stash
+					export ETCKEEPER_CONF_DIR
+					/var/cache/etckeeper/stash/etckeeper uninit -f || true
+				fi
+			fi
+		fi
+	fi
+	rm -rf /var/cache/etckeeper
+fi
+
+#DEBHELPER#

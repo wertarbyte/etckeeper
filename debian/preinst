@@ -69,4 +69,7 @@ install|upgrade)
 			rm_conffile etckeeper "/etc/etckeeper/commit.d/$c"
 		done
 	fi
+
+	# delete files the postrm stashes away to handle purging
+	rm -rf /var/cache/etckeeper/stash
 esac

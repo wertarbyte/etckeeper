@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+#DEBHELPER#
+
+if [ "$1" = remove ]; then
+	# In case etckeeper is being purged, stash away a copy of
+	# the files purging will need.
+	mkdir -p /var/cache/etckeeper/stash
+	if [ -e /etc/etckeeper/etckeeper.conf ]; then
+		cp -a /etc/etckeeper/etckeeper.conf /var/cache/etckeeper/stash
+	fi
+	if [ -d /etc/etckeeper/uninit.d ]; then
+		cp -a /etc/etckeeper/uninit.d /var/cache/etckeeper/stash
+	fi
+	if [ -x /usr/sbin/etckeeper ]; then
+		cp -a /usr/sbin/etckeeper /var/cache/etckeeper/stash
+	fi
+fi

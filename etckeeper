@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
-conf=/etc/etckeeper/etckeeper.conf
+
+if [ -z "$ETCKEEPER_CONF_DIR" ]; then
+	ETCKEEPER_CONF_DIR=/etc/etckeeper
+fi
+
+conf="$ETCKEEPER_CONF_DIR/etckeeper.conf"
 
 usage() {
 	echo "usage: etckeeper command [-d directory]" >&2
@@ -53,8 +58,8 @@ elif [ "$command" = "pre-apt" ]; then
 	command=pre-install
 fi
 
-if [ ! -d "/etc/etckeeper/$command.d" ]; then
-	echo "etckeeper: /etc/etckeeper/$command.d does not exist" >&2
+if [ ! -d "$ETCKEEPER_CONF_DIR/$command.d" ]; then
+	echo "etckeeper: $ETCKEEPER_CONF_DIR/$command.d does not exist" >&2
 	exit 1
 fi
 
@@ -82,6 +87,6 @@ lsscripts() {
 	' "$1"
 }
 
-for script in $(lsscripts "/etc/etckeeper/$command.d"); do
+for script in $(lsscripts "$ETCKEEPER_CONF_DIR/$command.d"); do
 	"$script" "$@"
 done

@@ -14,3 +14,12 @@ _Description: Commit failed
  .
  You may manually resolve the issues with the uncommitted changes
  before continuing.
+
+Template: etckeeper/purge
+Type: boolean
+Default: false
+_Description: Remove etckeeper ${VCS} repository and associated files?
+ Etckeeper is being purged from the system, and was used to
+ store /etc in a ${VCS} repository. If you choose to remove the
+ repository, this will DESTROY all history etckeeper has recorded
+ for /etc.

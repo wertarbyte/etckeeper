@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etckeeper 0.3\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
-"POT-Creation-Date: 2008-03-14 01:55-0400\n"
+"POT-Creation-Date: 2009-05-06 14:41-0400\n"
 "PO-Revision-Date: 2007-12-12 19:54+0200\n"
 "Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
 "Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
@@ -32,6 +32,21 @@ msgid ""
 "continuing."
 msgstr ""
 "Voit selvittää tallettamattomien muutosten ongelmat käsin ennen jatkamista."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "Remove etckeeper ${VCS} repository and associated files?"
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid ""
+"Etckeeper is being purged from the system, and was used to store /etc in a "
+"${VCS} repository. If you choose to remove the repository, this will DESTROY "
+"all history etckeeper has recorded for /etc."
+msgstr ""
 
 #~ msgid "Commit changed files in /etc to ${VCS}?"
 #~ msgstr "Talletetaanko hakemiston /etc muutetut tiedostot ${VCS}in?"

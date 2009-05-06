@@ -1,6 +1,7 @@
 etckeeper (0.35) UNRELEASED; urgency=low
 
   * Make etckeeper uninit -f disable the prompt.
+  * Uninit on purge, guarded by a debconf prompt. Closes: #527218
 
  -- Joey Hess <joeyh@debian.org>  Wed, 06 May 2009 14:04:56 -0400
 
