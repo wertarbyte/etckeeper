@@ -1,3 +1,9 @@
+etckeeper (0.36) UNRELEASED; urgency=low
+
+  * Add cruft ignore file. Closes: #522513
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 06 May 2009 17:42:23 -0400
+
 etckeeper (0.35) unstable; urgency=low
 
   * Make etckeeper uninit -f disable the prompt.

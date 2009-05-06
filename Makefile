@@ -26,6 +26,8 @@ install:
 	$(INSTALL_DATA) bash_completion $(DESTDIR)$(etcdir)/bash_completion.d/etckeeper
 ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt)
 	$(INSTALL_DATA) apt.conf $(DESTDIR)$(etcdir)/apt/apt.conf.d/05etckeeper
+	mkdir -p $(DESTDIR)$(etcdir)/cruft/filters-unex
+	$(INSTALL_DATA) cruft_filter $(DESTDIR)$(etcdir)/cruft/filters-unex/etckeeper
 endif
 ifeq ($(LOWLEVEL_PACKAGE_MANAGER),pacman-g2)
 	$(INSTALL_DATA) pacman-g2.hook $(DESTDIR)$(etcdir)/pacman-g2/hooks/etckeeper

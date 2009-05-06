@@ -1,0 +1,13 @@
+/etc/.etckeeper
+/etc/.gitignore
+/etc/.git
+/etc/.git/**
+/etc/.hgignore
+/etc/.hg
+/etc/.hg/**
+/etc/.bzrignore
+/etc/.bzr
+/etc/.bzr/**
+/etc/.dacsignore
+/etc/_darcs
+/etc/_darcs/**
