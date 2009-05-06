@@ -17,7 +17,7 @@ _Description: Commit failed
 
 Template: etckeeper/purge
 Type: boolean
-Default: false
+Default: true
 _Description: Remove etckeeper ${VCS} repository and associated files?
  Etckeeper is being purged from the system, and was used to
  store /etc in a ${VCS} repository. If you choose to remove the

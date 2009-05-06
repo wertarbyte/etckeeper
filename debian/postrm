@@ -14,7 +14,7 @@ if [ "$1" = purge ]; then
 			. /var/cache/etckeeper/stash/etckeeper.conf
 			if [ -n "$VCS" ]; then
 				db_subst etckeeper/purge VCS "$VCS"
-				db_input high etckeeper/purge || true
+				db_input critical etckeeper/purge || true
 				db_go || true
 				db_get etckeeper/purge
 				if [ "$RET" = true ]; then

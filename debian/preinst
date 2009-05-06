@@ -70,6 +70,6 @@ install|upgrade)
 		done
 	fi
 
-	# delete files the postrm stashes away to handle purging
+	# delete files the prerm stashes away to handle purging
 	rm -rf /var/cache/etckeeper/stash
 esac
