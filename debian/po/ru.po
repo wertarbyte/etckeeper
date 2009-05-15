@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Yuri Kozlov <kozlov.y@gmail.com>, 2007.
+# Yuri Kozlov <yuray@komyakino.ru>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.3\n"
+"Project-Id-Version: etckeeper 0.35\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
 "POT-Creation-Date: 2009-05-06 14:41-0400\n"
-"PO-Revision-Date: 2007-12-12 21:23+0300\n"
-"Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
+"PO-Revision-Date: 2009-05-15 21:25+0400\n"
+"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. Type: error
 #. Description
@@ -37,14 +37,14 @@ msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
 msgstr ""
-"Перед тем как продолжить вы можете исправить это вручную через "
-"незафиксированные изменения."
+"Перед тем как продолжить вы можете вручную исправить положение "
+"с незафиксированными изменениями."
 
 #. Type: boolean
 #. Description
 #: ../templates:3001
 msgid "Remove etckeeper ${VCS} repository and associated files?"
-msgstr ""
+msgstr "Удалить репозиторий etckeeper ${VCS} и связанные с ним файлы?"
 
 #. Type: boolean
 #. Description
@@ -54,16 +54,7 @@ msgid ""
 "${VCS} repository. If you choose to remove the repository, this will DESTROY "
 "all history etckeeper has recorded for /etc."
 msgstr ""
+"Etckeeper вычищается из системы, но использовался для хранения каталога "
+"/etc в репозитории ${VCS}. Если вы выберете удаление репозитория, то "
+"это УНИЧТОЖИТ всю историю, которую etckeeper вёл для /etc."
 
-#~ msgid "Commit changed files in /etc to ${VCS}?"
-#~ msgstr "Зафиксировать изменённые файлы /etc в ${VCS}?"
-
-#~ msgid ""
-#~ "The /etc directory contains uncommitted files or other changes. It's best "
-#~ "for all files in /etc to be committed to ${VCS} before running APT. Added "
-#~ "and changed files listed below can be committed automatically:"
-#~ msgstr ""
-#~ "Каталог /etc содержит незафиксированные файлы или другие изменения. Перед "
-#~ "работой APT лучше зафиксировать все файлы /etc в ${VCS}. Перечисленные "
-#~ "ниже добавленные и изменённые файлы могут быть зафиксированы "
-#~ "автоматически:"

@@ -3,6 +3,7 @@ etckeeper (0.36) UNRELEASED; urgency=low
   * Add cruft ignore file. Closes: #522513
   * Update Japanese debconf translation. Closes: #527921
   * Update Swedish debconf translation. Closes: #528575
+  * Update Russian debconf translation. Closes: #528798
 
  -- Joey Hess <joeyh@debian.org>  Wed, 06 May 2009 17:42:23 -0400
 
