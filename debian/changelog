@@ -1,11 +1,11 @@
-etckeeper (0.36) UNRELEASED; urgency=low
+etckeeper (0.36) unstable; urgency=low
 
   * Add cruft ignore file. Closes: #522513
   * Update Japanese debconf translation. Closes: #527921
   * Update Swedish debconf translation. Closes: #528575
   * Update Russian debconf translation. Closes: #528798
 
- -- Joey Hess <joeyh@debian.org>  Wed, 06 May 2009 17:42:23 -0400
+ -- Joey Hess <joeyh@debian.org>  Sat, 16 May 2009 18:22:49 -0400
 
 etckeeper (0.35) unstable; urgency=low
 
