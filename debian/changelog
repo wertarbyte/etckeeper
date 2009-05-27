@@ -1,3 +1,10 @@
+etckeeper (0.37) UNRELEASED; urgency=low
+
+  * Make postinst check for the configured VCS before trying to run
+    etckeeper init. Closes: #530497
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 27 May 2009 14:46:23 -0400
+
 etckeeper (0.36) unstable; urgency=low
 
   * Add cruft ignore file. Closes: #522513

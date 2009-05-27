@@ -75,8 +75,12 @@ configure)
 
 	if [ "$2" = "" ]; then
 		# Fresh install.
-		# Might fail if, eg, git is not installed.
-		etckeeper init || echo "etckeeper init failed; run it by hand" >&2
+		. /etc/etckeeper/etckeeper.conf || true
+		if [ -n "$VCS" ] && [ -x "`which $VCS 2>/dev/null`" ]; then
+			etckeeper init || echo "etckeeper init failed; run it by hand" >&2
+		else
+			echo "etckeeper init not ran as $VCS is not installed" >&2
+		fi
 	fi
 
 	# prints error and exits nonzero if the ignore file cannot be updated
