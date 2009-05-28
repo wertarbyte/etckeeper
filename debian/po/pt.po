@@ -1,14 +1,14 @@
 # translation of etckeeper debconf to Portuguese
-# Copyright (C) 2007 Américo Monteiro
+# Copyright (C) 2007 the etckeeper's copyright holder
 # This file is distributed under the same license as the etckeeper package.
 #
-# Américo Monteiro <a_monteiro@netcabo.pt>, 2007.
+# Américo Monteiro <a_monteiro@netcabo.pt>, 2007, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: etckeeper 0.3\n"
+"Project-Id-Version: etckeeper 0.35\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
 "POT-Creation-Date: 2009-05-06 14:41-0400\n"
-"PO-Revision-Date: 2007-12-11 20:01+0000\n"
+"PO-Revision-Date: 2009-05-10 22:10+0100\n"
 "Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. Description
 #: ../templates:2001
 msgid "Commit failed"
-msgstr "Submissão falhada"
+msgstr "Submissão falhou"
 
 #. Type: error
 #. Description
@@ -42,7 +42,7 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid "Remove etckeeper ${VCS} repository and associated files?"
-msgstr ""
+msgstr "Remover o repositório ${VCS} do etckeeper e os ficheiros associados?"
 
 #. Type: boolean
 #. Description
@@ -52,16 +52,7 @@ msgid ""
 "${VCS} repository. If you choose to remove the repository, this will DESTROY "
 "all history etckeeper has recorded for /etc."
 msgstr ""
+"O etckeeper está a ser purgado do sistema, e foi usado para guardar o /etc num "
+"repositório ${VCS}. Se escolher remover o repositório, isto irá DESTRUIR todo "
+"o histórico que o etckeeper guardou de /etc."
 
-#~ msgid "Commit changed files in /etc to ${VCS}?"
-#~ msgstr "Submeter ficheiros alterados em /etc para o ${VCS}?"
-
-#~ msgid ""
-#~ "The /etc directory contains uncommitted files or other changes. It's best "
-#~ "for all files in /etc to be committed to ${VCS} before running APT. Added "
-#~ "and changed files listed below can be committed automatically:"
-#~ msgstr ""
-#~ "O directório /etc contém ficheiros não submetidos ou outras alterações. É "
-#~ "melhor que todos os ficheiros em /etc sejam submetidos ao ${VCS} antes de "
-#~ "correr o APT. Os ficheiros adicionados e alterados da lista em baixo "
-#~ "podem ser submetidos automaticamente:"
