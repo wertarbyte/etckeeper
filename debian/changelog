@@ -3,6 +3,7 @@ etckeeper (0.37) UNRELEASED; urgency=low
   * Make postinst check for the configured VCS before trying to run
     etckeeper init. Closes: #530497
   * Update French debconf translation. Closes: #530795
+  * Fix typo in cruft file. Closes: #530819
 
  -- Joey Hess <joeyh@debian.org>  Wed, 27 May 2009 14:46:23 -0400
 

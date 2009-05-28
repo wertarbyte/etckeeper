@@ -8,6 +8,6 @@
 /etc/.bzrignore
 /etc/.bzr
 /etc/.bzr/**
-/etc/.dacsignore
+/etc/.darcsignore
 /etc/_darcs
 /etc/_darcs/**
