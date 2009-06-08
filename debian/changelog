@@ -1,4 +1,4 @@
-etckeeper (0.37) UNRELEASED; urgency=low
+etckeeper (0.37) unstable; urgency=low
 
   * Make postinst check for the configured VCS before trying to run
     etckeeper init. Closes: #530497
@@ -7,7 +7,7 @@ etckeeper (0.37) UNRELEASED; urgency=low
   * Update Portuguese debconf translation. Closes: #528109
   * Update German debconf translation. Closes: #532346
 
- -- Joey Hess <joeyh@debian.org>  Wed, 27 May 2009 14:46:23 -0400
+ -- Joey Hess <joeyh@debian.org>  Mon, 08 Jun 2009 13:24:13 -0400
 
 etckeeper (0.36) unstable; urgency=low
 
