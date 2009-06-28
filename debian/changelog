@@ -1,3 +1,9 @@
+etckeeper (0.38) UNRELEASED; urgency=low
+
+  * Use hostname if hostname -f fails. Closes: #533295
+
+ -- Joey Hess <joeyh@debian.org>  Sun, 28 Jun 2009 16:29:17 -0400
+
 etckeeper (0.37) unstable; urgency=low
 
   * Make postinst check for the configured VCS before trying to run

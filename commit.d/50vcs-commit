@@ -2,7 +2,7 @@
 set -e
 
 message="$1"
-hostname=`hostname -f`
+hostname=`hostname -f 2>/dev/null || hostname`
 
 if [ "$VCS" = git ] && [ -d .git ]; then
 	if [ -n "$SUDO_USER" ]; then
