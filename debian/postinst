@@ -77,7 +77,13 @@ configure)
 		# Fresh install.
 		. /etc/etckeeper/etckeeper.conf || true
 		if [ -n "$VCS" ] && [ -x "`which $VCS 2>/dev/null`" ]; then
-			etckeeper init || echo "etckeeper init failed; run it by hand" >&2
+			if etckeeper init; then
+				if ! etckeeper commit "Initial commit"; then
+					echo "etckeeper commit failed; run it by hand" >&2
+				fi
+			else
+				echo "etckeeper init failed; run it by hand" >&2
+			fi
 		else
 			echo "etckeeper init not ran as $VCS is not installed" >&2
 		fi
