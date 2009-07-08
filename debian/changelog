@@ -1,10 +1,10 @@
-etckeeper (0.38) UNRELEASED; urgency=low
+etckeeper (0.38) unstable; urgency=low
 
   * Use hostname if hostname -f fails. Closes: #533295
   * Automatically commit on initial install, so users can
     begin relying on etckeeper right away. Closes: #533290
 
- -- Joey Hess <joeyh@debian.org>  Sun, 28 Jun 2009 16:29:17 -0400
+ -- Joey Hess <joeyh@debian.org>  Wed, 08 Jul 2009 14:40:58 -0400
 
 etckeeper (0.37) unstable; urgency=low
 
