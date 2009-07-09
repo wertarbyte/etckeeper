@@ -1,3 +1,9 @@
+etckeeper (0.39) UNRELEASED; urgency=low
+
+  * Document ETCKEEPER_CONF_DIR in man page.
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 09 Jul 2009 14:35:55 -0400
+
 etckeeper (0.38) unstable; urgency=low
 
   * Use hostname if hostname -f fails. Closes: #533295
