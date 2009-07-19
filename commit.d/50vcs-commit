@@ -26,11 +26,12 @@ elif [ "$VCS" = hg ] && [ -d .hg ]; then
 elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
 	if [ -n "$SUDO_USER" ]; then
 		export EMAIL="$SUDO_USER <$SUDO_USER@$hostname>"
+		BZR_AUTHOR='--author="root <root@$hostname>"'
 	fi
 	if [ -n "$message" ]; then
-		bzr commit $BZR_COMMIT_OPTIONS -m "$message"
+		bzr commit "$BZR_AUTHOR" $BZR_COMMIT_OPTIONS -m "$message"
 	else
-		bzr commit $BZR_COMMIT_OPTIONS
+		bzr commit "$BZR_AUTHOR" $BZR_COMMIT_OPTIONS
 	fi
 elif [ "$VCS" = darcs ] && [ -d _darcs ]; then
 	logfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
