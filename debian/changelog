@@ -1,11 +1,11 @@
-etckeeper (0.39) UNRELEASED; urgency=low
+etckeeper (0.39) unstable; urgency=low
 
   * Document ETCKEEPER_CONF_DIR in man page.
   * Typo. Closes: #536799
   * bzr: Set author to root when committing via sudo. Committer
     will be the sudo user, as it is in git.
 
- -- Joey Hess <joeyh@debian.org>  Thu, 09 Jul 2009 14:35:55 -0400
+ -- Joey Hess <joeyh@debian.org>  Fri, 31 Jul 2009 13:47:09 -0400
 
 etckeeper (0.38) unstable; urgency=low
 
