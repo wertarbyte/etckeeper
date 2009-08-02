@@ -1,3 +1,9 @@
+etckeeper (0.40) UNRELEASED; urgency=low
+
+  * Add Spanish debconf translation. Closes: #539589
+
+ -- Joey Hess <joeyh@debian.org>  Sun, 02 Aug 2009 11:36:07 -0400
+
 etckeeper (0.39) unstable; urgency=low
 
   * Document ETCKEEPER_CONF_DIR in man page.
