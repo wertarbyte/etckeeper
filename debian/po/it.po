@@ -1,14 +1,14 @@
 # Italian (it) translation of debconf templates for etckeeper
 # Copyright (C) 2007 Software in the Public Interest
 # This file is distributed under the same license as the etckeeper package.
-# Luca Monducci <luca.mo@tiscali.it>, 2007.
+# Luca Monducci <luca.mo@tiscali.it>, 2007-2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: etckeeper 0.3 debconf templates\n"
+"Project-Id-Version: etckeeper 0.36 debconf templates\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
 "POT-Creation-Date: 2009-05-06 14:41-0400\n"
-"PO-Revision-Date: 2007-12-14 20:32+0100\n"
+"PO-Revision-Date: 2009-08-08 15:32+0200\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,14 +34,14 @@ msgid ""
 "You may manually resolve the issues with the uncommitted changes before "
 "continuing."
 msgstr ""
-"Potrebbe essere necessario risolvere i problemi con le modifiche delle quali "
-"non è stato fatto il commit prima di continuare."
+"Potrebbe essere necessario risolvere manualmente i problemi con le modifiche "
+"delle quali non è stato fatto il commit prima di continuare."
 
 #. Type: boolean
 #. Description
 #: ../templates:3001
 msgid "Remove etckeeper ${VCS} repository and associated files?"
-msgstr ""
+msgstr "Eliminare il repository ${VCS} di etckeeper e i file associati?"
 
 #. Type: boolean
 #. Description
@@ -51,16 +51,7 @@ msgid ""
 "${VCS} repository. If you choose to remove the repository, this will DESTROY "
 "all history etckeeper has recorded for /etc."
 msgstr ""
-
-#~ msgid "Commit changed files in /etc to ${VCS}?"
-#~ msgstr "Commit dei file modificati in /etc a ${VCS}?"
-
-#~ msgid ""
-#~ "The /etc directory contains uncommitted files or other changes. It's best "
-#~ "for all files in /etc to be committed to ${VCS} before running APT. Added "
-#~ "and changed files listed below can be committed automatically:"
-#~ msgstr ""
-#~ "La directory /etc contiene dei file di cui non è stato ancora fatto il "
-#~ "commit o altre modifiche. Si consiglia di effettuare il commit di tutti i "
-#~ "file in /etc a ${VCS} prima di eseguire APT. È possibile fare "
-#~ "automaticamente il commit dei file nuovi o modificati elencati in seguito:"
+"Etckeeper sta per essere completamente rimosso dal sistema, è stato usato "
+"per memorizzare il contenuto di /etc in un repository ${VCS}. Nel caso si "
+"scelga di eliminare il repository, si DISTRUGGE tutta la storia di /etc "
+"registrata da etckeeper."
