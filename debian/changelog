@@ -1,3 +1,10 @@
+etckeeper (0.41) UNRELEASED; urgency=low
+
+  * Change etckeeper uninit to not remove .gitignore (etc) file
+    if it lacks the "managed by etckeeper" comment. Closes: #545137
+
+ -- Joey Hess <joeyh@debian.org>  Mon, 07 Sep 2009 14:06:45 -0400
+
 etckeeper (0.40) unstable; urgency=low
 
   * Add Spanish debconf translation. Closes: #539589

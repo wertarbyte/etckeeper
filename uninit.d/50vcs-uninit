@@ -2,11 +2,23 @@
 set -e
 
 if [ "$VCS" = git ]; then
-	rm -rf .git .gitignore
+	rm -rf .git
+	file=.gitignore
 elif [ "$VCS" = hg ]; then
-	rm -rf .hg .hgignore
+	rm -rf .hg
+	file=.hgignore
 elif [ "$VCS" = bzr ]; then
-	rm -rf .bzr .bzrignore
+	rm -rf .bzr
+	file=.bzrignore
 elif [ "$VCS" = darcs ]; then
-	rm -rf _darcs .darcsignore
+	rm -rf _darcs
+	file=.darcsignore
+fi
+
+managed_by_etckeeper="managed by etckeeper"
+
+if ! grep -q "$managed_by_etckeeper" "$file"; then
+	echo "etckeeper: "$file" does not contain \"$managed_by_etckeeper\" comment; not removing"
+else
+	rm -f $file
 fi
