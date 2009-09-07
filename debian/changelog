@@ -2,6 +2,8 @@ etckeeper (0.41) UNRELEASED; urgency=low
 
   * Change etckeeper uninit to not remove .gitignore (etc) file
     if it lacks the "managed by etckeeper" comment. Closes: #545137
+  * Fix hgrc setup code to not warn if the hgrc already contains
+    a call to etckeeper. (Thanks, Jakov Sosic)
 
  -- Joey Hess <joeyh@debian.org>  Mon, 07 Sep 2009 14:06:45 -0400
 

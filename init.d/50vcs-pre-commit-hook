@@ -19,10 +19,12 @@ EOF
 	;;
 	hg)
 		if [ -e .hg/hgrc ] && grep "^\[hooks\]" .hg/hgrc; then
-			echo "etckeeper warning: [hooks] section in .hg/hgrc needs to be manually modified to run: etckeeper pre-commit -d `pwd`" >&2
+			if ! grep -q "etckeeper pre-commit" .hg/hgrc; then
+				echo "etckeeper warning: [hooks] section in .hg/hgrc needs to be manually modified to run: etckeeper pre-commit -d `pwd`" >&2
+			fi
 		else
-		touch .hg/hgrc
-		cat >>.hg/hgrc <<EOF
+			touch .hg/hgrc
+			cat >>.hg/hgrc <<EOF
 [hooks]
 # pre-commit hook for etckeeper, to store metadata and do sanity checks
 precommit = etckeeper pre-commit -d `pwd`
