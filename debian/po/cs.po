@@ -1,14 +1,14 @@
 # Czech translation of etckeeper debconf messages.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the etckeeper package.
-# Miroslav Kure <kurem@debian.cz>, 2007
+# Miroslav Kure <kurem@debian.cz>, 2007,2009
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: etckeeper\n"
 "Report-Msgid-Bugs-To: etckeeper@packages.debian.org\n"
 "POT-Creation-Date: 2009-05-06 14:41-0400\n"
-"PO-Revision-Date: 2007-12-24 13:10+0100\n"
+"PO-Revision-Date: 2009-09-13 09:09+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid "Remove etckeeper ${VCS} repository and associated files?"
-msgstr ""
+msgstr "Odstranit ${VCS} repositář etckeeperu a přidružené soubory?"
 
 #. Type: boolean
 #. Description
@@ -50,6 +50,9 @@ msgid ""
 "${VCS} repository. If you choose to remove the repository, this will DESTROY "
 "all history etckeeper has recorded for /etc."
 msgstr ""
+"Etckeeper se na tomto systému používal pro uchování /etc v ${VCS} "
+"repositáři, avšak nyní je ze systému odstraňován. Pokud povolíte odstranění "
+"repositáře, ZNIČÍTE tím veškerou historii, kterou etckeeper uchovával."
 
 #~ msgid "Commit changed files in /etc to ${VCS}?"
 #~ msgstr "Zapsat změněné soubory v /etc do ${VCS}?"
