@@ -1,3 +1,9 @@
+etckeeper (0.42) UNRELEASED; urgency=low
+
+  * Deal with removal of the cache directory. Closes: #559418
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 04 Dec 2009 13:10:28 -0500
+
 etckeeper (0.41) unstable; urgency=low
 
   * Change etckeeper uninit to not remove .gitignore (etc) file
