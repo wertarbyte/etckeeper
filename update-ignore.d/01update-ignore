@@ -81,6 +81,8 @@ writefile () {
 	if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
 		comment "new and old versions of conffiles, stored by dpkg"
 		ignore "*.dpkg-*"
+		comment "new and old versions of conffiles, stored by ucf"
+		ignore "*.ucf-*"
 		nl
 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "rpm" ]; then
 		comment "new and old versions of conffiles, stored by apt/rpm"
