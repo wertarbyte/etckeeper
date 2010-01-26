@@ -37,7 +37,12 @@ ignore() {
 	glob="$1"
 	
 	case "$VCS" in
-		git|bzr)
+		git)
+			# escape "#" in ignores, as otherwise it may
+			# be considered a comment
+			echo "$glob" | sed 's/#/\\#/g' >>"$file"
+		;;
+		bzr)
 			echo "$glob" >>"$file"
 		;;
 		hg)
@@ -49,7 +54,7 @@ ignore() {
 				nl
 				hg_syntax_printed=1
 			fi
-			echo "$glob" >>"$file"
+			echo "$glob" | sed 's/#/\\#/g' >>"$file"
 		;;
 		darcs)
 			# darcs doesn't understand globs, so we need to

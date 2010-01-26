@@ -7,6 +7,7 @@ etckeeper (0.42) UNRELEASED; urgency=low
   * Add *.elc to ignore list (See #491401)
   * Add ntp.conf.dhcp to ignore list. (See #491401)
   * Add X11/xdm/authdir/authfiles/* to ignore list. Closes: #491401
+  * Fix handling of "#*#" ignores for git and hg.
 
  -- Joey Hess <joeyh@debian.org>  Fri, 04 Dec 2009 13:10:28 -0500
 
