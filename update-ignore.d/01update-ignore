@@ -118,6 +118,7 @@ writefile () {
 	ignore network/run
 	ignore adjtime
 	ignore lvm/cache
+	ignore ntp.conf.dhcp
 	ignore "webmin/fsdump/*.status"
 	ignore "*.elc"
 	nl
