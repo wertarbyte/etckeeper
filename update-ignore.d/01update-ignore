@@ -119,6 +119,7 @@ writefile () {
 	ignore adjtime
 	ignore lvm/cache
 	ignore "webmin/fsdump/*.status"
+	ignore "*.elc"
 	nl
 	
 	comment "editor temp files"
