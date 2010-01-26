@@ -52,9 +52,9 @@ ignore() {
 			echo "$glob" >>"$file"
 		;;
 		darcs)
-			# darcs doesn't understand globs, so we need to translate
-			# them into regexs. Not a complete converter, but suitable
-			# for given globs.
+			# darcs doesn't understand globs, so we need to
+			# translate them into regexs. Not a complete converter,
+			# but suitable for given globs.
 			if [ "${glob%\*}" != "$glob" ]; then
 				glob="${glob%\*}"
 			else
@@ -109,6 +109,7 @@ writefile () {
 	ignore network/run
 	ignore adjtime
 	ignore lvm/cache
+	ignore "webmin/fsdump/*.status"
 	nl
 	
 	comment "editor temp files"
