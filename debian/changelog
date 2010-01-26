@@ -6,6 +6,7 @@ etckeeper (0.42) UNRELEASED; urgency=low
   * Add *.old to ignore list (See #462355)
   * Add *.elc to ignore list (See #491401)
   * Add ntp.conf.dhcp to ignore list. (See #491401)
+  * Add X11/xdm/authdir/authfiles/* to ignore list. Closes: #491401
 
  -- Joey Hess <joeyh@debian.org>  Fri, 04 Dec 2009 13:10:28 -0500
 
