@@ -3,6 +3,7 @@ etckeeper (0.42) UNRELEASED; urgency=low
   * Deal with removal of the cache directory. Closes: #559418
   * Add ucf backups to ignore list. (See #462355)
   * Add webmin fsdump status files to ignore list. Closes: #567000
+  * Add *.old to ignore list (See #462355)
 
  -- Joey Hess <joeyh@debian.org>  Fri, 04 Dec 2009 13:10:28 -0500
 

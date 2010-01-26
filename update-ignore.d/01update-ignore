@@ -96,6 +96,15 @@ writefile () {
 		nl
 	fi
 	
+	comment "old versions of files"
+	ignore "*.old"
+	# Not currently ignored as admins tend to rely on these files.
+	#ignore "passwd-"
+	#ignore "group-"
+	#ignore "shadow-"
+	#ignore "gshadow-"
+	nl
+
 	comment "mount(8) records system state here, no need to store these"
 	ignore blkid.tab
 	ignore blkid.tab.old
