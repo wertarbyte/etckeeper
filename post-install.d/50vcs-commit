@@ -13,8 +13,11 @@ if etckeeper unclean; then
 		if [ -n "$diff" ]; then
 			message="$message$NL${NL}Package changes:$NL$diff"
 		fi
-		rm -f $pl.pre-install
 	fi
 
 	etckeeper commit "$(printf "$message")"
+fi
+	
+if [ -e $pl.pre-install ]; then
+	rm -f $pl.pre-install
 fi

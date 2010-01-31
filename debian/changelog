@@ -1,3 +1,10 @@
+etckeeper (0.43) UNRELEASED; urgency=low
+
+  * Fix cleanup of /var/cache/etckeeper/packagelist.pre-install after
+    an upgrade where no conffiles are changed.
+
+ -- Joey Hess <joeyh@debian.org>  Sun, 31 Jan 2010 14:36:44 -0500
+
 etckeeper (0.42) unstable; urgency=low
 
   * Deal with removal of the cache directory. Closes: #559418
