@@ -2,6 +2,9 @@ etckeeper (0.43) UNRELEASED; urgency=low
 
   * Fix cleanup of /var/cache/etckeeper/packagelist.pre-install after
     an upgrade where no conffiles are changed.
+  * Prevent cron job autocommit from happening if pre-install file
+    is present, to avoid committing state in the middle of an apt run.
+    Closes: #567538
 
  -- Joey Hess <joeyh@debian.org>  Sun, 31 Jan 2010 14:36:44 -0500
 
