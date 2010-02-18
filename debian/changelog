@@ -1,4 +1,4 @@
-etckeeper (0.43) UNRELEASED; urgency=low
+etckeeper (0.43) unstable; urgency=low
 
   * Fix cleanup of /var/cache/etckeeper/packagelist.pre-install after
     an upgrade where no conffiles are changed.
@@ -12,7 +12,7 @@ etckeeper (0.43) UNRELEASED; urgency=low
   * Record real committer username in the darcs log, so that the man page
     can say that for every VCS the username is recorded.
 
- -- Joey Hess <joeyh@debian.org>  Sun, 31 Jan 2010 14:36:44 -0500
+ -- Joey Hess <joeyh@debian.org>  Thu, 18 Feb 2010 14:01:45 -0500
 
 etckeeper (0.42) unstable; urgency=low
 
