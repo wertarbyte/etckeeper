@@ -6,6 +6,8 @@ etckeeper (0.43) UNRELEASED; urgency=low
     is present, to avoid committing state in the middle of an apt run.
     Closes: #567538
   * Add /etc/webmin/webmin/oscache to ignore list. Closes: #567255
+  * Check owner of tty to determine who has su'd to root when committing,
+    based on a patch by Jakov Sosic.
 
  -- Joey Hess <joeyh@debian.org>  Sun, 31 Jan 2010 14:36:44 -0500
 
