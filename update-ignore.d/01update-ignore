@@ -127,6 +127,7 @@ writefile () {
 	ignore ntp.conf.dhcp
 	ignore "webmin/fsdump/*.status"
 	ignore "webmin/webmin/oscache"
+	ignore "apparmor.d/cache/*"
 	ignore "service/*/supervise/*"
 	ignore "service/*/log/supervise/*"
 	ignore "sv/*/supervise/*"
