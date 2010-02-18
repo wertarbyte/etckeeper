@@ -9,6 +9,8 @@ etckeeper (0.43) UNRELEASED; urgency=low
   * Check owner of tty to determine who has su'd to root when committing,
     based on a patch by Jakov Sosic.
   * Add apparmor.d/cache/ to default ignores.
+  * Record real committer username in the darcs log, so that the man page
+    can say that for every VCS the username is recorded.
 
  -- Joey Hess <joeyh@debian.org>  Sun, 31 Jan 2010 14:36:44 -0500
 

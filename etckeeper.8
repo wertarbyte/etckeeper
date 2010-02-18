@@ -21,6 +21,8 @@ initialise a clone of the /etc repository located elsewhere.
 .B commit [message]
 Commits all changes in /etc to the repository. A commit message can be
 specified. You may also use the underlying VCS to commit manually.
+(Note that etckeeper commit will notice if a user has used sudo or su to
+become root, and record the original username in the commit.)
 .TP
 .B pre-commit
 This is called as a pre-commit hook. It stores metadata and does sanity
