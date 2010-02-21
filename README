@@ -6,6 +6,7 @@ metadata that git does not normally support, but that is important for
 configurable, while also being simple to use if you understand the basics
 of working with version control.
 
+
 ## security warnings
 
 First, a big warning: By checking /etc into version control, you are
@@ -149,8 +150,9 @@ server. When using git push to create a new remote clone, make sure the new
 remote clone is mode 700! (And, obviously, only push over a secure
 transport like ssh, and only to a server you trust.)
 
-	ssh server 'mkdir /etc-clone; cd /etc-clone; chmod 700 .; git init'
-	git push ssh://server/etc-clone master
+	ssh server 'mkdir /etc-clone; cd /etc-clone; chmod 700 .; git init --bare'
+	git remote add backup ssh://server/etc-clone
+	git push backup --all
 
 If you have several machine's using etckeeper, you can start with a
 etckeeper repository on one machine, then add another machine's etckeeper
@@ -206,6 +208,14 @@ letting it git add new files and git rm removed ones:
 
 	chmod -x /etc/etckeeper/commit.d/50vcs-commit
 
+Here's how to make it automatically push commits to a clone of the
+repository as a backup (see instructions above to set up the clone safely):
+
+	cd /etc/etckeeper/commit.d
+	echo ('#!/bin/sh' ; echo 'git push backup') > 99git-push
+	chmod +x 99git-push
+	git add .
+	git commit -m "automatically push commits to backup repository"
 
 ## changing VCS
 
