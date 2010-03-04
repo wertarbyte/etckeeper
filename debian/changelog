@@ -2,6 +2,7 @@ etckeeper (0.44) UNRELEASED; urgency=low
 
   * Add example to README of how to automatically push changes to a backup
     repository.
+  * Add fuse lock file to ignore list.
 
  -- Joey Hess <joeyh@debian.org>  Sun, 21 Feb 2010 13:30:33 -0500
 

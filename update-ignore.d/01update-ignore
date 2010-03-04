@@ -119,6 +119,7 @@ writefile () {
 	ignore nologin
 	ignore ld.so.cache
 	ignore mtab
+	ignore mtab.fuselock
 	ignore .pwd.lock
 	ignore network/run
 	ignore adjtime
