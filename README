@@ -212,7 +212,7 @@ Here's how to make it automatically push commits to a clone of the
 repository as a backup (see instructions above to set up the clone safely):
 
 	cd /etc/etckeeper/commit.d
-	echo ('#!/bin/sh' ; echo 'git push backup') > 99git-push
+	(echo '#!/bin/sh' ; echo 'git push backup') > 99git-push
 	chmod +x 99git-push
 	git add .
 	git commit -m "automatically push commits to backup repository"
