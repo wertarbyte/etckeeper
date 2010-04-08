@@ -2,7 +2,11 @@
 set -e
 
 message="$1"
-hostname=`hostname -f 2>/dev/null || hostname`
+hostname=`hostname`
+dnsdomainname=`dnsdomainname 2>/dev/null || true`
+if [ -n "$dnsdomainname" ]; then
+	hostname="$hostname.$dnsdomainname"
+fi
 
 USER=
 if [ -n "$SUDO_USER" ]; then
