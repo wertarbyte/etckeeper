@@ -9,6 +9,7 @@ etckeeper (0.44) UNRELEASED; urgency=low
     but users who want darcs prompting can disable it.
   * Use darcs record -m to specify commit message, instead of using a logfile.
   * Closes: #519228
+  * Update depends for git-core to git transition.
 
  -- Joey Hess <joeyh@debian.org>  Sun, 21 Feb 2010 13:30:33 -0500
 
