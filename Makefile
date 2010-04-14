@@ -19,7 +19,7 @@ build: etckeeper.spec
 	
 install:
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
-	cp -a *.d $(DESTDIR)$(etcdir)/etckeeper/
+	cp -dR *.d $(DESTDIR)$(etcdir)/etckeeper/
 	$(INSTALL_DATA) $(CONFFILE) $(DESTDIR)$(etcdir)/etckeeper/etckeeper.conf
 	$(INSTALL_EXE) etckeeper $(DESTDIR)$(sbindir)/etckeeper
 	$(INSTALL_DATA) etckeeper.8 $(DESTDIR)$(mandir)/man8/etckeeper.8
