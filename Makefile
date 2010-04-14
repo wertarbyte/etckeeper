@@ -43,6 +43,7 @@ clean: etckeeper.spec
 	rm -rf build
 
 etckeeper.spec:
-	sed -i "s/Version:.*/Version: $$(perl -e '$$_=<>;print m/\((.*?)\)/'<debian/changelog)/" etckeeper.spec
+	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;print m/\((.*?)\)/'<debian/changelog)/" etckeeper.spec
+	rm -f etckeeper.spec~
 
 .PHONY: etckeeper.spec
