@@ -1,4 +1,4 @@
-etckeeper (0.44) UNRELEASED; urgency=low
+etckeeper (0.44) unstable; urgency=low
 
   * Add example to README of how to automatically push changes to a backup
     repository.
@@ -15,7 +15,7 @@ etckeeper (0.44) UNRELEASED; urgency=low
     otherwise, fall back to the unqualified hostname.)
   * Other portability fixes for non-GNU tools and OS X. Thanks, Neil Mayhew.
 
- -- Joey Hess <joeyh@debian.org>  Sun, 21 Feb 2010 13:30:33 -0500
+ -- Joey Hess <joeyh@debian.org>  Wed, 14 Apr 2010 15:43:14 -0400
 
 etckeeper (0.43) unstable; urgency=low
 
