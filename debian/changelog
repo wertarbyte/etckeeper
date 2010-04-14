@@ -13,6 +13,7 @@ etckeeper (0.44) UNRELEASED; urgency=low
   * Avoid using hostname -f, since on Solaris that sets the hostname to -f.
     Yay, Unix portability! (Instead, use dnsdomainname if available, and
     otherwise, fall back to the unqualified hostname.)
+  * Updated for git transition. Closes: #577732
 
  -- Joey Hess <joeyh@debian.org>  Sun, 21 Feb 2010 13:30:33 -0500
 
