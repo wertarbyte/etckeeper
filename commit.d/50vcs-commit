@@ -59,5 +59,6 @@ elif [ "$VCS" = darcs ] && [ -d _darcs ]; then
 	else
 		darcs record --author="$USER" $DARCS_COMMIT_OPTIONS
 	fi
+	rm -f "$logfile"
 	unset logfile
 fi
