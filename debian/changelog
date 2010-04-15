@@ -1,3 +1,10 @@
+etckeeper (0.45) UNRELEASED; urgency=low
+
+  * Revert darcs to using --logfile again, necessary for multiline commit
+    messages. Closes: #577915
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 15 Apr 2010 11:48:37 -0400
+
 etckeeper (0.44) unstable; urgency=low
 
   * Add example to README of how to automatically push changes to a backup

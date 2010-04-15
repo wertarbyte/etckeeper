@@ -49,11 +49,13 @@ elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
 		bzr commit "$BZR_AUTHOR" $BZR_COMMIT_OPTIONS
 	fi
 elif [ "$VCS" = darcs ] && [ -d _darcs ]; then
+	logfile="$(mktemp -t etckeeper-$VCS.XXXXXXXXXX)"
+	printf "%b" "$message" > "$logfile"
 	if [ -n "$USER" ]; then
 		USER=root
 	fi
 	if [ -n "$message" ]; then
-		darcs record --author="$USER" $DARCS_COMMIT_OPTIONS -m "$message"
+		darcs record --author="$USER" $DARCS_COMMIT_OPTIONS --logfile="$logfile"
 	else
 		darcs record --author="$USER" $DARCS_COMMIT_OPTIONS
 	fi
