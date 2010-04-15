@@ -51,7 +51,7 @@ elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
 elif [ "$VCS" = darcs ] && [ -d _darcs ]; then
 	logfile="$(mktemp -t etckeeper-$VCS.XXXXXXXXXX)"
 	printf "%b" "$message" > "$logfile"
-	if [ -n "$USER" ]; then
+	if [ -z "$USER" ]; then
 		USER=root
 	fi
 	if [ -n "$message" ]; then
