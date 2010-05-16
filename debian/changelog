@@ -1,6 +1,8 @@
 etckeeper (0.46) UNRELEASED; urgency=low
 
   * Support etckeeper commit --stdin
+  * Fix bug where after a large upgrade, etckeeper's automatic commit message
+    was so long it exceeded system limits. Closes: #581678
 
  -- Joey Hess <joeyh@debian.org>  Sun, 16 May 2010 18:56:35 -0400
 
