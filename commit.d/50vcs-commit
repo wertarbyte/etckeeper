@@ -1,7 +1,23 @@
 #!/bin/sh
 set -e
 
-message="$1"
+cleanup () {
+	if [ -n "$logfile" ]; then
+		rm -f "$logfile"
+	fi
+}
+if [ -n "$1" ]; then
+	trap cleanup EXIT
+	logfile="$(mktemp -t etckeeper-$VCS.XXXXXXXXXX)"
+	if [ "x$1" = "x--stdin" ]; then
+		cat > "$logfile"
+	else
+		echo "$1" > "$logfile"
+	fi
+else
+	logfile=""
+fi
+
 hostname=`hostname`
 dnsdomainname=`dnsdomainname 2>/dev/null || true`
 if [ -n "$dnsdomainname" ]; then
@@ -24,8 +40,8 @@ if [ "$VCS" = git ] && [ -d .git ]; then
 		export GIT_COMMITTER_NAME="$USER"
 		export GIT_COMMITTER_EMAIL="$USER@$hostname"
 	fi
-	if [ -n "$message" ]; then
-		git commit $GIT_COMMIT_OPTIONS -m "$message"
+	if [ -n "$logfile" ]; then
+		git commit $GIT_COMMIT_OPTIONS -F "$logfile"
 	else
 		git commit $GIT_COMMIT_OPTIONS
 	fi
@@ -33,8 +49,8 @@ elif [ "$VCS" = hg ] && [ -d .hg ]; then
 	if [ -n "$USER" ]; then
 		export LOGNAME="$USER"
 	fi
-	if [ -n "$message" ]; then
-		hg commit $HG_COMMIT_OPTIONS -m "$message"
+	if [ -n "$logfile" ]; then
+		hg commit $HG_COMMIT_OPTIONS -l "$logfile"
 	else
 		hg commit $HG_COMMIT_OPTIONS
 	fi
@@ -43,22 +59,18 @@ elif [ "$VCS" = bzr ] && [ -d .bzr ]; then
 		export EMAIL="$USER <$USER@$hostname>"
 		BZR_AUTHOR='--author="root <root@$hostname>"'
 	fi
-	if [ -n "$message" ]; then
-		bzr commit "$BZR_AUTHOR" $BZR_COMMIT_OPTIONS -m "$message"
+	if [ -n "$logfile" ]; then
+		bzr commit "$BZR_AUTHOR" $BZR_COMMIT_OPTIONS -F "$logfile"
 	else
 		bzr commit "$BZR_AUTHOR" $BZR_COMMIT_OPTIONS
 	fi
 elif [ "$VCS" = darcs ] && [ -d _darcs ]; then
-	logfile="$(mktemp -t etckeeper-$VCS.XXXXXXXXXX)"
-	printf "%b" "$message" > "$logfile"
 	if [ -z "$USER" ]; then
 		USER=root
 	fi
-	if [ -n "$message" ]; then
+	if [ -n "$logfile" ]; then
 		darcs record --author="$USER" $DARCS_COMMIT_OPTIONS --logfile="$logfile"
 	else
 		darcs record --author="$USER" $DARCS_COMMIT_OPTIONS
 	fi
-	rm -f "$logfile"
-	unset logfile
 fi
