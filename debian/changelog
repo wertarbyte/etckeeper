@@ -1,8 +1,7 @@
 etckeeper (0.47) UNRELEASED; urgency=low
 
-  * Set HOME=~root so that VCS like bzr that write to the home
-    directory when run by etckeeper do not drop root-owned files
-    in user home directory when sudo etckeeper is run. Closes: #583581
+  * Set HOME=~root so that VCS like bzr do not drop root-owned files in
+    user home directory when sudo etckeeper is run. Closes: #583581
   * hg: Set HGUSER (if not already set) to avoid warning message when
     committing. Closes: #533298
 
