@@ -22,6 +22,9 @@ if [ -z "$VCS" ]; then
 fi
 export VCS
 
+HOME=~root
+export HOME
+
 if [ ! -z "$GIT_COMMIT_OPTIONS" ]; then
 	export GIT_COMMIT_OPTIONS
 fi

@@ -1,3 +1,11 @@
+etckeeper (0.47) UNRELEASED; urgency=low
+
+  * Set HOME=~root so that VCS like bzr that write to the home
+    directory when run by etckeeper do not drop root-owned files
+    in user home directory when sudo etckeeper is run. Closes: #583581
+
+ -- Joey Hess <joeyh@debian.org>  Fri, 28 May 2010 13:33:44 -0400
+
 etckeeper (0.46) unstable; urgency=low
 
   * Support etckeeper commit --stdin
