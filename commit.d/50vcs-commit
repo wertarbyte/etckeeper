@@ -49,6 +49,9 @@ elif [ "$VCS" = hg ] && [ -d .hg ]; then
 	if [ -n "$USER" ]; then
 		export LOGNAME="$USER"
 	fi
+	if [ -n "$HGUSER" ]; then
+		export HGUSER="$USER@$hostname"
+	fi
 	if [ -n "$logfile" ]; then
 		hg commit $HG_COMMIT_OPTIONS -l "$logfile"
 	else
