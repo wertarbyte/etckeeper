@@ -1,4 +1,4 @@
-etckeeper (0.47) UNRELEASED; urgency=low
+etckeeper (0.47) unstable; urgency=low
 
   * Set HOME=~root so that VCS like bzr do not drop root-owned files in
     user home directory when sudo etckeeper is run. Closes: #583581
@@ -8,7 +8,7 @@ etckeeper (0.47) UNRELEASED; urgency=low
     and not the committer. So, set the author to the user running sudo
     for both. The committer will then be root.
 
- -- Joey Hess <joeyh@debian.org>  Fri, 28 May 2010 13:33:44 -0400
+ -- Joey Hess <joeyh@debian.org>  Sun, 30 May 2010 16:50:09 -0400
 
 etckeeper (0.46) unstable; urgency=low
 
