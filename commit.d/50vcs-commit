@@ -49,7 +49,7 @@ elif [ "$VCS" = hg ] && [ -d .hg ]; then
 	if [ -n "$USER" ]; then
 		export LOGNAME="$USER"
 	fi
-	if [ -n "$HGUSER" ]; then
+	if [ -z "$HGUSER" ]; then
 		export HGUSER="$USER@$hostname"
 	fi
 	if [ -n "$logfile" ]; then

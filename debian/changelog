@@ -1,3 +1,9 @@
+etckeeper (0.48) UNRELEASED; urgency=low
+
+  * Fix backwards test for HGUSER. (Mike Rich)
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 02 Jun 2010 18:32:17 -0400
+
 etckeeper (0.47) unstable; urgency=low
 
   * Set HOME=~root so that VCS like bzr do not drop root-owned files in
