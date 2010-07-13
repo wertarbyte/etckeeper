@@ -51,7 +51,7 @@ mkdir -p %{_var}/cache/etckeeper
 %doc GPL INSTALL TODO README
 %{_sbindir}/*
 %{_mandir}/*
-# this isn't very clever and its a manaual process update.
+# this isn't very clever and its a manual process update.
 # but it works
 %config(noreplace) /etc/yum/pluginconf.d/etckeeper.conf
 %config(noreplace) /etc/etckeeper/etckeeper.conf
