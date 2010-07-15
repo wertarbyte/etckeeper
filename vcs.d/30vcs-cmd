@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+IFS='
+'
+
+# check whether we can locate the vcs binary
+if [ -n "$VCS" ] && which "$VCS" > /dev/null; then
+        # pass commands to the VCS application
+        $VCS $@
+fi
