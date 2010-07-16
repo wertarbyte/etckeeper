@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-IFS='
-'
-
 # check whether we can locate the vcs binary
 if [ -n "$VCS" ] && which "$VCS" > /dev/null; then
         # pass commands to the VCS application
-        $VCS $@
+        $VCS "$@"
+else
+	echo "error: VCS ($VCS) not set or not in PATH" >&2
+	exit 1
 fi
