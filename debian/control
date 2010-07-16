@@ -3,7 +3,7 @@ Section: admin
 Priority: optional
 Build-Depends: debhelper (>= 7), dpkg-dev (>= 1.9.0), bzr (>= 1.4~), python-central
 Maintainer: Joey Hess <joeyh@debian.org>
-Standards-Version: 3.8.4
+Standards-Version: 3.9.0
 XS-Python-Version: all
 Vcs-Git: git://git.kitenet.net/etckeeper
 Homepage: http://kitenet.net/~joey/code/etckeeper/
