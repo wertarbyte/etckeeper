@@ -46,6 +46,11 @@ This updates the VCS ignore file. Content outside a "managed by etckeeper"
 block is not touched. This is generally run when upgrading to a new version
 of etckeeper.
 .TP
+.B vcs subcommand [options ...]
+You can use this to run any subcommand of the VCS that etckeeper is
+configured to run. It will be run in /etc. For example, "etckeeper vcs
+diff" will run "git diff", etc.
+.TP
 .B uninit [-f]
 This command DESTROYS DATA! It is the inverse of the init command, removing
 VCS information and etckeeper's own bookkeeping information from the
