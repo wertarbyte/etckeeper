@@ -25,6 +25,12 @@ export VCS
 HOME=~root
 export HOME
 
+program_directory="${0%/*}"
+if [ -n "$program_directory" ]; then
+	PATH="$PATH:$program_directory"
+	export PATH
+fi
+
 if [ ! -z "$GIT_COMMIT_OPTIONS" ]; then
 	export GIT_COMMIT_OPTIONS
 fi
