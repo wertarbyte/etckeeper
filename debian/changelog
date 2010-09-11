@@ -4,6 +4,10 @@ etckeeper (0.49) UNRELEASED; urgency=low
     that hook scripts that re-exec etckeeper are guaranteed to find it.
   * Ignore -m switch to etckeeper commit, in case someone tries to use
     it with that option common to several VCS. Closes: #592050
+  * Remove HOME setting in etckeeper. sudo now defaults to setting HOME
+    itself as of version 1.7.4p4, so it is not necessary for etckeeper
+    to work around its behavior anymore. (sudo also allows disabling that
+    for those who enjoy using guns around feet.) Closes: #583899
 
  -- Joey Hess <joeyh@debian.org>  Sun, 25 Jul 2010 19:44:37 -0400
 

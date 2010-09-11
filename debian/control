@@ -13,6 +13,7 @@ Architecture: all
 Section: admin
 Depends: git-core (>= 1:1.5.4) | git (>= 1:1.7) | mercurial | bzr (>= 1.4~) | darcs, ${misc:Depends}
 Recommends: cron
+Suggests: sudo (>= 1.7.4p4)
 Conflicts: bzr (<< 1.4~)
 XB-Python-Version: ${python:Versions}
 Description: store /etc in git, mercurial, bzr or darcs
