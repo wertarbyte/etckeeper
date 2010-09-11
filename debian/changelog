@@ -2,6 +2,8 @@ etckeeper (0.49) UNRELEASED; urgency=low
 
   * Ensure that PATH contains the directory containing etckeeper, so
     that hook scripts that re-exec etckeeper are guaranteed to find it.
+  * Ignore -m switch to etckeeper commit, in case someone tries to use
+    it with that option common to several VCS. Closes: #592050
 
  -- Joey Hess <joeyh@debian.org>  Sun, 25 Jul 2010 19:44:37 -0400
 

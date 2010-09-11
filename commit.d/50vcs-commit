@@ -12,6 +12,9 @@ if [ -n "$1" ]; then
 	if [ "x$1" = "x--stdin" ]; then
 		cat > "$logfile"
 	else
+		if [ "x$1" = "x-m" ]; then
+			shift 1
+		fi
 		echo "$1" > "$logfile"
 	fi
 else
