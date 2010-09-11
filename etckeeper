@@ -22,6 +22,8 @@ if [ -z "$VCS" ]; then
 fi
 export VCS
 
+# Workaround for sudo before 1.7.4p4 which left HOME pointing at user's
+# home directory
 HOME=~root
 export HOME
 
