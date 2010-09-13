@@ -1,4 +1,4 @@
-etckeeper (0.49) UNRELEASED; urgency=low
+etckeeper (0.49) unstable; urgency=low
 
   * Ensure that PATH contains the directory containing etckeeper, so
     that hook scripts that re-exec etckeeper are guaranteed to find it.
@@ -10,7 +10,7 @@ etckeeper (0.49) UNRELEASED; urgency=low
     for those who enjoy using guns around feet.) Closes: #583899
   * Fix file quoting problem in processing .etckeeper file in init.
 
- -- Joey Hess <joeyh@debian.org>  Sun, 25 Jul 2010 19:44:37 -0400
+ -- Joey Hess <joeyh@debian.org>  Mon, 13 Sep 2010 13:10:43 -0400
 
 etckeeper (0.48) unstable; urgency=low
 
