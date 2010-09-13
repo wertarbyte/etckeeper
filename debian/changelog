@@ -8,6 +8,7 @@ etckeeper (0.49) UNRELEASED; urgency=low
     itself as of version 1.7.4p4, so it is not necessary for etckeeper
     to work around its behavior anymore. (sudo also allows disabling that
     for those who enjoy using guns around feet.) Closes: #583899
+  * Fix file quoting problem in processing .etckeeper file in init.
 
  -- Joey Hess <joeyh@debian.org>  Sun, 25 Jul 2010 19:44:37 -0400
 
