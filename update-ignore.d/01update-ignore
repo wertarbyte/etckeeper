@@ -126,6 +126,7 @@ writefile () {
 	ignore lvm/cache
 	ignore "X11/xdm/authdir/authfiles/*"
 	ignore ntp.conf.dhcp
+	ignore .initctl
 	ignore "webmin/fsdump/*.status"
 	ignore "webmin/webmin/oscache"
 	ignore "apparmor.d/cache/*"
