@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+exclude_internal () {
+	grep -v '/\(.git\|.hg\|.bzr\|_darcs\)/'
+}
+
+if [ "$VCS" = hg ] || [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then
+	special=$(find . -not -type d -not -type f -not -type l | exclude_internal) || true
+	hardlinks=$(find . -type f -not -links 1 | exclude_internal ) || true
+elif [ "$VCS" = git ]; then
+	special=$(find . -not -type d -not -type f -not -type l -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
+	hardlinks=$(find . -type f -not -links 1 -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
+else
+	special=""
+fi
+	
+if [ -n "$special" ]; then
+	echo "etckeeper warning: special files could cause problems with $VCS:" >&2
+	echo "$special" >&2
+fi
+if [ -n "$hardlinks" ]; then
+	echo "etckeeper warning: hardlinked files could cause problems with $VCS:" >&2
+	echo "$hardlinks" >&2
+fi
+
+true

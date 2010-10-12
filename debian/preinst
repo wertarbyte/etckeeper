@@ -69,6 +69,11 @@ install|upgrade)
 			rm_conffile etckeeper "/etc/etckeeper/commit.d/$c"
 		done
 	fi
+	if dpkg --compare-versions "$2" le "0.50"; then
+		for c in 20warn-hardlinks 20warn-special-file; do
+			rm_conffile etckeeper "/etc/etckeeper/pre-commit.d/$c"
+		done
+	fi
 
 	# delete files the prerm stashes away to handle purging
 	rm -rf /var/cache/etckeeper/stash

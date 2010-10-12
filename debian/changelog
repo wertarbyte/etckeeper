@@ -2,6 +2,8 @@ etckeeper (0.50) UNRELEASED; urgency=low
 
   * Add Danish translation of debconf templates. Closes: #597768
   * Ignore /etc/.initctl. Closes: #598121
+  * Do not warn about special files or hardlinks if they are ignored by
+    git. Fixes #549354 for git, but not for other VCSs.
 
  -- Joey Hess <joeyh@debian.org>  Wed, 22 Sep 2010 17:45:57 -0400
 
