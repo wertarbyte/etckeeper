@@ -42,6 +42,7 @@ if [ "$VCS" = git ] && [ -d .git ]; then
 	if [ -n "$USER" ]; then
 		export GIT_AUTHOR_NAME="$USER"
 		export GIT_AUTHOR_EMAIL="$USER@$hostname"
+		export GIT_COMMITTER_EMAIL=`whoami`"@$hostname"
 	fi
 	if [ -n "$logfile" ]; then
 		git commit $GIT_COMMIT_OPTIONS -F "$logfile"

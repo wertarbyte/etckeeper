@@ -4,6 +4,8 @@ etckeeper (0.50) UNRELEASED; urgency=low
   * Ignore /etc/.initctl. Closes: #598121
   * Do not warn about special files or hardlinks if they are ignored by
     git. Fixes #549354 for git, but not for other VCSs.
+  * Set GIT_COMMITTER_EMAIL to root@$hostname to avoid git prompting
+    the user to configure it in .gitconfig. Closes: #599749
 
  -- Joey Hess <joeyh@debian.org>  Wed, 22 Sep 2010 17:45:57 -0400
 
