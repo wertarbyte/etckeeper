@@ -22,6 +22,7 @@ else
 fi
 
 hostname=`hostname`
+hostname="${hostname%%.*}"
 dnsdomainname=`dnsdomainname 2>/dev/null || true`
 if [ -n "$dnsdomainname" ]; then
 	hostname="$hostname.$dnsdomainname"

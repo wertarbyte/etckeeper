@@ -6,6 +6,8 @@ etckeeper (0.50) UNRELEASED; urgency=low
     git. Fixes #549354 for git, but not for other VCSs.
   * Set GIT_COMMITTER_EMAIL to root@$hostname to avoid git prompting
     the user to configure it in .gitconfig. Closes: #599749
+  * Deal with strange systems that include the domain name in the hostname,
+    by stripping it. Closes: #600026
 
  -- Joey Hess <joeyh@debian.org>  Wed, 22 Sep 2010 17:45:57 -0400
 
