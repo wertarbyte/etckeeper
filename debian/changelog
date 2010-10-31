@@ -1,3 +1,9 @@
+etckeeper (0.51) UNRELEASED; urgency=low
+
+  * Updated Vietnamese translation of debconf templates. Closes: #601921
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 30 Oct 2010 23:53:51 -0400
+
 etckeeper (0.50) unstable; urgency=low
 
   * Add Danish translation of debconf templates. Closes: #597768
