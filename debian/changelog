@@ -1,6 +1,7 @@
 etckeeper (0.51) UNRELEASED; urgency=low
 
   * Updated Vietnamese translation of debconf templates. Closes: #601921
+  * Improve rpm version change detection.
 
  -- Joey Hess <joeyh@debian.org>  Sat, 30 Oct 2010 23:53:51 -0400
 
