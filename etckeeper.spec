@@ -43,13 +43,13 @@ install -D debian/cron.daily $RPM_BUILD_ROOT/etc/cron.daily/etckeeper
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{_sbindir}/etckeeper init -d /etc/
+%{_bindir}/etckeeper init -d /etc/
 mkdir -p %{_var}/cache/etckeeper
 
 %files
 %defattr(-,root,root,-)
 %doc GPL INSTALL TODO README
-%{_sbindir}/*
+%{_bindir}/*
 %{_mandir}/*
 # this isn't very clever and its a manual process update.
 # but it works

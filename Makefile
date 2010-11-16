@@ -5,7 +5,7 @@ include $(CONFFILE)
 
 DESTDIR?=
 prefix=/usr
-sbindir=${prefix}/sbin
+bindir=${prefix}/bin
 etcdir=/etc
 mandir=${prefix}/share/man
 vardir=/var
@@ -21,7 +21,7 @@ install:
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
 	cp -dR *.d $(DESTDIR)$(etcdir)/etckeeper/
 	$(INSTALL_DATA) $(CONFFILE) $(DESTDIR)$(etcdir)/etckeeper/etckeeper.conf
-	$(INSTALL_EXE) etckeeper $(DESTDIR)$(sbindir)/etckeeper
+	$(INSTALL_EXE) etckeeper $(DESTDIR)$(bindir)/etckeeper
 	$(INSTALL_DATA) etckeeper.8 $(DESTDIR)$(mandir)/man8/etckeeper.8
 	$(INSTALL_DATA) bash_completion $(DESTDIR)$(etcdir)/bash_completion.d/etckeeper
 ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt)

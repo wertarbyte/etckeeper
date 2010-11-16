@@ -13,7 +13,7 @@ if [ "$1" = remove ]; then
 	if [ -d /etc/etckeeper/uninit.d ]; then
 		cp -a /etc/etckeeper/uninit.d /var/cache/etckeeper/stash
 	fi
-	if [ -x /usr/sbin/etckeeper ]; then
-		cp -a /usr/sbin/etckeeper /var/cache/etckeeper/stash
+	if [ -x /usr/bin/etckeeper ]; then
+		cp -a /usr/bin/etckeeper /var/cache/etckeeper/stash
 	fi
 fi

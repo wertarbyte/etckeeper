@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-if [ -x /usr/sbin/etckeeper ] && [ -e /etc/etckeeper/etckeeper.conf ]; then
+if [ -x /usr/bin/etckeeper ] && [ -e /etc/etckeeper/etckeeper.conf ]; then
 	. /etc/etckeeper/etckeeper.conf
 	if [ "$AVOID_DAILY_AUTOCOMMITS" != "1" ]; then
 		# avoid autocommit if an install run is in progress

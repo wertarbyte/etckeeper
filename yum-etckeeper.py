@@ -25,12 +25,12 @@ plugin_type = (TYPE_CORE,)
 
 def pretrans_hook(conduit):
     conduit.info(2, 'etckeeper: pre transaction commit')
-    servicecmd = conduit.confString('main', 'servicecmd', '/usr/sbin/etckeeper')
+    servicecmd = conduit.confString('main', 'servicecmd', '/usr/bin/etckeeper')
     command = '%s %s' % (servicecmd, " pre-install")
     os.system(command)
 
 def posttrans_hook(conduit):
     conduit.info(2, 'etckeeper: post transaction commit')
-    servicecmd = conduit.confString('main', 'servicecmd', '/usr/sbin/etckeeper')
+    servicecmd = conduit.confString('main', 'servicecmd', '/usr/bin/etckeeper')
     command = '%s %s' % (servicecmd, "post-install")
     os.system(command)
