@@ -144,6 +144,12 @@ writefile () {
 	ignore "#*#"
 	ignore DEADJOE
 
+	comment "ignore certbot/letsencrypt certs"
+	ignore letsencrypt/keys
+	ignore letsencrypt/archive
+	ignore letsencrypt/live
+	ignore letsencrypt/csr
+
 	nl
 	comment "end section $managed_by_etckeeper"
 }
